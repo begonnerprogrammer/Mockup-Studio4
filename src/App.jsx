@@ -3,10 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Header from "./components/header"
 import Footer from "./components/footer"
-
+import { BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import ControlPanel from "./components/controlpanel"
 import PreviewArea from "./components/preview"
+import Help from"./components/help"
 import './App.css'
+import Feature from './components/feature'
+import Templates from './components/templates'
+import Pricing from './components/pricing'
 export const userContext = createContext();
 function App() {
   
@@ -39,20 +43,55 @@ const [framebordervalue,setFrameBorderValue]=useState(false);
   
   return (
 
-    <>
-<userContext.Provider value={{color,setColor,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,radius,setRadius,picbackground,rotateX,setRotateX,rotateY,setRotateY,setPicBackground,padding,shadowColor, setShadowColor,setPadding,fileimg,setFileImg,previewUrl, setPreviewUrl,device,setDevice,twok,setTwok,fourk,setFourk,scale,setScale,size,setImgsize,tilt,setTilt,frame,setFrame,picopacity,setPicOpacity,brightness,setBrightness}}>
-      <div className={`min-h-screen  ${color ? "bg-gray-500" : "bg-gray-200"}  transition-colors duration-200`}>
-    <Header/>
-    <main className="flex mt-5 h-[calc(100vh-100px)]">
-        <ControlPanel/>
-        <PreviewArea/>
-      
-      </main>
-      {/* <Footer/> */}
+  <>
+  <Router>
+    <userContext.Provider 
+      value={{
+        color, setColor, 
+        framebordervalue, setFrameBorderValue,
+        phoneborder, setPhoneBorder,
+        radius, setRadius,
+        picbackground, setPicBackground,
+        rotateX, setRotateX,
+        rotateY, setRotateY,
+        padding, setPadding,
+        shadowColor, setShadowColor,
+        fileimg, setFileImg,
+        previewUrl, setPreviewUrl,
+        device, setDevice,
+        twok, setTwok,
+        fourk, setFourk,
+        scale, setScale,
+        size, setImgsize,
+        tilt, setTilt,
+        frame, setFrame,
+        picopacity, setPicOpacity,
+        brightness, setBrightness
+      }}
+    >
+      <div className={`min-h-screen ${color ? "bg-gray-500" : "bg-gray-200"} transition-colors duration-200`}>
+        <Header/>
+        <main className="flex mt-5 h-[calc(100vh-100px)]">
+          <Routes>
+          
+            <Route path="/" element={
+              <>
+                <ControlPanel/>
+                <PreviewArea/>
+              </>
+            } />
+            {/* Help route */}
+            <Route path="/help" element={<Help/>} />
+              <Route path="/feature" element={<Feature/>} />
+                <Route path="/template" element={<Templates/>} />
+                  <Route path="/pricing" element={<Pricing/>} />
+          </Routes>
+        </main>
+        {/* <Footer/> */}
       </div>
-    
-</userContext.Provider>
-    </>
+    </userContext.Provider>
+  </Router>
+</>
   )
 }
 

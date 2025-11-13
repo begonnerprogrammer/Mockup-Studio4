@@ -42,7 +42,7 @@ const PreviewArea = () => {
 let backgroundType = ""; // Optional — helps you know what it is later
 
 if (!picbackground || typeof picbackground !== "string") {
-  backgroundStyle = "#000000ab"; // fallback
+  backgroundStyle = " radial-gradient(at 20% 30%, rgb(255, 0, 0) 0px, transparent 50%), radial-gradient(at 80% 20%, rgb(0, 255, 0) 0px, transparent 50%), radial-gradient(at 50% 80%, rgb(0, 0, 255) 0px, transparent 50%)"; // fallback
   backgroundType = "none";
 } 
 else if (/^blob:/.test(picbackground)) {
@@ -109,7 +109,7 @@ const style = {
         
           // Add padding to the wrapper instead of the image
           
-    background:style.background? style.background : "red",
+    background:style.background? style.background : "#FFFFFF",
 
     }}
   >
@@ -120,7 +120,10 @@ const style = {
   width: `${device.width+12}px`,
   height: `${device.height+12}px`,
   padding: `${padding ?? frame?.style?.padding ?? 0}px`,
-  position: 'relative'
+  position: 'relative',
+  borderRadius:"20%",
+   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
+    willChange: "transform, opacity, filter", // performance hint
 }}>
   <div style={{
     width: "100%",
@@ -129,6 +132,7 @@ const style = {
     // Apply the same transformations to the container
     transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
     transformOrigin: "center",
+    
     transition: "transform 0.3s ease-in-out",
   }}>
     {/* Camera portion - only shown when phoneborder is true */}
@@ -155,7 +159,8 @@ const style = {
           height: '8px',
           backgroundColor: '#333',
           borderRadius: '50%',
-          border: '1px solid #555'
+          border: '1px solid #555',
+             
         }}></div>
       </div>
     )}
@@ -165,13 +170,14 @@ const style = {
         width: "100%",
         height: "100%",
         display: "block",
-        objectFit: "cover 100% 100%",
+        objectFit: "contain 100% 100%",
         border: phoneborder ? "12px solid #080808ff" : frame?.style?.border || "none",
         borderRadius: `${phoneborder ? "12px": radius ?? frame?.style?.borderRadius ?? 0}px`,
         boxShadow: phoneborder? "0 0 10px white" : `0 10px 20px ${shadowColor ?? frame?.style?.boxShadow ?? "none"}`,
         backdropFilter: frame?.style?.backdropFilter || "none",
         opacity: typeof picopacity === "number" ? picopacity : 1,
         filter: `brightness(${typeof brightness === "number" ? brightness : 100}%)`,
+     
       }}
       src={previewUrl}
       alt="Preview"
@@ -186,10 +192,10 @@ const style = {
         <p className={`text-lg font-medium ${color? "text-gray-200  " : "text-gray-900" } transition-all duration-300 ease-in-out  mb-4`}>
           Drop your screenshot here!
         </p>
-        <p className={`text-sm  ${color? "text-white" : "text-gray-300" }  `}>
+        <p className={`text-sm  ${color? "text-white" : "text-gray-200" }  `}>
           Supports PNG, JPG, and WebP formats
         </p>
-        <p className={`text-sm  ${color? "text-white" : "text-gray-300" }  `}>Or use the upload Button</p>
+        <p className={`text-sm  ${color? "text-white" : "text-gray-200" }  `}>Or use the upload Button</p>
       </div>
     )}
   </div>

@@ -34,7 +34,7 @@ console.log(color);
               <span className="text-white font-bold text-lg">M</span>
             </div>
           <div >
-  <h1 className={`${color ? 'text-white' : 'text-gray-900'} text-xl font-bold `}>Mockup Studio</h1>
+  <h1 className={`${color ? 'text-white' : 'text-gray-900'} text-lg font-bold `}>Mockup Studio</h1>
   <p className={`${color ? 'text-white' : 'text-gray-900'} text-xs opacity-80 `}>Professional Screenshot Mockups</p>
 </div>
 
@@ -44,25 +44,25 @@ console.log(color);
           {/* Navigation Links */}
           <nav className='hidden md:flex items-center space-x-6'> 
             <a 
-              href="#features" 
+              href="/feature" 
               className={`text-sm font-medium  ${color ? 'text-white' : 'text-black'} text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
             >
               Features
             </a>
             <a 
-              href="#templates" 
+              href="/template" 
                className={`text-sm font-medium  ${color ? 'text-white' : 'text-black'} text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
             >
               Templates
             </a>
             <a 
-              href="#pricing" 
+              href="/pricing" 
           className={`text-sm font-medium  ${color ? 'text-white' : 'text-black'} text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
             >
               Pricing
             </a>
             <a 
-              href="#help" 
+              href="/help" 
             className={`text-sm font-medium  ${color ? 'text-white' : 'text-black'} text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
             >
               Help
@@ -91,12 +91,12 @@ console.log(color);
               >
                 <Twitter className="w-4 h-4" />
               </a>
-              <button
+              {/* <button
                 className={`text-sm font-medium  ${color ? 'text-white' : 'text-black'} text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
                 title="Share"
               >
                 <Share2 className="w-4 h-4" />
-              </button>
+              </button> */}
             </div>
 
             {/* Theme Toggle */}
@@ -108,10 +108,10 @@ console.log(color);
               
             </button>
 
-            {/* Get Started Button */}
+            {/* Get Started Button
             <button className="hidden sm:inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
               Get Started
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

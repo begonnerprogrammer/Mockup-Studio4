@@ -864,12 +864,12 @@ console.log("color on control panel",color)
         <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-sm">M</span>
         </div>
-        <h1 className={`text-xl  transition-all duration-300 ease-in-out  font-bold ${color ? "text-white" : "text-gray-900"} ">Mockup Studio</h1`}>Mockup Studio</h1>
+        <h1 className={`text-sm  transition-all duration-300 ease-in-out  font-bold ${color ? "text-white" : "text-gray-900"} ">Mockup Studio</h1`}>Mockup Studio</h1>
       </div>
 
       {/* Tab Navigation */}
-      <div className={`px-4 py-3 border-b  transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"}  `}>
-        <div className="flex space-x-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
+      <div className={`px-4 py-3  border-b  transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"}  `}>
+        <div className="flex  space-x-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
           {tabs.map((tab) => (
             <TabButton
               key={tab.id}
@@ -894,11 +894,11 @@ console.log("color on control panel",color)
                 
    <button
           onClick={handleDownload}
-          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+          className="w-full text-xs bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
         >
   
           <Download className="w-4 h-4"  />
-          <span>Export Mockup</span>
+          <span className='font-xs'>Export Mockup</span>
         </button>
 
       </div>

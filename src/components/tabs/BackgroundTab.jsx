@@ -106,9 +106,9 @@ setPicBackground(item);
 
   return (
     <div className="space-y-4">
-      {/* Category Tabs */}
-      <div className="flex space-x-2 overflow-x-auto">
-        {categories.map((cat) => (
+      {/* Category Tabs
+      <div className="flex space-x-2 overflow-x-auto flex flex-col">
+        {categories.map((cat) => (<>
           <button
             key={cat.id}
             className={`flex items-center space-x-1 px-2 py-1 rounded whitespace-nowrap ${
@@ -119,50 +119,125 @@ setPicBackground(item);
             {cat.icon}
             <span className="text-sm">{cat.name}</span>
           </button>
+       <div>this button data</div>
+        </>
         ))}
+      </div> */}
+   
+      {/* Background Grid */}
+      <div className="min-h-screen  px-1 py-10">
+  <div className="max-w-7xl mx-auto space-y-8">
+    
+    {/* Section Header */}
+    <h1 className={`text-md  ${color ? "text-white" : "text-gray-900"} font-bold  italic text-gray-800 dark:text-gray-100 mb-10 text-center`}> 
+      Background Styles
+      
+    </h1>
+
+    {/* Each Section */}
+    <section className="space-y-16">
+      
+      {/* Magic Gradients */}
+      <div>
+        <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Magic Gradients
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800 shadow-sm ">
+          {renderBackgroundGrid(magicGradients)}
+        </div>
       </div>
 
-      {/* Background Grid */}
+      {/* Overlay Gradients */}
       <div>
-        <div>
- {activeCategory === 'magic-gradient' && renderBackgroundGrid(magicGradients)}
+         <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Overlay Gradients
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800 ">
+          {renderBackgroundGrid(overlayGradients)}
         </div>
-       <div>
- {activeCategory === 'overlay' && renderBackgroundGrid(overlayGradients)}
-       </div>
-       <div>
- {activeCategory === 'mesh-gradient' && renderBackgroundGrid(meshGradients)}
-       </div>
-       <div>
-  {activeCategory === 'gradient' && renderBackgroundGrid(regularGradients)}
-       </div>
+      </div>
+
+      {/* Mesh Gradients */}
       <div>
-       {activeCategory === 'solid' && renderBackgroundGrid(solidColors)}
+        <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Mesh Gradients
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800 ">
+          {renderBackgroundGrid(meshGradients)}
+        </div>
       </div>
+
+      {/* Regular Gradients */}
       <div>
-     {activeCategory === 'marble' && renderBackgroundGrid(marbleTextures, true)}
+         <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Regular Gradients
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800">
+          {renderBackgroundGrid(regularGradients)}
+        </div>
       </div>
- <div>
-    {activeCategory === 'paper' && renderBackgroundGrid(paperTextures, true)}
- </div>
-   
-    <div>
-    {activeCategory === 'images' && renderBackgroundGrid(backgroundImages, true)}
-    </div>
-    <div>
- {activeCategory === 'custom' && (
-          <div className='text-center'>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className={`p-2 border rounded cursor-pointer w-full ${color ? "text-white" : "text-gray-700"}`}
-            />
-          </div>
-        )}
-    </div>
-       
+
+      {/* Solid Colors */}
+      <div>
+       <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Solid Colors
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800">
+          {renderBackgroundGrid(solidColors)}
+        </div>
       </div>
+
+      {/* Marble Textures */}
+      <div>
+  <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Marble Textures
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800 ">
+          {renderBackgroundGrid(marbleTextures, true)}
+        </div>
+      </div>
+
+      {/* Paper Textures */}
+      <div>
+  <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Paper Textures
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800">
+          {renderBackgroundGrid(paperTextures, true)}
+        </div>
+      </div>
+
+      {/* Background Images */}
+      <div>
+  <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Background Images
+        </h2>
+        <div className="rounded-xl  dark:bg-gray-800">
+          {renderBackgroundGrid(backgroundImages, true)}
+        </div>
+      </div>
+
+      {/* Custom Upload */}
+      <div>
+     <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+          Custom Background
+        </h2>
+        <div className="rounded-xl bg-white dark:bg-gray-800 shadow-sm p-6 text-center">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="block w-full text-sm text-gray-700 dark:text-gray-200 file:mr-4 file:py-2 file:px-4 
+                       file:rounded-md file:border-0 file:text-sm file:font-sm
+                       file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer"
+          />
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
     </div>
   );
 };

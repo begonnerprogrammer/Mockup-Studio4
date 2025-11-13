@@ -49,7 +49,7 @@ const handleFileInput = (event) => {
    
   "ipad-pro": {   name: 'Ipad Mini',width:350,height:450, icon: '💻' },
   "iphone-12-pro": {   name: 'iphone 12 pro',width:198,height:428, icon: '📱'  },
-  "Nest-hub":{name: 'Nest Hub',width: 500 ,height:400, icon: '📱'}
+  "Nest-hub":{name: 'Nest Hub',width: 370 ,height:400, icon: '📱'}
   // add other devices here
 };
 
@@ -88,8 +88,8 @@ const findDevice = (id) => {
   return (
     <div className="space-y-6">
       {/* Upload Section */}
-      <div className="space-y-3">
-        <h3 className={`text-sm font-semibold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
+      <div className="space-y-3 mb-18">
+        <h3 className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
         <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <Upload className="w-8 h-8 mb-2 text-gray-400 dark:text-gray-500" />
@@ -138,20 +138,26 @@ const findDevice = (id) => {
 
       {/* Device Selection */}
       <div className="space-y-3">
-        <h3 className={`text-sm font-semibold ${color ? "text-white" : "text-gray-900"}`}>Device Frame</h3>
-        <div className="grid grid-cols-2 gap-2">
+        <h3 className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"} mb-5`}>Device Frame</h3>
+        <div className="grid grid-cols-2 gap-8">
          {Object.entries(deviceSizes).map(([id, device]) => (
   <button
     key={id}
-    className={`p-3 rounded-lg border-2 transition-all duration-200 text-left hover:scale-105 ${
+    className={`p-1 rounded-lg h-16 border-2 transition-all duration-200 text-left hover:scale-105 ${
       deviceType === id
         ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
         : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500'
     }`}
     onClick={() => {findDevice(id);setPhoneBorder(true);setFrameBorderValue(false)}}
   >
-    <div className="text-lg mb-1">{device.icon}</div>
-    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{device.name}</div>
+
+
+
+     <div className='flex align-items-center justify-content-center'>
+<div className="text-sm mb-1">{device.icon}</div>
+    <div className="text-xs font-sm text-gray-900 dark:text-gray-100">{device.name}</div>
+     </div>
+    
   </button>
 ))}
 
