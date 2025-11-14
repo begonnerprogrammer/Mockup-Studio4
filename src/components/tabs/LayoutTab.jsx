@@ -4,23 +4,7 @@ import { userContext } from '../../App';
  
 const LayoutTab = () => {
   const layoutPresets = [
-    {
-      id: 'minimal-clean',
-      name: 'Minimal Clean',
-      description: 'Clean white background with subtle shadow',
-      thumbnail: '🤍',
-      settings: {
-        shadow: 10,
-        padding: 40,
-        borderRadius:0,
-        background: '#ffffff',
-        rotation: 0,
-        scale: 90,
-        opacity: 100,
-        deviceType: 'iphone-16-pro'
-      },
-      
-    },
+   
      {
       id: 'minimal-clean',
       name: 'Minimal Clean',
