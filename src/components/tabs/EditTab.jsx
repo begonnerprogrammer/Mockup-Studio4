@@ -44,8 +44,8 @@ const deviceOptions = [
   {
     category: 'Desktop',
     devices:{ 
-      "macbook-pro-16": { name: 'MacBook Pro 16″', width:421, height:256, icon: "💻" },
-      "macbook-air-13": { name: 'MacBook Air 13″', width:400, height:231, icon: "💻" },
+      "macbook-pro-16": { name: 'MacBook Pro 16″', width:421, height:286, icon: "💻" },
+      "macbook-air-13": { name: 'MacBook Air 13″', width:400, height:271, icon: "💻" },
       
     }
   },

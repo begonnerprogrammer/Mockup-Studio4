@@ -135,35 +135,7 @@ const style = {
     
     transition: "transform 0.3s ease-in-out",
   }}>
-    {/* Camera portion - only shown when phoneborder is true */}
-    {phoneborder && (
-      <div style={{
-        position: 'absolute',
-        top: '0',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '40%',
-        height: '20px',
-        backgroundColor: '#000',
-        borderBottomLeftRadius: '8px',
-        borderBottomRightRadius: '8px',
-        zIndex: 10
-      }}>
-        {/* Camera lens */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '8px',
-          height: '8px',
-          backgroundColor: '#333',
-          borderRadius: '50%',
-          border: '1px solid #555',
-             
-        }}></div>
-      </div>
-    )}
+   
     
     <img
       style={{
@@ -171,8 +143,8 @@ const style = {
         height: "100%",
         display: "block",
         objectFit: "contain 100% 100%",
-        border: phoneborder ? "12px solid #080808ff" : frame?.style?.border || "none",
-        borderRadius: `${phoneborder ? "12px": radius ?? frame?.style?.borderRadius ?? 0}px`,
+        border: phoneborder ? "7px solid #080808ff" : frame?.style?.border || "none",
+        borderRadius: `${phoneborder ? "20": radius ?? frame?.style?.borderRadius ?? 0}px`,
         boxShadow: phoneborder? "0 0 10px white" : `0 10px 20px ${shadowColor ?? frame?.style?.boxShadow ?? "none"}`,
         backdropFilter: frame?.style?.backdropFilter || "none",
         opacity: typeof picopacity === "number" ? picopacity : 1,
