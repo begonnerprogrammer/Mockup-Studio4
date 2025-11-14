@@ -42,7 +42,7 @@ const PreviewArea = () => {
 let backgroundType = ""; // Optional — helps you know what it is later
 
 if (!picbackground || typeof picbackground !== "string") {
-  backgroundStyle = " radial-gradient(at 20% 30%, rgb(255, 0, 0) 0px, transparent 50%), radial-gradient(at 80% 20%, rgb(0, 255, 0) 0px, transparent 50%), radial-gradient(at 50% 80%, rgb(0, 0, 255) 0px, transparent 50%)"; // fallback
+  backgroundStyle = "#0000008e"
   backgroundType = "none";
 } 
 else if (/^blob:/.test(picbackground)) {
