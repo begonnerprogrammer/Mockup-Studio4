@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 
 import { userContext } from '../App';
-import { Radius } from 'lucide-react';
+import { Camera, Radius } from 'lucide-react';
 
 const PreviewArea = () => {
   
@@ -30,19 +30,27 @@ const PreviewArea = () => {
     e.stopPropagation();
     setIsDragging(false);
   }
-
+const handleFileInput = (event) => {
+  const file = event.target.files?.[0];
+  if (file) {
+    setFileImg(file);
+    setPreviewUrl(URL.createObjectURL(file));
+    
+  }
+};
 
  console.log("pic backgorun at preview page ",picbackground);
     console.log("shadow color at preview page",shadowColor);
      console.log("radius  at preview page",radius);
         console.log("RotateY  at preview page",rotateY);
         console.log("phoneborder at preview page",phoneborder)
-            console.log("frameborder at preview page",framebordervalue)
+            console.log("frameborder at preview page",frame)
   let backgroundStyle = "";
 let backgroundType = ""; // Optional — helps you know what it is later
 
 if (!picbackground || typeof picbackground !== "string") {
-  backgroundStyle = "#0000008e"
+  setPicBackground("linear-gradient(135deg, rgba(59,130,246,0.6), rgba(147,51,234,0.6))")
+  backgroundStyle = "linear-gradient(135deg, rgba(59,130,246,0.6), rgba(147,51,234,0.6))"
   backgroundType = "none";
 } 
 else if (/^blob:/.test(picbackground)) {
@@ -90,7 +98,7 @@ const style = {
 >
   <div
     className={`relative   flex items-center justify-center z-10
-      border-4 border-gray-800 dark:border-gray-300  shadow-lg
+      shadow-lg
       bg-opacity-20
       ${isDragging
         ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
@@ -103,14 +111,14 @@ const style = {
       height: `500px`,
       maxWidth: "100%",
       boxShadow: "0 10px 20px rgba(0,0,0,0.25)",
-      border: "2px solid #333",
+      
            overflow: "hidden",
           // Remove transformations from this wrapper
         
           // Add padding to the wrapper instead of the image
           
     background:style.background? style.background : "#FFFFFF",
-
+    
     }}
   >
   
@@ -125,49 +133,69 @@ const style = {
    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
     willChange: "transform, opacity, filter", // performance hint
 }}>
-  <div style={{
-    width: "100%",
-    height: "100%",
-    position: 'relative',
-    // Apply the same transformations to the container
-    transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
-    transformOrigin: "center",
-    
-    transition: "transform 0.3s ease-in-out",
-  }}>
-   
-    
-    <img
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "block",
-        objectFit: "contain 100% 100%",
-        border: phoneborder ? "7px solid #080808ff" : frame?.style?.border || "none",
-        borderRadius: `${phoneborder ? "20": radius ?? frame?.style?.borderRadius ?? 0}px`,
-        boxShadow: phoneborder? "0 0 10px white" : `0 10px 20px ${shadowColor ?? frame?.style?.boxShadow ?? "none"}`,
-        backdropFilter: frame?.style?.backdropFilter || "none",
-        opacity: typeof picopacity === "number" ? picopacity : 1,
-        filter: `brightness(${typeof brightness === "number" ? brightness : 100}%)`,
-     
-      }}
-      src={previewUrl}
-      alt="Preview"
-      crossOrigin="anonymous"
-    />
-  </div>
+<div style={{
+  width: "100%",
+  height: "100%",
+  position: 'relative',
+  transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
+  transformOrigin: "center",
+  transition: "transform 0.3s ease-in-out",
+}}>
+  <img
+    style={{
+      width: "100%",
+      height: "100%",
+      display: "block",
+      objectFit: "contain 100% 100%",
+      border: phoneborder ? "7px solid #080808ff" : frame?.style?.border || "none",
+      borderRadius: `${phoneborder ? "20" : radius ?? frame?.style?.borderRadius ?? 0}px`,
+      boxShadow: phoneborder ? "0 0 10px white" : `0 10px 20px ${shadowColor ?? frame?.style?.boxShadow ?? "none"}`,
+      backdropFilter: frame?.style?.backdropFilter || "none",
+      opacity: typeof picopacity === "number" ? picopacity : 1,
+      filter: `brightness(${typeof brightness === "number" ? brightness : 100}%)`,
+    }}
+    src={previewUrl}
+    alt="Preview"
+    crossOrigin="anonymous"
+  />
+  
+ 
+</div>
 </div>
        
 
-    ) : (
-      <div className="text-center p-8">
-        <p className={`text-lg font-medium ${color? "text-gray-200  " : "text-gray-900" } transition-all duration-300 ease-in-out  mb-4`}>
+    ) : ( 
+      <div style={{
+         borderRadius: `${radius}px`,
+        boxShadow: `0 0 10px  ${shadowColor}`,
+           transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
+           padding:`0 ${padding+5}px 0px ${padding+5}px`,
+             opacity: typeof picopacity === "number" ? picopacity : 1,
+      filter: `brightness(${typeof brightness === "number" ? brightness : 100}%)`,
+        
+      }} 
+    
+      className={`flex hover:scale-110 justify-content-center align-items-center text-center  ${color? "bg-[#000000] " : "bg-gray-100" } transition-all duration-300 ease-in-out    rounded-xl h-90 w-80 p-8  flex-col`}>
+     
+          <label className='cursor-pointer'>
+    <p className={` text-lg mt-12 font-medium ${color? "text-white  " : "#000000" } transition-all duration-700 ease-in-out  mb-4`}>
           Drop your screenshot here!
         </p>
-        <p className={`text-sm  ${color? "text-white" : "text-gray-200" }  `}>
+        <p className={`text-sm  ${color? "text-white " : "#000000" } transition-all duration-700 ease-in-out   `}>
           Supports PNG, JPG, and WebP formats
         </p>
-        <p className={`text-sm  ${color? "text-white" : "text-gray-200" }  `}>Or use the upload Button</p>
+        <p className={`text-sm  ${color? "text-white " : "#000000" }  transition-all duration-700 ease-in-out  `}>Or use the <span className='font-bold'> Upload Button</span></p>
+        <div className='flex items-center justify-center'> <span className='mt-3'><Camera className={`${color? "text-white " : "#000000" }`} size={45}/></span> </div>
+         <input 
+            type="file" 
+            className="hidden" 
+            accept="image/*"
+            onChange={handleFileInput}
+          />
+          </label>
+         
+      
+     
       </div>
     )}
   </div>

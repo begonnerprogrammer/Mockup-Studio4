@@ -66,7 +66,7 @@ const deviceOptions = [
   const frameOptions = {
    "Default": { name: 'Default',style: { border: "none" }, preview: '⬜' },
    "Minimal": { name: 'Minimal',style: { border: "1px solid black" }, preview: '▫️' },
-    "Rounded":{  name: 'Rounded', style:{ border: "1px solid black", borderRadius:10 }, preview: '🔲' },
+    "Rounded":{  name: 'Rounded', style:{ border: "6px solid black", borderRadius:10 }, preview: '🔲' },
     "Shadow":{ name: 'Shadow', style: {
       border: "2px solid #3498db",
       borderRadius: "8px",
@@ -462,7 +462,9 @@ const changepadding=(value)=>{
       
       </div>
 
-      {/* Padding */}
+
+{
+  previewUrl ?  
       <div className="space-y-4 mt-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -481,7 +483,9 @@ const changepadding=(value)=>{
           onChange={(e) => changepadding(Number(e.target.value))}
           className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
         />
-      </div>
+      </div>: ""
+}
+    
 
       {/* Reset Button */}
       <button 

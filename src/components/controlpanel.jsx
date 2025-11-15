@@ -16,31 +16,25 @@ console.log("pick background at control page",picbackground);
 // Define a default device (you can pick any reasonable fallback)
 const defaultDevice = { name: 'Default', width: 390, height: 844, icon: '📱' };
 console.log("device at control page",device);
-
-
+console.log("shadow color at control page",shadowColor)
 const handleDownload = async () => {
   const currentDevice = device || defaultDevice;
 
-  // Validation
   if (!previewUrl || !currentDevice?.width || !currentDevice?.height) {
     alert("Missing required parameters: previewUrl or device dimensions");
     return;
   }
 
-  // Fixed dimensions for background
   const bgWidth = 450;
   const bgHeight = 500;
 
-  // Device dimensions for image
   const imgWidth = currentDevice.width;
   const imgHeight = currentDevice.height;
 
-  // Parse all values
   const paddingValue = padding ?? parseInt(frame?.style?.padding) ?? 0;
   const radiusValue = radius ?? parseInt(frame?.style?.radius ?? 0);
   const brightnessValue = brightness;
   const phonebordervalue = phoneborder;
-
   const opacityValue = picopacity;
   const backgroundValue = picbackground || "transparent";
   const sizeValue = size;
@@ -48,13 +42,11 @@ const handleDownload = async () => {
   const borderValue = frame?.style?.border || "0";
   const rotateXvalue = rotateX;
   const rotateYvalue = rotateY;
-
   const shadowColorValue = shadowColor ?? frame?.style?.boxShadow ?? "transparent";
 
   try {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-
     canvas.width = bgWidth;
     canvas.height = bgHeight;
 
@@ -67,7 +59,7 @@ const handleDownload = async () => {
       img.src = previewUrl;
     });
 
-    // BACKGROUND HANDLING (unchanged)
+    // BACKGROUND (unchanged)
     if (backgroundValue !== "transparent") {
       const isImageUrl =
         backgroundValue.match(/\.(jpeg|jpg|gif|png|webp|bmp|svg)$/i) ||
@@ -80,13 +72,11 @@ const handleDownload = async () => {
         try {
           const bgImg = new Image();
           bgImg.crossOrigin = "anonymous";
-
           await new Promise((resolve, reject) => {
             bgImg.onload = resolve;
             bgImg.onerror = reject;
             bgImg.src = backgroundValue;
           });
-
           ctx.drawImage(bgImg, 0, 0, bgWidth, bgHeight);
         } catch {
           ctx.fillStyle = "#cccccc";
@@ -94,7 +84,6 @@ const handleDownload = async () => {
         }
       } else if (backgroundValue.includes("gradient") && backgroundValue.includes(",")) {
         const gradients = splitMultipleGradients(backgroundValue);
-
         const tempCanvas = document.createElement("canvas");
         tempCanvas.width = bgWidth;
         tempCanvas.height = bgHeight;
@@ -157,18 +146,61 @@ const handleDownload = async () => {
 
     const availableWidth = imgWidth - paddingValue * 2;
     const availableHeight = imgHeight - paddingValue * 2;
+
     const drawWidth = availableWidth;
     const drawHeight = availableHeight;
+
     const drawX = -drawWidth / 2;
     const drawY = -drawHeight / 2;
 
     const effectiveRadius = Math.min(radiusValue, Math.min(drawWidth, drawHeight) / 2);
 
-    // ---- PHONE BORDER LOGIC (kept) ----
-    if (phonebordervalue) {
+    // SHADOW LOGIC (unchanged)
+    const shouldApplyShadow =
+      (borderValue && borderValue !== "0" && !phonebordervalue) ||
+      (!phonebordervalue && (!borderValue || borderValue === "0"));
+
+    if (shouldApplyShadow) {
+      const shadowToApply = `0 10px 20px ${
+        shadowColorValue !== "transparent" ? shadowColorValue : "#000000"
+      }`;
+
+      const shadowParts = shadowToApply.split(" ");
+      const shadowOffsetX = parseInt(shadowParts[0]) || 0;
+      const shadowOffsetY = parseInt(shadowParts[1]) || 10;
+      const shadowBlur = parseInt(shadowParts[2]) || 20;
+      const shadowColor = shadowParts.slice(3).join(" ") || "#000000";
+
+      ctx.save();
+      ctx.shadowColor = shadowColor;
+      ctx.shadowBlur = shadowBlur;
+      ctx.shadowOffsetX = shadowOffsetX;
+      ctx.shadowOffsetY = shadowOffsetY;
+
+      if (effectiveRadius > 0) {
+        ctx.beginPath();
+        ctx.moveTo(drawX + effectiveRadius, drawY);
+        ctx.lineTo(drawX + drawWidth - effectiveRadius, drawY);
+        ctx.arcTo(drawX + drawWidth, drawY, drawX + drawWidth, drawY + effectiveRadius, effectiveRadius);
+        ctx.lineTo(drawX + drawWidth, drawY + drawHeight - effectiveRadius);
+        ctx.arcTo(drawX + drawWidth, drawY + drawHeight, drawX + drawWidth - effectiveRadius, drawY + drawHeight, effectiveRadius);
+        ctx.lineTo(drawX + effectiveRadius, drawY + drawHeight);
+        ctx.arcTo(drawX, drawY + drawHeight, drawX, drawY + drawHeight - effectiveRadius, effectiveRadius);
+        ctx.lineTo(drawX, drawY + effectiveRadius);
+        ctx.arcTo(drawX, drawY, drawX + effectiveRadius, drawY, effectiveRadius);
+        ctx.closePath();
+      } else {
+        ctx.rect(drawX, drawY, drawWidth, drawHeight);
+      }
+
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // BORDER LOGIC (unchanged)
+    if (phonebordervalue && !framebordervalue) {
       ctx.save();
       ctx.fillStyle = "black";
-
       ctx.shadowColor = "white";
       ctx.shadowBlur = 10;
       ctx.shadowOffsetX = 0;
@@ -196,17 +228,53 @@ const handleDownload = async () => {
       } else {
         ctx.rect(shadowX, shadowY, shadowWidth, shadowHeight);
       }
+
       ctx.fill();
       ctx.restore();
 
       ctx.shadowColor = "transparent";
       ctx.shadowBlur = 0;
+    } else if (borderValue && borderValue !== "0" && !phonebordervalue) {
+      ctx.save();
 
-      // ---- CAMERA PORTION REMOVED COMPLETELY ----
-      // (This block intentionally deleted)
+      const borderParts = borderValue.split(" ");
+      const borderWidth = parseInt(borderParts[0]) || 2;
+      const borderColor = borderParts[2] || "#000000";
+
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = borderWidth;
+
+      const bx = drawX - borderWidth / 2;
+      const by = drawY - borderWidth / 2;
+      const bw = drawWidth + borderWidth;
+      const bh = drawHeight + borderWidth;
+      const br = effectiveRadius > 0 ? effectiveRadius + borderWidth / 2 : 0;
+
+      if (effectiveRadius > 0) {
+        ctx.beginPath();
+        ctx.moveTo(bx + br, by);
+        ctx.lineTo(bx + bw - br, by);
+        ctx.arcTo(bx + bw, by, bx + bw, by + br, br);
+        ctx.lineTo(bx + bw, by + bh - br);
+        ctx.arcTo(bx + bw, by + bh, bx + bw - br, by + bh, br);
+        ctx.lineTo(bx + br, by + bh);
+        ctx.arcTo(bx, by + bh, bx, by + bh - br, br);
+        ctx.lineTo(bx, by + br);
+        ctx.arcTo(bx, by, bx + br, by, br);
+        ctx.closePath();
+      } else {
+        ctx.rect(bx, by, bw, bh);
+      }
+
+      ctx.stroke();
+      ctx.restore();
     }
 
+    // -------------------------------
+    // CLIP SHAPE (same as before)
+    // -------------------------------
     ctx.beginPath();
+
     if (effectiveRadius > 0) {
       ctx.moveTo(drawX + effectiveRadius, drawY);
       ctx.lineTo(drawX + drawWidth - effectiveRadius, drawY);
@@ -220,11 +288,59 @@ const handleDownload = async () => {
     } else {
       ctx.rect(drawX, drawY, drawWidth, drawHeight);
     }
+
     ctx.closePath();
     ctx.clip();
 
+    // --------------------------
+    // DRAW IMAGE (same)
+    // --------------------------
     ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
 
+    // ======================================================
+    // ⭐⭐⭐ CAMERA MOVED HERE — FINAL TOP LAYER ⭐⭐⭐
+    // ======================================================
+    if (phonebordervalue && !framebordervalue) {
+      const cameraWidth = drawWidth * 0.12;
+      const cameraHeight = drawHeight * 0.03;
+
+      const cameraX = -cameraWidth / 2;
+      const cameraY = drawY - (drawHeight * 0.02) - cameraHeight;
+
+      ctx.fillStyle = "#080808ff";
+      ctx.strokeStyle = "#333";
+      ctx.lineWidth = 1;
+
+      const cameraRadius = Math.min(cameraHeight / 2, 15);
+
+      ctx.beginPath();
+      ctx.moveTo(cameraX + cameraRadius, cameraY);
+      ctx.lineTo(cameraX + cameraWidth - cameraRadius, cameraY);
+      ctx.arcTo(cameraX + cameraWidth, cameraY, cameraX + cameraWidth, cameraY + cameraRadius, cameraRadius);
+      ctx.lineTo(cameraX + cameraWidth, cameraY + cameraHeight - cameraRadius);
+      ctx.arcTo(cameraX + cameraWidth, cameraY + cameraHeight, cameraX + cameraWidth - cameraRadius, cameraY + cameraHeight, cameraRadius);
+      ctx.lineTo(cameraX + cameraRadius, cameraY + cameraHeight);
+      ctx.arcTo(cameraX, cameraY + cameraHeight, cameraX, cameraY + cameraHeight - cameraRadius, cameraRadius);
+      ctx.lineTo(cameraX, cameraY + cameraRadius);
+      ctx.arcTo(cameraX, cameraY, cameraX + cameraRadius, cameraY, cameraRadius);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Camera Lens
+      const lensSize = Math.min(cameraWidth, cameraHeight) * 0.4;
+
+      ctx.fillStyle = "#1a1a1a";
+      ctx.strokeStyle = "#333";
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      ctx.arc(cameraX + cameraWidth / 2, cameraY + cameraHeight / 2, lensSize / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    }
+
+    // RESTORE
     ctx.restore();
 
     canvas.toBlob((blob) => {
@@ -241,10 +357,14 @@ const handleDownload = async () => {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }, "image/png", 1.0);
+
   } catch (error) {
     alert("Failed to generate image download");
   }
 };
+
+
+
 
 
 // Helper function to split multiple gradients while preserving internal structure

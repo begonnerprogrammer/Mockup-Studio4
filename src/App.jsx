@@ -33,7 +33,7 @@ const [device, setDevice] = useState({
       name: 'Default',style:'border:none', preview: '⬜'
     });
 const [picopacity,setPicOpacity]=useState(1);
-const [padding,setPadding]=useState(20);
+const [padding,setPadding]=useState(0);
 const [framebordervalue,setFrameBorderValue]=useState(false);
 
   const [shadowColor, setShadowColor] = useState('#000000');

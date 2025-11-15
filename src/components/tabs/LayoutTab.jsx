@@ -72,7 +72,7 @@ const LayoutTab = () => {
     }
     // Add other presets here if needed
   ];
-const { color, setColor,radius,phoneborder,setPhoneBorder,setRadius,padding,setPadding,picbackground,tilt, setTilt,setPicBackground,scale,setScale,size,setImgsize,shadowColor, setShadowColor } = useContext(userContext);
+const { color, setColor,radius,phoneborder,setPhoneBorder,setRadius,padding,setPadding,picbackground,tilt, setTilt,setPicBackground,scale,setScale,size,setImgsize,shadowColor,previewUrl,setPreviewUrl, setShadowColor } = useContext(userContext);
 const onchangeradius=(value)=>{
 setRadius(value);
 }
@@ -127,9 +127,8 @@ setRadius(value);
         <h3   className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>Manual Adjustments</h3>
         
      
-
-        {/* Padding Controls */}
-        <div className="space-y-2">
+{
+  previewUrl? <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Maximize className={`"w-4 h-4  ${color ? "text-gray-500" : "text-gray-600" }`} />
@@ -147,7 +146,10 @@ setRadius(value);
             onChange={(e) => setPadding(Number(e.target.value))}
             className="w-full h-1 bg-gray-200 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
           />
-        </div>
+        </div>  :""
+}
+       
+        
 
         {/* Border Radius Controls */}
         {

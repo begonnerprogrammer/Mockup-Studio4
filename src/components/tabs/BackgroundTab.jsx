@@ -139,7 +139,7 @@ setPicBackground(item);
       
       {/* Magic Gradients */}
       <div>
-        <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+        <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Magic Gradients
         </h2>
         <div className="rounded-xl  dark:bg-gray-800 shadow-sm ">
@@ -149,7 +149,7 @@ setPicBackground(item);
 
       {/* Overlay Gradients */}
       <div>
-         <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+         <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Overlay Gradients
         </h2>
         <div className="rounded-xl  dark:bg-gray-800 ">
@@ -159,7 +159,7 @@ setPicBackground(item);
 
       {/* Mesh Gradients */}
       <div>
-        <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+        <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Mesh Gradients
         </h2>
         <div className="rounded-xl  dark:bg-gray-800 ">
@@ -169,7 +169,7 @@ setPicBackground(item);
 
       {/* Regular Gradients */}
       <div>
-         <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+         <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Regular Gradients
         </h2>
         <div className="rounded-xl  dark:bg-gray-800">
@@ -179,7 +179,7 @@ setPicBackground(item);
 
       {/* Solid Colors */}
       <div>
-       <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+       <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Solid Colors
         </h2>
         <div className="rounded-xl  dark:bg-gray-800">
@@ -189,7 +189,7 @@ setPicBackground(item);
 
       {/* Marble Textures */}
       <div>
-  <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+  <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Marble Textures
         </h2>
         <div className="rounded-xl  dark:bg-gray-800 ">
@@ -199,7 +199,7 @@ setPicBackground(item);
 
       {/* Paper Textures */}
       <div>
-  <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+  <h2 className={`text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Paper Textures
         </h2>
         <div className="rounded-xl  dark:bg-gray-800">
@@ -209,7 +209,7 @@ setPicBackground(item);
 
       {/* Background Images */}
       <div>
-  <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+  <h2 className={`text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Background Images
         </h2>
         <div className="rounded-xl  dark:bg-gray-800">
@@ -219,7 +219,7 @@ setPicBackground(item);
 
       {/* Custom Upload */}
       <div>
-     <h2 className={`text-xs  ${color ? "text-white" : "text-gray-900"} font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+     <h2 className={`text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
           Custom Background
         </h2>
         <div className="rounded-xl bg-white dark:bg-gray-800 shadow-sm p-6 text-center">
