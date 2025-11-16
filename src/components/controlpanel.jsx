@@ -6,6 +6,7 @@ import EditTab  from './tabs/EditTab';
 import  BackgroundTab  from './tabs/BackgroundTab';
 import  LayoutTab  from './tabs/LayoutTab';
 import { userContext } from '../App';
+import { NavLink } from 'react-router-dom';
 
 const ControlPanel = () => {
   const {color,setColor,shadowColor,framebordervalue,setFrameBorderValue,picbackground,radius,phoneborder,setPhoneBorder,scale,rotateX,setRotateX,rotateY,setRotateY,setScale,setRadius,setPicBackground, setShadowColor,twok,setTwok,padding,setPadding,fourk,setFourk,previewUrl,picopacity,brightness,setBrightness,setPicOpacity,device,setDevice,tilt,setTilt, setPreviewUrl,size,setSize,frame,setFrame}=useContext(userContext);
@@ -25,8 +26,8 @@ const handleDownload = async () => {
     return;
   }
 
-  const bgWidth = 450;
-  const bgHeight = 500;
+  const bgWidth = 545;
+  const bgHeight = 475;
 
   const imgWidth = currentDevice.width;
   const imgHeight = currentDevice.height;
@@ -711,15 +712,24 @@ console.log("color on control panel",color)
   };
 
   return (
-    <div className={`w-80   dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200`}
+    <div className={`lg:w-80 md:w-full sm:w-full   dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200`}
 >
       {/* Header */}
-      <div className={`flex  transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"} items-center space-x-2 p-6 pb-4 border-b border-gray-100 dark:border-gray-700`}>
+     
+    
+      
+  <div className={` hidden sm:flex sm:text-xs md:text-sm lg:text-base  transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"} items-center space-x-2 p-6 pb-4 border-b border-gray-100 dark:border-gray-700`}>
+     <NavLink to={'/'}>
         <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-sm">M</span>
         </div>
+         </NavLink>
+         <NavLink to={'/'}>
         <h1 className={`text-sm  transition-all duration-300 ease-in-out  font-bold ${color ? "text-white" : "text-gray-900"} ">Mockup Studio</h1`}>Mockup Studio</h1>
+        </NavLink>
       </div>
+    
+   
 
       {/* Tab Navigation */}
       <div className={`px-4 py-3  border-b  transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"}  `}>

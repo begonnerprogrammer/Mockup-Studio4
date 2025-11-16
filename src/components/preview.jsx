@@ -97,7 +97,8 @@ const style = {
   
 >
   <div
-    className={`relative   flex items-center justify-center z-10
+    className={`relative w-[40vw] 
+      h-[50vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] flex items-center justify-center z-10
       shadow-lg
       bg-opacity-20
       ${isDragging
@@ -106,9 +107,8 @@ const style = {
         ? "bg-white"
         : "bg-gray-200"
       }`}
+
     style={{
-      width:`450px`,
-      height: `500px`,
       maxWidth: "100%",
       boxShadow: "0 10px 20px rgba(0,0,0,0.25)",
       
@@ -165,7 +165,9 @@ const style = {
        
 
     ) : ( 
-      <div style={{
+      <div  style={{
+         width: "80%",
+      height: "60%",
          borderRadius: `${radius}px`,
         boxShadow: `0 0 10px  ${shadowColor}`,
            transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
@@ -175,17 +177,17 @@ const style = {
         
       }} 
     
-      className={`flex hover:scale-110 justify-content-center align-items-center text-center  ${color? "bg-[#000000] " : "bg-gray-100" } transition-all duration-300 ease-in-out    rounded-xl h-90 w-80 p-8  flex-col`}>
+      className={`flex hover:scale-110 justify-content-center align-items-center text-center  ${color? "bg-[#000000] " : "bg-gray-100" } transition-all duration-300 ease-in-out    rounded-xl  p-8  flex-col`}>
      
           <label className='cursor-pointer'>
-    <p className={` text-lg mt-12 font-medium ${color? "text-white  " : "#000000" } transition-all duration-700 ease-in-out  mb-4`}>
+    <p className={` text-lg mt-12 font-medium ${color? "text-white  " : "#000000" } transition-all duration-700 ease-in-out  mb-4 text-xs sm:text-sm md:text-base lg:text-xl` }>
           Drop your screenshot here!
         </p>
-        <p className={`text-sm  ${color? "text-white " : "#000000" } transition-all duration-700 ease-in-out   `}>
+        <p className={`text-sm  ${color? "text-white " : "#000000" } transition-all duration-700 ease-in-out  text-[10px] sm:text-xs md:text-sm lg:text-base `}>
           Supports PNG, JPG, and WebP formats
         </p>
-        <p className={`text-sm  ${color? "text-white " : "#000000" }  transition-all duration-700 ease-in-out  `}>Or use the <span className='font-bold'> Upload Button</span></p>
-        <div className='flex items-center justify-center'> <span className='mt-3'><Camera className={`${color? "text-white " : "#000000" }`} size={45}/></span> </div>
+        <p className={`text-sm  ${color? "text-white " : "#000000" }  transition-all duration-700 ease-in-out text-[10px] sm:text-xs md:text-sm lg:text-base `}>Or use the <span className='font-bold'> Upload Button</span></p>
+        <div className='flex items-center justify-center'> <span className='mt-3'><Camera className={`${color? "text-white " : "#000000" } w-60`} /></span> </div>
          <input 
             type="file" 
             className="hidden" 

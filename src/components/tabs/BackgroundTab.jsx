@@ -150,7 +150,7 @@ setPicBackground(item);
       {/* Overlay Gradients */}
       <div>
          <h2 className={`text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
-          Overlay Gradients
+         Gradients
         </h2>
         <div className="rounded-xl  dark:bg-gray-800 ">
           {renderBackgroundGrid(overlayGradients)}

@@ -92,7 +92,7 @@ const deviceOptions = [
 
 
 
-const { color, setColor,fileimg,rotateY,setRotateY,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,setFileImg,rotateX,setRotateX,picbackground,setPicBackground,previewUrl,brightness,shadowColor, setShadowColor,setBrightness,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,twok,setTwok,fourk,scale,setScale,setFourk,size,setImgsize,tilt,setTilt,frame,setFrame,padding,setPadding } = useContext(userContext);
+const { color, setColor,fileimg,rotateY,setRotateY,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,setFileImg,rotateX,setRotateX,picbackground,setPicBackground,previewUrl,brightness,shadowColor, setShadowColor,setBrightness,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,twok,setTwok,fourk,scale,setScale,setFourk,size,setImgsize,tilt,setTilt,frame,setFrame,padding,setPadding,radius,setRadius } = useContext(userContext);
 
 
   const handleReset = () => {
@@ -112,6 +112,7 @@ const { color, setColor,fileimg,rotateY,setRotateY,framebordervalue,setFrameBord
   setPicBackground(null);
   setRotateX(0);
   setRotateY(0);
+setRadius(0);
   };
 
 

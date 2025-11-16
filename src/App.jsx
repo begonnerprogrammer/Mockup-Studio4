@@ -33,7 +33,7 @@ const [device, setDevice] = useState({
       name: 'Default',style:'border:none', preview: '⬜'
     });
 const [picopacity,setPicOpacity]=useState(1);
-const [padding,setPadding]=useState(0);
+const [padding,setPadding]=useState(10);
 const [framebordervalue,setFrameBorderValue]=useState(false);
 
   const [shadowColor, setShadowColor] = useState('#000000');
@@ -71,13 +71,13 @@ const [framebordervalue,setFrameBorderValue]=useState(false);
     >
       <div className={`min-h-screen ${color ? "bg-gray-500" : "bg-gray-200"} transition-colors duration-200`}>
         <Header/>
-        <main className="flex mt-5 h-[calc(100vh-100px)]">
+        <main className="flex flex-col sm:flex-col   md:flex-col  lg:flex-row  mt-5 h-[calc(100vh-100px)]">
           <Routes>
           
             <Route path="/" element={
-              <>
+              <><PreviewArea />
                 <ControlPanel/>
-                <PreviewArea/>
+                
               </>
             } />
             {/* Help route */}
