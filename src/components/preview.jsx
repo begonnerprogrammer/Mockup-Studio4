@@ -45,6 +45,7 @@ const handleFileInput = (event) => {
         console.log("RotateY  at preview page",rotateY);
         console.log("phoneborder at preview page",phoneborder)
             console.log("frameborder at preview page",frame)
+            console.log("device at preview page",device)
   let backgroundStyle = "";
 let backgroundType = ""; // Optional — helps you know what it is later
 
@@ -97,8 +98,8 @@ const style = {
   
 >
   <div
-    className={`relative w-[40vw] 
-      h-[50vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] flex items-center justify-center z-10
+    className={`relative w-[100vw]  sm:w-[40vh] md:w-[60vh] lg:w-[80vh]
+      h-[100vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] flex items-center justify-center z-10
       shadow-lg
       bg-opacity-20
       ${isDragging
@@ -133,6 +134,7 @@ const style = {
    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
     willChange: "transform, opacity, filter", // performance hint
 }}>
+ 
 <div style={{
   width: "100%",
   height: "100%",
@@ -140,14 +142,19 @@ const style = {
   transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
   transformOrigin: "center",
   transition: "transform 0.3s ease-in-out",
+
 }}>
+   
   <img
     style={{
       width: "100%",
       height: "100%",
       display: "block",
       objectFit: "contain 100% 100%",
-      border: phoneborder ? "7px solid #080808ff" : frame?.style?.border || "none",
+    borderTop: phoneborder ? "17px solid #080808ff" : frame?.style?.border || "none",
+  borderRight: phoneborder ? "8px solid #080808ff" : frame?.style?.border || "none",
+  borderBottom: phoneborder ? "12px solid #080808ff" : frame?.style?.border|| "none",
+  borderLeft: phoneborder ? "8px solid #080808ff" : frame?.style?.border || "none",
       borderRadius: `${phoneborder ? "20" : radius ?? frame?.style?.borderRadius ?? 0}px`,
       boxShadow: phoneborder ? "0 0 10px white" : `0 10px 20px ${shadowColor ?? frame?.style?.boxShadow ?? "none"}`,
       backdropFilter: frame?.style?.backdropFilter || "none",
@@ -158,17 +165,28 @@ const style = {
     alt="Preview"
     crossOrigin="anonymous"
   />
-  
+ 
+ 
+ { phoneborder ? <div className="absolute top-[1%] left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full z-20" /> : ""}
+
+
  
 </div>
+
 </div>
        
 
     ) : ( 
       <div  style={{
-         width: "80%",
-      height: "60%",
+        width: device ?  `${device.width}px` : "80%",
+
+      width: device ? `${device.width}px` : "80%",
          borderRadius: `${radius}px`,
+            borderTop: phoneborder ? "16px solid #080808ff" : frame?.style?.border || "none",
+  borderRight: phoneborder ? "8px solid #080808ff" : frame?.style?.border || "none",
+  borderBottom: phoneborder ? "12px solid #080808ff" : frame?.style?.border || "none",
+  borderLeft: phoneborder ? "8px solid #080808ff" : frame?.style?.border || "none",
+  
         boxShadow: `0 0 10px  ${shadowColor}`,
            transform: `scale(${scale}) rotate(${tilt}deg) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`,
            padding:`0 ${padding+5}px 0px ${padding+5}px`,
@@ -179,14 +197,14 @@ const style = {
     
       className={`flex hover:scale-110 justify-content-center align-items-center text-center  ${color? "bg-[#000000] " : "bg-gray-100" } transition-all duration-300 ease-in-out    rounded-xl  p-8  flex-col`}>
      
-          <label className='cursor-pointer'>
-    <p className={` text-lg mt-12 font-medium ${color? "text-white  " : "#000000" } transition-all duration-700 ease-in-out  mb-4 text-xs sm:text-sm md:text-base lg:text-xl` }>
+          <label className='cursor-pointer h-100'>
+    <p className={` text-lg mt-6 font-medium ${color? "text-white  " : "#000000" } transition-all duration-700 ease-in-out  mb-4 text-[9px] sm:text-sm md:text-base lg:text-xl` }>
           Drop your screenshot here!
         </p>
-        <p className={`text-sm  ${color? "text-white " : "#000000" } transition-all duration-700 ease-in-out  text-[10px] sm:text-xs md:text-sm lg:text-base `}>
+        <p className={`text-sm  ${color? "text-white " : "#000000" } transition-all duration-700 ease-in-out  text-[8px] sm:text-xs md:text-sm lg:text-base `}>
           Supports PNG, JPG, and WebP formats
         </p>
-        <p className={`text-sm  ${color? "text-white " : "#000000" }  transition-all duration-700 ease-in-out text-[10px] sm:text-xs md:text-sm lg:text-base `}>Or use the <span className='font-bold'> Upload Button</span></p>
+        <p className={`text-sm  ${color? "text-white " : "#000000" }  transition-all duration-700 ease-in-out text-[8px] sm:text-xs md:text-sm lg:text-base `}>Or use the <span className='font-bold'> Upload Button</span></p>
         <div className='flex items-center justify-center'> <span className='mt-3'><Camera className={`${color? "text-white " : "#000000" } w-60`} /></span> </div>
          <input 
             type="file" 

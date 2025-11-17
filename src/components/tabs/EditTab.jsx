@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { RotateCw, Move, ZoomIn, Palette, Smartphone, Tablet, Monitor, Laptop, Share as Shadow, Paintbrush } from 'lucide-react';
+import { RotateCw, Move, ZoomIn, Palette, Smartphone, Tablet, Monitor, Laptop, Share as Shadow, Paintbrush, Grid } from 'lucide-react';
 import { userContext } from '../../App';
 
 
@@ -113,6 +113,8 @@ const { color, setColor,fileimg,rotateY,setRotateY,framebordervalue,setFrameBord
   setRotateX(0);
   setRotateY(0);
 setRadius(0);
+
+setPhoneBorder(false);
   };
 
 
@@ -124,7 +126,8 @@ setImgsize(size);
 
  }
 const onDeviceChange = (id) => {
-  let selectedDevice = null;
+
+ let selectedDevice = null;
   let selectedCategoryName = null;
 
   // Iterate over categories to find the matching device ID
@@ -142,9 +145,13 @@ const onDeviceChange = (id) => {
   } else {
     console.log("Device not found for ID:", id);
   }
+  
+
 };
 
-
+const onchangeradius=(value)=>{
+setRadius(value);
+}
  const  handleframe=(id)=>{
 
   const frameObj = frameOptions[id]; // get the full device object
@@ -181,15 +188,15 @@ const changepadding=(value)=>{
     <div className="space-y-6">
       {/* Scale Control */}
       <div className="space-y-3">
-        <h3  className={`text-sm font-bold mb-5 ${color ? "text-white" : "text-gray-900"}`}>Scale</h3>
+        <h3  className={`text-[11px] sm:text-md  font-bold mb-5 ${color ? "text-white" : "text-gray-900"}`}>Scale</h3>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <ZoomIn className="w-4 h-4 text-gray-500" />
+              <ZoomIn className="w-3 sm:w-4 h-3 sm:h-4 text-gray-500" />
              
-              <label  className={`text-xs font-medium text-gray-500`}>Size</label>
+              <label  className={`text-[11px] sm:text-md  font-medium text-gray-500`}>Size</label>
             </div>
-            <span className="text-xs text-gray-500 bg-gray-100  py-1 rounded">
+            <span className="text-[9px] sm:text-xs text-gray-500 bg-gray-100  py-1 rounded">
               {Math.round(scale*100)}%
             </span>
           </div>
@@ -209,16 +216,16 @@ const changepadding=(value)=>{
       {/* Tilt Control with Circle Direction */}
       <div className="space-y-3 mt-18">
        
-        <h3  className={`text-sm font-bold mb-5  ${color ? "text-white" : "text-gray-700" }`}>Tilt</h3>
+        <h3  className={`text-[11px] sm:text-md  font-bold mb-5  ${color ? "text-white" : "text-gray-700" }`}>Tilt</h3>
         <div className="flex items-center space-x-4">
           <div className="flex-1 space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <RotateCw    className={`w-4 h-4  text-gray-500`} />
+                <RotateCw    className={`w-3 sm:w-4 h-3 sm:h-4  text-gray-500`} />
               
-                <label   className={`text-xs font-medium text-gray-500`}>Angle</label>
+                <label   className={`text-[9px] sm:text-xs font-medium text-gray-500`}>Angle</label>
               </div>
-              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+              <span className="text-[9px] sm:text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
                 {tilt}°
               </span>
             </div>
@@ -233,7 +240,7 @@ const changepadding=(value)=>{
           </div>
 
           {/* Circular Direction Indicator */}
-          <div className="relative w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 rounded-full flex items-center justify-center">
             <div 
               className="w-1 h-4 bg-blue-500 rounded-full origin-bottom transition-transform duration-200"
               style={{ transform: `rotate(${tilt}deg)` }}
@@ -245,16 +252,16 @@ const changepadding=(value)=>{
         {/* Control Y */}
       <div className="space-y-3 mt-18">
        
-        <h3  className={`text-sm  mb-5 font-bold ${color ? "text-white" : "text-gray-900" }`}>RotateY</h3>
+        <h3  className={`text-[11px] sm:text-md   mb-5 font-bold ${color ? "text-white" : "text-gray-900" }`}>RotateY</h3>
         <div className="flex items-center space-x-4">
           <div className="flex-1 space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <RotateCw    className={`w-4 h-4 text-gray-500`} />
+                <RotateCw    className={`w-3 sm:w-4 h-3 sm:h-4 text-gray-500`} />
               
-                <label   className={`text-xs font-medium text-gray-500`}>Angle</label>
+                <label   className={`text-[9px] sm:text-xs font-medium text-gray-500`}>Angle</label>
               </div>
-              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+              <span className="text-[9px] sm:text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
                 {rotateY}°
               </span>
             </div>
@@ -269,7 +276,7 @@ const changepadding=(value)=>{
           </div>
 
           {/* Circular Direction Indicator */}
-          <div className="relative w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 rounded-full flex items-center justify-center">
             <div 
               className="w-1 h-4 bg-blue-500 rounded-full origin-bottom transition-transform duration-200"
               style={{ transform: `rotate(${rotateY}deg)` }}
@@ -281,16 +288,16 @@ const changepadding=(value)=>{
              {/* Control X */}
       <div className="space-y-3 mt-18">
        
-        <h3  className={`text-sm font-bold mb-5 ${color ? "text-white" : "text-gray-900" }`}>RotateX</h3>
+        <h3  className={`text-[11px] sm:text-md  font-bold mb-5 ${color ? "text-white" : "text-gray-900" }`}>RotateX</h3>
         <div className="flex items-center space-x-4">
           <div className="flex-1 space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <RotateCw    className={`w-4 h-4  text-gray-500`} />
+                <RotateCw    className={`w-3 sm:w-4 h-3 sm:h-4  text-gray-500`} />
               
-                <label   className={`text-xs font-medium text-gray-500`}>Angle</label>
+                <label   className={`text-[9px] sm:text-xs font-medium text-gray-500`}>Angle</label>
               </div>
-              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+              <span className="text-[9px] sm:text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
                 {rotateX}°
               </span>
             </div>
@@ -305,7 +312,7 @@ const changepadding=(value)=>{
           </div>
 
           {/* Circular Direction Indicator */}
-          <div className="relative w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 rounded-full flex items-center justify-center">
             <div 
               className="w-1 h-4 bg-blue-500 rounded-full origin-bottom transition-transform duration-200"
               style={{ transform: `rotate(${rotateX}deg)` }}
@@ -318,11 +325,11 @@ const changepadding=(value)=>{
       {/* Device Frame Selection */}
       <div className="space-y-3 mt-18">
       
-        <h3   className={`text-sm font-bold mb-5 ${color ? "text-white" : "text-gray-900"}`}>Device Frame</h3>
+        <h3   className={`text-[11px] sm:text-md font-bold mb-5 ${color ? "text-white" : "text-gray-900"}`}>Device Frame</h3>
         <div className="space-y-3 ">
         {deviceOptions.map((category) => (
   <div key={category.category} className="space-y-2">
-    <label className="text-xs font-medium text-gray-900  tracking-wide">
+    <label className="text-[9px] sm:text-xs font-medium text-gray-900  tracking-wide">
       {category.category}
     </label>
     <div className="grid grid-cols-2 mt-2 gap-5 mb-5">
@@ -334,13 +341,13 @@ const changepadding=(value)=>{
               ? "border-blue-500 bg-blue-50 text-blue-700"
               : "border-gray-200 bg-white hover:border-gray-300"
           }`}
-      onClick={() => {onDeviceChange(id);setPhoneBorder(true);setFrameBorderValue(false)}}
+      onClick={() => {onDeviceChange(id);setPhoneBorder(true);setRadius(10);setFrameBorderValue(false)}}
 
         >
           
      <div className='flex align-items-center justify-content-center'>
           <div className="text-sm mb-1">{device.icon}</div>
-          <div className="text-xs font-sm truncate text-gray-900">
+          <div className="text-[9px] sm:text-xs mt-1 sm:mt-0 font-sm truncate text-gray-500">
             {device.name}
           </div>
           </div>
@@ -356,7 +363,7 @@ const changepadding=(value)=>{
       {/* Frame Style */}
       <div className="space-y-3 mt-18">
       
-        <h3   className={`text-sm mb-5 font-bold ${color ? "text-white" : "text-gray-900"}`}>Frame Style</h3>
+        <h3   className={`text-[11px] sm:text-md  mb-5 font-bold ${color ? "text-white" : "text-gray-900"}`}>Frame Style</h3>
         <div className="grid grid-cols-3 gap-5">
          {Object.entries(frameOptions).map(([id, frame]) => (
   <button
@@ -369,8 +376,8 @@ const changepadding=(value)=>{
     onClick={() =>{ handleframe(id);setPhoneBorder(false);setFrameBorderValue(true)}}
     
   >
-    <div className="text-lg mb-1">{frame.preview}</div>
-    <div className="text-xs font-medium text-gray-900">{frame.name}</div>
+    <div className="text-[12px] sm:text-lg mb-1">{frame.preview}</div> 
+    <div className="text-[9px] sm:text-xs font-sm truncate text-gray-900">{frame.name}</div>
   </button>
 ))}
 
@@ -379,7 +386,7 @@ const changepadding=(value)=>{
 
       {/* Transformations */}
       <div className="space-y-4 mt-18">
-        <h3   className={`text-sm mb-5 font-bold ${color ? "text-white" : "text-gray-900"}`}>Transformations</h3>
+        <h3   className={`text-[11px] sm:text-md  mb-5 font-bold ${color ? "text-white" : "text-gray-900"}`}>Transformations</h3>
         
     
 
@@ -387,10 +394,10 @@ const changepadding=(value)=>{
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Palette className="w-4 h-4 text-gray-500" />
-              <label className="text-xs font-medium text-gray-500">Opacity</label>
+              <Palette className="w-3 sm:w-4 h-3 sm:h-4 text-gray-500" />
+              <label className="text-[9px] sm:text-xs font-medium text-gray-500">Opacity</label>
             </div>
-            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+            <span className="text-[9px] sm:text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
               {picopacity*100}%
             </span>
           </div>
@@ -413,16 +420,16 @@ const changepadding=(value)=>{
 
       {/* Shadow Options */}
       <div className="space-y-4 mt-18">
-        <h3   className={`text-sm mb-8 font-bold ${color ? "text-white" : "text-gray-900"}`}>Shadow</h3>
+        <h3   className={`text-[11px] sm:text-md  mb-8 font-bold ${color ? "text-white" : "text-gray-900"}`}>Shadow</h3>
         
         {/* Shadow Intensity */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Shadow className="w-4 h-4 text-gray-500" />
-              <label className="text-xs font-medium text-gray-500">Intensity</label>
+              <Shadow className="w-3 sm:w-4 h-3 sm:h-4 text-gray-500" />
+              <label className="text-[9px] sm:text-xs font-medium text-gray-500">Intensity</label>
             </div>
-            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+            <span className="text-[9px] sm:text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
               {brightness}%
             </span>
           </div>
@@ -440,21 +447,21 @@ const changepadding=(value)=>{
         {
           phoneborder? "" :   <div className="space-y-5 mt-8">
           <div className="flex  items-center space-x-2">
-            <Paintbrush className="w-4 h-4 text-gray-500" />
-            <label className="text-xs font-medium text-gray-500">Shadow Color</label>
+            <Paintbrush className="w-3 sm:w-4 h-3 sm:h-4 text-gray-500" />
+            <label className="text-[9px] sm:text-xs font-medium text-gray-500">Shadow Color</label>
           </div>
           <div className="flex space-x-2">
             <input
               type="color"
               value={shadowColor}
               onChange={(e) => setShadowColor(e.target.value)}
-              className="w-12 h-7 rounded border border-gray-300 cursor-pointer"
+              className="w-7 sm:w-12 h-7 sm:h-8 rounded border border-gray-300 cursor-pointer"
             />
             <input
               type="text"
               value={shadowColor}
               onChange={(e) => setShadowColor(e.target.value)}
-              className="flex-1 px-2 py-1 text-xs border border-gray-300 rounded bg-white text-gray-900"
+              className="flex-1  px-1 py-1 text-[8px] sm:text-md border border-gray-300 rounded bg-white text-gray-900"
               placeholder="#000000"
             />
           </div>
@@ -486,13 +493,33 @@ const changepadding=(value)=>{
         />
       </div>: ""
 }
-    
+     {
+          phoneborder? "" :    <div className="space-y-4 mt-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Grid className={`"w-4 h-4  text-gray-500`} />
+              <label   className={`text-xs font-medium text-gray-500`}>Border Radius</label>
+            </div>
+            <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+              {radius}px
+            </span>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="50"
+            value={radius}
+            onChange={(e) => onchangeradius(Number(e.target.value))}
+            className="w-full h-1 bg-gray-200 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
+          />
+        </div> 
+        }
 
       {/* Reset Button */}
       <button 
         onClick={handleReset}
  
-        className={`w-full py-2 mt-8 px-4 border border-gray-300 rounded-lg text-xs font-medium ${color ? "text-white" : "text-gray-700"}   hover:bg-gray-600 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out transition-colors`}
+        className={`w-full py-2 mt-8 px-4 border border-gray-300 rounded-lg text-[11px] sm:text-md font-medium ${color ? "text-white" : "text-gray-700"}   hover:bg-gray-600 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out transition-colors`}
       >
         Reset All Changes
       </button>

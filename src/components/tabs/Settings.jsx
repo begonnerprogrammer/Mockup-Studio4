@@ -74,7 +74,8 @@ const handleFileInput = (event) => {
   ];
 
 const findDevice = (id) => {
-  const deviceObj = deviceSizes[id]; // get the full device object
+ 
+ const deviceObj = deviceSizes[id]; // get the full device object
   if (!deviceObj) {
     console.error("Device not found for id:", id);
     return;
@@ -82,6 +83,8 @@ const findDevice = (id) => {
 
   console.log("Selected device:", deviceObj);
   setDevice(deviceObj); // store the full object in state
+  
+ 
 };
 
 
@@ -89,12 +92,12 @@ const findDevice = (id) => {
     <div className="space-y-6">
       {/* Upload Section */}
       <div className="space-y-3 mb-18">
-        <h3 className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
+        <h3 className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
         <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
-            <Upload className="w-8 h-8 mb-2 text-gray-400 dark:text-gray-500" />
-            <p className="text-sm text-gray-500 dark:text-gray-400">Click to upload</p>
-            <p className="text-xs text-gray-400 dark:text-gray-500">PNG, JPG up to 10MB</p>
+            <Upload className="w-6 sm:w-8 h-6 sm:h-8  mb-2 text-gray-400 dark:text-gray-500" />
+            <p className="text-[11px] sm:text-sm text-gray-500 dark:text-gray-400">Click to upload</p>
+            <p className="text-[11px] sm:text-sm text-gray-400 dark:text-gray-500">PNG, JPG up to 10MB</p>
           </div>
           <input 
             type="file" 
@@ -138,7 +141,7 @@ const findDevice = (id) => {
 
       {/* Device Selection */}
       <div className="space-y-3">
-        <h3 className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"} mb-5`}>Device Frame</h3>
+        <h3 className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"} mb-5`}>Device Frame</h3>
         <div className="grid grid-cols-2 gap-8">
          {Object.entries(deviceSizes).map(([id, device]) => (
   <button
@@ -155,7 +158,7 @@ const findDevice = (id) => {
 
      <div className='flex align-items-center justify-content-center'>
 <div className="text-sm mb-1">{device.icon}</div>
-    <div className="text-xs font-sm text-gray-900 dark:text-gray-100">{device.name}</div>
+    <div className="text-[9px] sm:text-xs mt-1 sm:mt-0 font-sm text-gray-500 dark:text-gray-100">{device.name}</div>
      </div>
     
   </button>

@@ -199,7 +199,7 @@ const handleDownload = async () => {
     }
 
     // BORDER LOGIC (unchanged)
-    if (phonebordervalue && !framebordervalue) {
+  if (phonebordervalue && !framebordervalue) {
       ctx.save();
       ctx.fillStyle = "black";
       ctx.shadowColor = "white";
@@ -207,12 +207,16 @@ const handleDownload = async () => {
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
 
-      const shadowPadding = 6;
-      const shadowX = drawX - shadowPadding;
-      const shadowY = drawY - shadowPadding;
-      const shadowWidth = drawWidth + shadowPadding * 2;
-      const shadowHeight = drawHeight + shadowPadding * 2;
-      const shadowRadius = effectiveRadius > 0 ? effectiveRadius + shadowPadding : 0;
+      const shadowPaddingTop = 16;  // Increased top padding
+      const shadowPaddingRight = 6;
+      const shadowPaddingBottom = 10;
+      const shadowPaddingLeft = 6;
+
+      const shadowX = drawX - shadowPaddingLeft;
+      const shadowY = drawY - shadowPaddingTop;
+      const shadowWidth = drawWidth + shadowPaddingLeft + shadowPaddingRight;
+      const shadowHeight = drawHeight + shadowPaddingTop + shadowPaddingBottom;
+      const shadowRadius = effectiveRadius > 0 ? effectiveRadius + Math.max(shadowPaddingTop, shadowPaddingRight, shadowPaddingBottom, shadowPaddingLeft) : 0;
 
       if (effectiveRadius > 0) {
         ctx.beginPath();
@@ -231,6 +235,23 @@ const handleDownload = async () => {
       }
 
       ctx.fill();
+      
+      // Draw single camera lens on top border
+      ctx.save();
+      ctx.shadowColor = "transparent";
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = "#ffffff";
+      
+      const lensRadius = 4;
+      const lensX = shadowX + shadowWidth / 2;
+      const lensY = shadowY + shadowPaddingTop / 2;
+      
+      // Camera lens (circle)
+      ctx.beginPath();
+      ctx.arc(lensX, lensY, lensRadius, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.restore();
       ctx.restore();
 
       ctx.shadowColor = "transparent";
@@ -732,8 +753,8 @@ console.log("color on control panel",color)
    
 
       {/* Tab Navigation */}
-      <div className={`px-4 py-3  border-b  transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"}  `}>
-        <div className="flex  space-x-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
+      <div className={`px-4 py-3  border-b text-[9px] sm:text-md transition-all duration-300 ease-in-out  ${color ? "bg-gray-900" : "bg-white"}  `}>
+        <div className="flex  text-[9px] sm:text-md  space-x-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
           {tabs.map((tab) => (
             <TabButton
               key={tab.id}

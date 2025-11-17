@@ -80,7 +80,7 @@ setRadius(value);
     <div className="space-y-6">
       {/* Layout Presets */}
       <div className="space-y-8 mt-10">
-           <h3   className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>Layout Preset</h3>
+           <h3   className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"}`}>Layout Preset</h3>
         <div className="grid grid-cols-2 gap-8 max-h-100">
           {layoutPresets.map((preset) => (
             <button
@@ -99,15 +99,15 @@ setRadius(value);
               <div className="flex items-center space-x-3 mb-2">
                 <div className="text-xl">{preset.thumbnail}</div>
                 <div className="flex-1 min-w-0">
-                  <div className={` ${color ? "text-white" : "text-gray-900"} font-medium text-xs  truncate`}>
+                  <div className={` ${color ? "text-white" : "text-gray-900"} font-medium text-[9px] sm:text-xs  truncate`}>
                     {preset.name}
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+              <div className="text-[9px] sm:text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
                 {preset.description}
               </div>
-              <div className="mt-2 flex items-center space-x-2 text-xs text-gray-400 dark:text-gray-500">
+              <div className="mt-2 flex items-center space-x-2 text-[9px] sm:text-xs text-gray-400 dark:text-gray-500">
                 <span className="flex items-center space-x-1">
                   <Shadow className="w-2 h-2" />
                   <span>{preset.settings.shadow}px</span>
@@ -124,17 +124,17 @@ setRadius(value);
 
       {/* Manual Controls */}
       <div className="space-y-8 mt-22">
-        <h3   className={`text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>Manual Adjustments</h3>
+        <h3   className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"}`}>Manual Adjustments</h3>
         
      
 {
   previewUrl? <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Maximize className={`"w-4 h-4  ${color ? "text-gray-500" : "text-gray-600" }`} />
-              <label   className={`text-xs font-medium ${color ? "text-gray-500" : "text-gray-700" }`}>Padding</label>
+              <Maximize className={`w-3 sm:w-4 h-3 sm:h-4  ${color ? "text-gray-500" : "text-gray-600" }`} />
+              <label   className={`text-[9px] sm:text-xs font-medium ${color ? "text-gray-500" : "text-gray-700" }`}>Padding</label>
             </div>
-            <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+            <span className="text-[9px] sm:text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
               {padding}px
             </span>
           </div>
@@ -153,11 +153,11 @@ setRadius(value);
 
         {/* Border Radius Controls */}
         {
-          phoneborder ? "" :  <div className="space-y-2">
+          phoneborder? "" :    <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Grid className={`"w-4 h-4  ${color ? "text-gray-500" : "text-gray-700" }`} />
-              <label   className={`text-xs font-medium ${color ? "text-gray-500" : "text-gray-700" }`}>Border Radius</label>
+              <Grid className={`"w-4 h-4  text-gray-500`} />
+              <label   className={`text-xs font-medium text-gray-500`}>Border Radius</label>
             </div>
             <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
               {radius}px
@@ -173,6 +173,8 @@ setRadius(value);
           />
         </div> 
         }
+      
+        
        
       </div>
     </div>
