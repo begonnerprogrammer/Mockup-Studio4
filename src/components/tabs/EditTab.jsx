@@ -346,7 +346,7 @@ const changepadding=(value)=>{
       
         <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>FRAMES</h3>
         <div className=" flex pb-4 gap-5  overflow-y-scroll 
-      [&::-webkit-scrollbar]:h-2 w-[10]
+      [&::-webkit-scrollbar]:h-2 w-[100]
     
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full
