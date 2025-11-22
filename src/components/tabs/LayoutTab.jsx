@@ -3,126 +3,129 @@ import { Layers, Share as Shadow, Maximize, Grid } from 'lucide-react';
 import { userContext } from '../../App';
  
 const LayoutTab = () => {
+  const { color, setColor,radius,phoneborder,layoutborder,setLayoutBorder,exportbg,setExportBg,rotateX,setRotateX,rotateY,setRotateY,rotateZ,setRotateZ,translateZ,setTranslateZ,setPhoneBorder,setRadius,padding,setPadding,picbackground,tilt, setTilt,setPicBackground,scale,setScale,size,setImgsize,shadowColor,previewUrl,setPreviewUrl, perspective,setPresPective, setShadowColor } = useContext(userContext);
   const layoutPresets = [
    
      {
-      id: 'minimal-clean',
-      name: 'Minimal Clean',
-      description: 'Clean white background with subtle shadow',
-      thumbnail: '🤍',
+      id: '1',
+      name: 'layout1',
+      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
+      bg:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       settings: {
-        shadow: 10,
-        padding: 40,
-        borderRadius:0,
-        background: '#ffffff',
-        rotation: 0,
-        scale: 90,
-        opacity: 100,
-        deviceType: 'iphone-16-pro'
+        rotateX:"rotateX(14deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(0deg)",
       },
       
     },
     {
-      id: 'professional-dark',
-      name: 'Professional Dark',
-      description: 'Dark theme with strong shadows',
-      thumbnail: '🖤',
+      id: '2',
+      name: 'layout2',
+      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
+      bg: 'linear-gradient(135deg, rgba(0,0,0,0.7), rgba(22, 22, 26, 1), rgba(18, 19, 18, 0.77))',
       settings: {
-        shadow: 30,
-        padding: 30,
-        borderRadius:8,
-        background: '#1e293b',
-        rotation: 0,
-        scale: 50,
-        opacity: 100,
-        deviceType: 'macbook-pro-16'
-      }
+       rotateX:"rotateX(45deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(-45deg)",
+       perspective: "perspective(1200px)",
+        translateZ: "translateZ(40px)"
+      },
+
+
+
+
+
+
+      
     },
-    {
-      id: 'gradient-modern',
-      name: 'Gradient Modern',
-      description: 'Modern gradient with floating effect',
-      thumbnail: '🌈',
+     {
+      id: '3',
+      name: 'layout2',
+      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
+      bg:"radial-gradient(at 27% 37%, hsla(215,98%,61%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(125,98%,72%,1) 0px, transparent 50%)",
       settings: {
-        shadow: 25,
-        padding: 50,
-        borderRadius: 10,
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        rotation: -5,
-        scale: 12,
-        opacity: 100,
-        deviceType: 'iphone-16-pro'
-      }
+        rotateX:"rotateX(0deg)",
+        rotateY:"rotateY(40deg)",
+        rotateZ:"rotateZ(18deg)",
+      },
+      
     },
-    {
-      id: 'creative-tilt',
-      name: 'Creative Tilt',
-      description: 'Tilted device with vibrant background',
-      thumbnail: '🎨',
+     {
+      id: '4',
+      name: 'layout2',
+      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
+      bg:"https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg",
       settings: {
-        shadow: 35,
-        padding: 60,
-        borderRadius: 20,
-        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        rotation: 15,
-        scale: 30,
-        opacity: 100,
-        deviceType: 'ipad-pro-13'
-      }
-    }
+         rotateX:"rotateX(0deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(0deg)",
+      },
+        border: "2px solid #3498db",
+      
+    },
+     {
+      id: '5',
+      name: 'layout2',
+      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
+      bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      settings: {
+        rotateX:"rotateX(0deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(0deg)",
+      },
+      border:"6px solid black"
+    },
+   
+    
     // Add other presets here if needed
   ];
-const { color, setColor,radius,phoneborder,setPhoneBorder,setRadius,padding,setPadding,picbackground,tilt, setTilt,setPicBackground,scale,setScale,size,setImgsize,shadowColor,previewUrl,setPreviewUrl, setShadowColor } = useContext(userContext);
+
 const onchangeradius=(value)=>{
 setRadius(value);
 }
+console.log("export bg ",exportbg)
   return (
     <div className="space-y-6">
       {/* Layout Presets */}
       <div className="space-y-8 mt-10">
-           <h3   className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"}`}>Layout Preset</h3>
-        <div className="grid grid-cols-2 gap-8 max-h-100">
+          
+        <div className="flex flex-col gap-9 max-h-100" >
           {layoutPresets.map((preset) => (
             <button
               key={preset.id}
-              onClick={() => {
-  setRadius(preset.settings.borderRadius);
-  setPadding(preset.settings.padding);
-  setPicBackground(preset.settings.background);
-  setScale((preset.settings.scale)/100);
-  setImgsize((preset.settings.scale)/100);
-  setTilt(preset.settings.rotation);
-
+              
+             style={{  backgroundImage: preset.bg.startsWith('url') || 
+                preset.bg.startsWith('linear-gradient') || 
+                preset.bg.startsWith('radial-gradient') || 
+                preset.bg.startsWith('conic-gradient') ? 
+                preset.bg : 
+                `url('${preset.bg}')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',}} className=" p-12 border border-gray-200 dark:border-gray-600 rounded-lg text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 group"
+    >   
+      <div className="flex items-center"  onClick={() =>{setPreviewUrl(preset.src),setPicBackground(preset.bg),setRotateX(preset.settings.rotateX),setRotateY(preset.settings.rotateZ),(preset.settings.translateZ),setLayoutBorder(preset.border),setPresPective(preset.settings.perspective)}}>
+ 
+             <img src={`${preset.src}`} alt="" className='w-50 h-50' style={{
+                ...(preset.border && { border: preset.border.border || preset.border }),
+              
+  transform: [
+   preset.settings.rotateX,
+     preset.settings.rotateY,
+      preset.settings.rotateZ,
+      preset.settings.perspective,
+      preset.settings.translateZ,
+      preset.settings.perspective,
+  ].filter(Boolean).join(" ")
 }}
-              className="p-3 border border-gray-200 dark:border-gray-600 rounded-lg text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 group"
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <div className="text-xl">{preset.thumbnail}</div>
-                <div className="flex-1 min-w-0">
-                  <div className={` ${color ? "text-white" : "text-gray-900"} font-medium text-[9px] sm:text-xs  truncate`}>
-                    {preset.name}
-                  </div>
-                </div>
-              </div>
-              <div className="text-[9px] sm:text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
-                {preset.description}
-              </div>
-              <div className="mt-2 flex items-center space-x-2 text-[9px] sm:text-xs text-gray-400 dark:text-gray-500">
-                <span className="flex items-center space-x-1">
-                  <Shadow className="w-2 h-2" />
-                  <span>{preset.settings.shadow}px</span>
-                </span>
-                <span className="flex items-center space-x-1">
-                  <Maximize className="w-2 h-2" />
-                  <span>{preset.settings.scale}x</span>
-                </span>
+ />
+              
               </div>
             </button>
           ))}
         </div>
       </div>
 
-      {/* Manual Controls */}
+      {/* Manual Controls
       <div className="space-y-8 mt-22">
         <h3   className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"}`}>Manual Adjustments</h3>
         
@@ -151,7 +154,7 @@ setRadius(value);
        
         
 
-        {/* Border Radius Controls */}
+       
         {
           phoneborder? "" :    <div className="space-y-2">
           <div className="flex items-center justify-between">
@@ -176,7 +179,7 @@ setRadius(value);
       
         
        
-      </div>
+      </div> */}
     </div>
   );
 };

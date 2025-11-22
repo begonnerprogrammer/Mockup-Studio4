@@ -9,13 +9,13 @@ import { userContext } from '../App';
 import { NavLink } from 'react-router-dom';
 
 const ControlPanel = () => {
-  const {color,setColor,shadowColor,framebordervalue,setFrameBorderValue,picbackground,radius,phoneborder,setPhoneBorder,scale,rotateX,setRotateX,rotateY,setRotateY,setScale,setRadius,setPicBackground, setShadowColor,twok,setTwok,padding,setPadding,fourk,setFourk,previewUrl,picopacity,brightness,setBrightness,setPicOpacity,device,setDevice,tilt,setTilt, setPreviewUrl,size,setSize,frame,setFrame}=useContext(userContext);
+  const {color,setColor,shadowColor,  canvard,setCanvaRd,framebordervalue,setFrameBorderValue,picbackground,radius,phoneborder,setPhoneBorder,scale,rotateX,setRotateX,rotateY,setRotateY,setScale,setRadius,setPicBackground, setShadowColor,twok,setTwok,padding,setPadding,fourk,setFourk,previewUrl,picopacity,brightness,setBrightness,setPicOpacity,device,setDevice,tilt,setTilt, setPreviewUrl,size,setSize,frame,setFrame}=useContext(userContext);
   const [activeTab, setActiveTab] = useState('settings');
 console.log("pick background at control page",picbackground);
    const handle2k = () => console.log("Downloading 2K...");
   const handle4k = () => console.log("Downloading 4K...");
 // Define a default device (you can pick any reasonable fallback)
-const defaultDevice = { name: 'Default', width: 390, height: 844, icon: '📱' };
+const defaultDevice = { name: 'Default', width: 302, height: 385, icon: '📱' };
 console.log("device at control page",device);
 console.log("shadow color at control page",shadowColor)
 const handleDownload = async () => {
@@ -26,12 +26,12 @@ const handleDownload = async () => {
     return;
   }
 
-  const bgWidth = 545;
-  const bgHeight = 475;
+  const bgWidth = 488;
+  const bgHeight = 560;
 
   const imgWidth = currentDevice.width;
   const imgHeight = currentDevice.height;
-
+  const canvaRadius = canvard; // Your background border radius variable
   const paddingValue = padding ?? parseInt(frame?.style?.padding) ?? 0;
   const radiusValue = radius ?? parseInt(frame?.style?.radius ?? 0);
   const brightnessValue = brightness;
@@ -60,7 +60,7 @@ const handleDownload = async () => {
       img.src = previewUrl;
     });
 
-    // BACKGROUND (unchanged)
+    // BACKGROUND with border radius
     if (backgroundValue !== "transparent") {
       const isImageUrl =
         backgroundValue.match(/\.(jpeg|jpg|gif|png|webp|bmp|svg)$/i) ||
@@ -68,6 +68,22 @@ const handleDownload = async () => {
         backgroundValue.startsWith("https://") ||
         backgroundValue.startsWith("data:image/") ||
         backgroundValue.startsWith("blob:");
+
+      // Apply background border radius
+      if (canvaRadius > 0) {
+        ctx.beginPath();
+        ctx.moveTo(canvaRadius, 0);
+        ctx.lineTo(bgWidth - canvaRadius, 0);
+        ctx.arcTo(bgWidth, 0, bgWidth, canvaRadius, canvaRadius);
+        ctx.lineTo(bgWidth, bgHeight - canvaRadius);
+        ctx.arcTo(bgWidth, bgHeight, bgWidth - canvaRadius, bgHeight, canvaRadius);
+        ctx.lineTo(canvaRadius, bgHeight);
+        ctx.arcTo(0, bgHeight, 0, bgHeight - canvaRadius, canvaRadius);
+        ctx.lineTo(0, canvaRadius);
+        ctx.arcTo(0, 0, canvaRadius, 0, canvaRadius);
+        ctx.closePath();
+        ctx.clip();
+      }
 
       if (isImageUrl) {
         try {
@@ -111,9 +127,36 @@ const handleDownload = async () => {
         ctx.fillStyle = backgroundValue;
         ctx.fillRect(0, 0, bgWidth, bgHeight);
       }
+
+      // Reset clip after drawing background
+      if (canvaRadius > 0) {
+        ctx.restore();
+        ctx.save(); // Save again for subsequent operations
+      }
     } else {
+      // For transparent background, still apply the border radius if needed
+      if (canvaRadius > 0) {
+        ctx.beginPath();
+        ctx.moveTo(canvaRadius, 0);
+        ctx.lineTo(bgWidth - canvaRadius, 0);
+        ctx.arcTo(bgWidth, 0, bgWidth, canvaRadius, canvaRadius);
+        ctx.lineTo(bgWidth, bgHeight - canvaRadius);
+        ctx.arcTo(bgWidth, bgHeight, bgWidth - canvaRadius, bgHeight, canvaRadius);
+        ctx.lineTo(canvaRadius, bgHeight);
+        ctx.arcTo(0, bgHeight, 0, bgHeight - canvaRadius, canvaRadius);
+        ctx.lineTo(0, canvaRadius);
+        ctx.arcTo(0, 0, canvaRadius, 0, canvaRadius);
+        ctx.closePath();
+        ctx.clip();
+      }
       ctx.fillStyle = "#000000ab";
       ctx.fillRect(0, 0, bgWidth, bgHeight);
+      
+      // Reset clip after drawing background
+      if (canvaRadius > 0) {
+        ctx.restore();
+        ctx.save(); // Save again for subsequent operations
+      }
     }
 
     ctx.save();
@@ -199,7 +242,7 @@ const handleDownload = async () => {
     }
 
     // BORDER LOGIC (unchanged)
-  if (phonebordervalue && !framebordervalue) {
+    if (phonebordervalue && !framebordervalue) {
       ctx.save();
       ctx.fillStyle = "black";
       ctx.shadowColor = "white";
@@ -733,7 +776,7 @@ console.log("color on control panel",color)
   };
 
   return (
-    <div className={`lg:w-80 md:w-full sm:w-full   dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200`}
+    <div className={`lg:w-80 md:w-full sm:w-full h-[100vh]  sm:h-[85vh] dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200`}
 >
       {/* Header */}
      

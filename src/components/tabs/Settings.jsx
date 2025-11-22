@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Upload, Info, Image as ImageIcon, Sliders, Eye, EyeOff, Palette, Sun, Contrast, Droplets, RotateCcw, Zap } from 'lucide-react';
+import { Upload, Info, Image as ImageIcon, Sliders,Share as Shadow, Eye, EyeOff, Palette, Sun, Contrast, Droplets, RotateCcw, Zap, Grid, Blend, BlendIcon, Filter } from 'lucide-react';
 import { userContext } from '../../App';
 
 const SettingsTab = ({
@@ -11,7 +11,7 @@ const SettingsTab = ({
 }) => {
 
   //Rendering img
-   const { color, setColor,fileimg,setFileImg,previewUrl,phoneborder,setPhoneBorder,framebordervalue,setFrameBorderValue, setPreviewUrl,device,setDevice } = useContext(userContext);
+   const { color, setColor,fileimg,setFileImg,canvasepia,setCanvaSepia,canvabrightness,setCanvaBrightness,radius,setRadius,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur,canvaopacity,setCanvaOpacity,sepia,setSepia,contrast,setContrast, blur,setBlur, picopacity,brightness, setBrightness, setPicOpacity,canvard,setCanvaRd,previewUrl,phoneborder,setPhoneBorder,framebordervalue,setFrameBorderValue, setPreviewUrl,device,setDevice } = useContext(userContext);
 const handleFileInput = (event) => {
   const file = event.target.files?.[0];
   if (file) {
@@ -42,8 +42,17 @@ const handleFileInput = (event) => {
     });
   };
 
+const onbrightnesschange=(value)=>{
+setBrightness(value);
+console.log("brigtness is ",value)
+}
+const  onchangecanvaopacity=(value)=>{
+  setCanvaOpacity(value);
+}
 
-
+const oncanvasepiachange=(value)=>{
+setCanvaSepia(value);
+}
   const deviceSizes = {
   "iphone-14-pro": { name: 'iPhone 14 Pro', width: 228, height: 428 , icon: '📱'},
    
@@ -52,7 +61,24 @@ const handleFileInput = (event) => {
   "Nest-hub":{name: 'Nest Hub',width: 370 ,height:400, icon: '📱'}
   // add other devices here
 };
+const  opacitychange=(value)=>{
+setPicOpacity(value);
+}
 
+const onchangecanvablur=(value)=>{
+  setCanvaBlur(value)
+}
+
+
+
+
+const onchangeradius=(value)=>{
+setCanvaRd(value);
+}
+const onchangecanvacontrast=(value)=>{
+setCanvaContrast(value);
+}
+console.log("canvacontrasr on settings page",canvacontrast)
   const formatFileSize = (bytes) => {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
@@ -88,11 +114,27 @@ const findDevice = (id) => {
 };
 
 
+const oncanvabrightnesschange=(value)=>{
+setCanvaBrightness(value);
+}
+
+const onblurchange=(value)=>{
+setBlur(value);
+}
+const onblurcontrast=(value)=>{
+setContrast(value);
+}
+const onsepiachange=(value)=>{
+setSepia(value);
+}
+
+  const [selected, setSelected] = useState("one");
+
   return (
     <div className="space-y-6">
       {/* Upload Section */}
-      <div className="space-y-3 mb-18">
-        <h3 className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
+      <div className="space-y-3 ">
+        <h3 className={`text-[8px] sm:text-sm  font-bold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
         <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <Upload className="w-6 sm:w-8 h-6 sm:h-8  mb-2 text-gray-400 dark:text-gray-500" />
@@ -139,7 +181,7 @@ const findDevice = (id) => {
         </div>
       )}
 
-      {/* Device Selection */}
+      {/* Device Selection
       <div className="space-y-3">
         <h3 className={`text-[11px] sm:text-md font-bold ${color ? "text-white" : "text-gray-900"} mb-5`}>Device Frame</h3>
         <div className="grid grid-cols-2 gap-8">
@@ -165,7 +207,7 @@ const findDevice = (id) => {
 ))}
 
         </div>
-      </div>
+      </div> */}
 
       {/* Image Filters */}
       {screenshot && (
@@ -275,6 +317,622 @@ const findDevice = (id) => {
         </div>
       )}
 
+<hr  className='text-gray-200'/>
+
+             {/* Transformations */}
+      <div className="space-y-2 ">
+       <h3   className={`text-[11px] sm:text-sm  mb-2 font-bold ${color ? "text-gray-100" : "text-gray-900"}`}>FILTERS</h3>
+      <div style={{ display: "flex" }}>
+      
+      <div
+        onClick={() => setSelected("one")}
+        style={{
+          padding: "4px",
+          border: "1px solid gray",
+          background: selected === "one" ? "#9ca3af" : "#d1d5db",
+          borderTopLeftRadius:"4px",
+          borderBottomLeftRadius:"4px",
+          cursor: "pointer",
+          color:selected === "one" ?  (color ? "white":"black" ) : "#4b5563",
+        }}
+        className='text-sm'
+      >
+       FORGROUND
+      </div>
+
+      <div
+        onClick={() => setSelected("two")}
+        style={{
+          padding: "4px",
+          border: "1px solid gray",
+          background: selected === "two" ?  "#9ca3af" : "#d1d5db",
+          cursor: "pointer",
+          color:selected === "two" ?  (color ? "white":"black" ) : "#4b5563",
+          borderTopRightRadius:"4px",
+          borderBottomRightRadius:"4px",
+        }}
+         className='text-sm'
+      >
+      BACKGROUND
+      </div>
+
+    </div>
+
+      
+        
+
+{
+  selected==="one" ? <>
+  <div className="space-y-4 p-1">
+  
+    {/* Opacity */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              
+              <label className="text-[9px] sm:text-xs font-medium text-gray-500"></label>
+            </div>
+           
+          </div>
+
+{/* {opacity} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs p-1  rounded-[5px] flex items-center justify-between'  style={{ width: `${picopacity/1}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Opacity</span>
+    <span className='absolute right-0 p-2'>{picopacity}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+           
+            value={picopacity}
+            onChange={(e) => opacitychange(Number(e.target.value))}
+          
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+        </div>
+        
+       
+  {/* Shadow Intensity */}
+        <div className="space-y-4 ">
+         
+
+
+
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${brightness/1}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Brightness</span>
+                <span className='absolute right-0 p-2'>{brightness}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+            
+            value={brightness}
+            onChange={(e) =>onbrightnesschange(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+
+
+
+
+
+
+
+
+
+        
+        </div>
+        {/*Blur */}
+ <div className="space-y-4 ">
+          
+          <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${blur*10}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Blur</span>
+                <span className='absolute right-0 p-2'>{blur}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="10"
+            
+            value={blur}
+            onChange={(e) =>onblurchange(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+        </div>
+        
+  {/* Contrast */}
+ <div className="space-y-4 ">
+          
+        
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(contrast/1)/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Contrast</span>
+                <span className='absolute right-0 p-2'>{contrast}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={contrast}
+            onChange={(e) =>onblurcontrast(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+        </div>
+
+  {/* Sepia */}
+ <div className="space-y-4 ">
+          
+        
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(sepia/1)/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Sepia</span>
+                <span className='absolute right-0 p-2'>{sepia}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={sepia}
+            onChange={(e) =>onsepiachange(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+        </div>
+</div>
+  </> : <>
+<div className="space-y-4 p-1">
+          <div className="flex items-center justify-between">
+
+          </div>
+
+
+
+
+
+
+ {/* {Canva Radius} */}
+ <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvard/1}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Radius</span>
+                <span className='absolute right-0 p-2'>{canvard}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+              
+            value={canvard}
+            onChange={(e) => onchangeradius(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+ {/* {Canva Opacity} */}
+<div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvaopacity}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Opacity</span>
+                <span className='absolute right-0 p-2'>{canvaopacity}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+              
+            value={canvaopacity}
+            onChange={(e) => onchangecanvaopacity(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+ {/* {Canva Blur} */}
+<div className='bg-gray-300 relative space-y-4  rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvablur}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Blur</span>
+                <span className='absolute right-0 p-2'>{canvablur}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+              
+            value={canvablur}
+            onChange={(e) => onchangecanvablur(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+ {/* {Canva Contrast} */}
+<div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(canvacontrast/1)/2}%`}}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Contrast</span>
+                <span className='absolute right-0 p-2'>{canvacontrast}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+              
+            value={canvacontrast}
+            onChange={(e) => onchangecanvacontrast(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+
+ {/* {Canva Brightness} */}
+ <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvabrightness/1}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Brightness</span>
+                <span className='absolute right-0 p-2'>{canvabrightness}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+            
+            value={canvabrightness}
+            onChange={(e) =>oncanvabrightnesschange(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+  
+
+
+
+
+
+
+
+
+
+        
+        </div>
+
+ {/* {Canva Sepia} */}
+ <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(canvasepia/1)/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Sepia</span>
+                <span className='absolute right-0 p-2'>{canvasepia}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={canvasepia}
+            onChange={(e) =>oncanvasepiachange(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+
+
+
+
+
+
+
+
+
+        </div> 
+  </>
+  
+ 
+}
+
+
+
+    
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr className='text-gray-200' />
+
+ <div className="space-y-2 p-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+         
+              <label   className={`text-xs ${color ? "text-gray-100" : "text-white-900"} text-[11px] sm:text-sm font-bold `} >CANVAS</label>
+            </div>
+           
+          </div>
+    
+       
+
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvard}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Canva Radius</span>
+                <span className='absolute right-0 p-2'>{canvard}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="100"
+              
+            value={canvard}
+            onChange={(e) => onchangeradius(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+        </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
       {/* Quality Settings
       <div className="space-y-3">
         <h3 className={`text-sm font-semibold ${color ? "text-white" : "text-gray-900" }`}>Export Quality</h3>

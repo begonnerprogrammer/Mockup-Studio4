@@ -1,0 +1,15 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg); /* your background here */
+  background-size: cover;
+  background-position: center;
+  filter: var(--bgfilter); /* filters ONLY background */
+  z-index: -1;
+}

@@ -6,7 +6,7 @@ import { userContext } from '../../App';
  const Background = () => {
   const [activeCategory, setActiveCategory] = useState('magic-gradient');
 
- const { color, setColor,picbackground,previewUrl, setPreviewUrl,setPicBackground } = useContext(userContext);
+ const { color, setColor,picbackground,previewUrl, setPreviewUrl,noisecontroller,setNoiseController,setPicBackground } = useContext(userContext);
 
   const categories = [
     { id: 'magic-gradient', name: 'Magic Gradient', icon: <Sparkles className="w-4 h-4" /> },
@@ -89,11 +89,11 @@ setPicBackground(item);
 
   // Render background grid
   const renderBackgroundGrid = (items, isImage = false) => (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-4 gap-4">
       {items.map((item, index) => (
         <button
           key={index}
-          className="h-16 w-16 rounded border hover:scale-105 transition-transform"
+          className="h-9 w-16 rounded border hover:scale-105 transition-transform"
           style={{
             background: isImage ? `url(${item}) center/cover no-repeat` : item,
           }}
@@ -102,10 +102,37 @@ setPicBackground(item);
         />
       ))}
     </div>
+
+
+
+
+  );
+
+
+
+
+ const renderGradientGrid = (items, isImage = false) => (
+    <div className="flex gap-2">
+      {items.map((item, index) => (
+        <button
+          key={index}
+          className="h-8 w-8 rounded border hover:scale-105 transition-transform"
+          style={{
+            background: isImage ? `url(${item}) center/cover no-repeat` : item,
+          }}
+          // onClick={() => onBackgroundChange(item)}
+          onClick={()=>Backgroundcolorchanger(item)}
+        />
+      ))}
+    </div>
+
+
+
+
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       {/* Category Tabs
       <div className="flex space-x-2 overflow-x-auto flex flex-col">
         {categories.map((cat) => (<>
@@ -125,71 +152,106 @@ setPicBackground(item);
       </div> */}
    
       {/* Background Grid */}
-      <div className="min-h-screen  px-1 py-10">
-  <div className="max-w-7xl mx-auto space-y-8">
+      <div className="min-h-screen  px-1 ">
+  <div className="max-w-7xl mx-auto ">
     
     {/* Section Header */}
-    <h1 className={`text-[11px] sm:text-md  ${color ? "text-white" : "text-gray-900"} font-bold  italic text-gray-800 dark:text-gray-100 mb-10 text-center`}> 
-      Background Styles
-      
-    </h1>
+   
 
     {/* Each Section */}
-    <section className="space-y-16">
+    <section className="space-y-4">
       
+
+
+  {/* Custom Upload */}
+      <div>
+        <h2 className={`text-[11px] sm:text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>
+          Reset Background
+        </h2>
+            <button onClick={()=>{setPicBackground(null)}} class="bg-gray-400 cursor-pointer hover:bg-gray-700 hover:text-white mb-2 mt-2 text-gray-800 text-xs py-2 px-4 ml-4 w-22 rounded-xl transition-colors duration-300 shadow">
+                    Reset
+                </button>
+     <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
+          Custom Background
+        </h2>
+       
+        <div className="rounded-xl bg-white dark:bg-gray-800 shadow-sm p-4 text-center">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="file:transition-colors duration-300  block w-90 text-[9px] sm:text-xs text-gray-700 dark:text-gray-200 file:mr-4 file:py-2 file:px-4 
+                       file:rounded-xl file:cursor-pointer file:border-0 file:text-[9px] file:sm:text-xs file:font-sm
+                       file:bg-gray-400 file:text-gray-800 cursor-pointer hover:file:text-white hover:file:bg-gray-700 cursor-pointer"
+          />
+             
+        </div>
+   
+      </div>
+<div>
+  <h2 className={`text-[11px] sm:text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>
+        Background Picker
+        </h2>
+         <input
+              type="color"
+              value={picbackground}
+              onChange={(e) => setPicBackground(e.target.value)}
+              className="w-6 sm:w-8 h-6 sm:h-8 rounded border border-gray-300 cursor-pointer"
+            />
+</div>
       {/* Magic Gradients */}
       <div>
-        <h2 className={`text-[9px] sm:text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
           Magic Gradients
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800 shadow-sm ">
-          {renderBackgroundGrid(magicGradients)}
+        <div className="rounded-xl">
+          {renderGradientGrid(magicGradients)}
         </div>
       </div>
 
       {/* Overlay Gradients */}
       <div>
-         <h2 className={`text-[9px] sm:text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
-         Gradients
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
+          Overlay Gradients
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800 ">
-          {renderBackgroundGrid(overlayGradients)}
+        <div className="rounded-xl">
+          {renderGradientGrid(overlayGradients)}
         </div>
       </div>
 
       {/* Mesh Gradients */}
       <div>
-        <h2 className={`text-[9px] sm:text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
           Mesh Gradients
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800 ">
-          {renderBackgroundGrid(meshGradients)}
+        <div className="rounded-xl">
+          {renderGradientGrid(meshGradients)}
         </div>
       </div>
 
       {/* Regular Gradients */}
-      <div>
-         <h2 className={`text-[9px] sm:text-xs  font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
-          Regular Gradients
+    <div>
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
+         Regular Gradients
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800">
-          {renderBackgroundGrid(regularGradients)}
+        <div className="rounded-xl">
+          {renderGradientGrid(regularGradients)}
         </div>
       </div>
 
       {/* Solid Colors */}
-      <div>
-       <h2 className={`text-[9px] sm:text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
-          Solid Colors
+     <div>
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
+         Solid Colors
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800">
+        <div className="rounded-xl">
           {renderBackgroundGrid(solidColors)}
         </div>
       </div>
 
       {/* Marble Textures */}
       <div>
-  <h2 className={`text-[9px] sm:text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Marble Textures
         </h2>
         <div className="rounded-xl  dark:bg-gray-800 ">
@@ -199,7 +261,7 @@ setPicBackground(item);
 
       {/* Paper Textures */}
       <div>
-  <h2 className={`text-[9px] sm:text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Paper Textures
         </h2>
         <div className="rounded-xl  dark:bg-gray-800">
@@ -209,7 +271,7 @@ setPicBackground(item);
 
       {/* Background Images */}
       <div>
-  <h2 className={`text-[9px] sm:text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Background Images
         </h2>
         <div className="rounded-xl  dark:bg-gray-800">
@@ -217,22 +279,7 @@ setPicBackground(item);
         </div>
       </div>
 
-      {/* Custom Upload */}
-      <div>
-     <h2 className={`text-[9px] sm:text-xs font-semibold text-gray-500 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-700 pb-2`}>
-          Custom Background
-        </h2>
-        <div className="rounded-xl bg-white dark:bg-gray-800 shadow-sm p-6 text-center">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="block w-full text-[9px] sm:text-xs text-gray-700 dark:text-gray-200 file:mr-4 file:py-2 file:px-4 
-                       file:rounded-md file:border-0 file:text-[9px] file:sm:text-xs file:font-sm
-                       file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer"
-          />
-        </div>
-      </div>
+    
 
     </section>
   </div>
