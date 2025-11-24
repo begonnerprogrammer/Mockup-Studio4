@@ -11,7 +11,14 @@ const SettingsTab = ({
 }) => {
 
   //Rendering img
-   const { color, setColor,fileimg,setFileImg,canvasepia,setCanvaSepia,canvabrightness,setCanvaBrightness,radius,setRadius,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur,canvaopacity,setCanvaOpacity,sepia,setSepia,contrast,setContrast, blur,setBlur, picopacity,brightness, setBrightness, setPicOpacity,canvard,setCanvaRd,previewUrl,phoneborder,setPhoneBorder,framebordervalue,setFrameBorderValue, setPreviewUrl,device,setDevice } = useContext(userContext);
+   const { grayscale,setGrayScale,
+        bggrayscale,setBgGrayScale,
+        huerotate,setHuerotate,
+        bghuerotate,setBgHuerotate,
+        saturate,setSaturate,
+        bgsaturate,setbgSaturate,
+        invert,setInvert,
+        bginvert,setBgInvert, color, setColor,fileimg,setFileImg,canvasepia,setCanvaSepia,canvabrightness,setCanvaBrightness,radius,setRadius,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur,canvaopacity,setCanvaOpacity,sepia,setSepia,contrast,setContrast, blur,setBlur, picopacity,brightness, setBrightness, setPicOpacity,canvard,setCanvaRd,previewUrl,phoneborder,setPhoneBorder,framebordervalue,setFrameBorderValue, setPreviewUrl,device,setDevice } = useContext(userContext);
 const handleFileInput = (event) => {
   const file = event.target.files?.[0];
   if (file) {
@@ -567,6 +574,137 @@ setSepia(value);
            
   
           </div>
+
+
+{/* {grayscale} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${grayscale/1/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Gray Scale</span>
+                <span className='absolute right-0 p-2'>{grayscale}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={grayscale}
+            onChange={(e) =>setGrayScale(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+
+{/* {saturate} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${saturate/1/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Saturated</span>
+                <span className='absolute right-0 p-2'>{saturate}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={saturate}
+            onChange={(e) =>setSaturate(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+{/* {invert} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${invert/1/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Invert</span>
+                <span className='absolute right-0 p-2'>{invert}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={invert}
+            onChange={(e) =>setInvert(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+{/* {huerotate} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${huerotate / 360 * 100}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>HueRotate</span>
+                <span className='absolute right-0 p-2'>{huerotate}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="360"
+            
+            value={huerotate}
+            onChange={(e) =>setHuerotate(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
         </div>
 </div>
   </> : <>
@@ -786,8 +924,135 @@ setSepia(value);
   
           </div>
 
+{/* {grayscale} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bggrayscale/1/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Gray Scale</span>
+                <span className='absolute right-0 p-2'>{bggrayscale}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={bggrayscale}
+            onChange={(e) =>setBgGrayScale(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
 
+           
+  
+          </div>
 
+{/* {saturate} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bgsaturate/1/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Saturated</span>
+                <span className='absolute right-0 p-2'>{bgsaturate}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={bgsaturate}
+            onChange={(e) =>setbgSaturate(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+{/* {invert} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bginvert/1/2}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Invert</span>
+                <span className='absolute right-0 p-2'>{bginvert}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="200"
+            
+            value={bginvert}
+            onChange={(e) =>setBgInvert(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+{/* {huerotate} */}
+ <div className='bg-gray-300 relative rounded-[5px]' > 
+            
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bghuerotate / 360 * 100}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>HueRotate</span>
+                <span className='absolute right-0 p-2'>{bghuerotate}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          
+            max="360"
+            
+            value={bghuerotate}
+            onChange={(e) =>setBgHuerotate(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
 
 
 

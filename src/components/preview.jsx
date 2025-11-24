@@ -5,7 +5,14 @@ import { Camera, Radius } from 'lucide-react';
 
 const PreviewArea = () => {
   
-   const { color, setColor,padding,exportbg,setExportBg,layoutborder,setLayoutBorder,noisecontroller,setNoiseController,picbackground,canvard,shadowspread,setShadowSpread,canvasepia,perspective,setPresPective, translateZ,setTranslateZ,  rotateZ,setRotateZ,setCanvaSepia,canvabrightness,setCanvaBrightness,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur, canvaopacity,setCanvaOpacity, sepia,setSepia,  contrast,setContrast, blur,setBlur,setCanvaRd,framebordervalue,setFrameBorderValue,rotateX,phoneborder,setPhoneBorder,setRotateX,rotateY,setRotateY,setPicBackground,radius,setRadius,setPadding,fileimg,shadowColor, setShadowColor,setFileImg,brightness,setBrightness,previewUrl,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,size,setImgsize,scale,setScale,tilt,setTilt,frame,setFrame } = useContext(userContext);
+   const {  grayscale,setGrayScale,
+        bggrayscale,setBgGrayScale,
+        huerotate,setHuerotate,
+        bghuerotate,setBgHuerotate,
+        saturate,setSaturate,
+        bgsaturate,setbgSaturate,
+        invert,setInvert,
+        bginvert,setBgInvert, color,overlay,setOverlay, setColor,padding,overlayopacity,setOverlayOpacity,exportbg,setExportBg,layoutborder,setLayoutBorder,noisecontroller,setNoiseController,picbackground,canvard,shadowspread,setShadowSpread,canvasepia,perspective,setPresPective, translateZ,setTranslateZ,  rotateZ,setRotateZ,setCanvaSepia,canvabrightness,setCanvaBrightness,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur, canvaopacity,setCanvaOpacity, sepia,setSepia,  contrast,setContrast, blur,setBlur,setCanvaRd,framebordervalue,setFrameBorderValue,rotateX,phoneborder,setPhoneBorder,setRotateX,rotateY,setRotateY,setPicBackground,radius,setRadius,setPadding,fileimg,shadowColor, setShadowColor,setFileImg,brightness,setBrightness,previewUrl,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,size,setImgsize,scale,setScale,tilt,setTilt,frame,setFrame } = useContext(userContext);
    const [isDragging, setIsDragging] = useState(false);
     const handleDragOver = (e) => {
     e.preventDefault();
@@ -85,7 +92,9 @@ if(style.background){
   setExportBg(style.background)
 }
 
-console.log("rotatex and y at preview page",rotateX,rotateY)
+console.log("x,y,z,translatez,prespective",rotateX,rotateY,rotateZ,translateZ,perspective);
+console.log("hello");
+console.log("overlay at preview page",overlayopacity)
   return <>
 <div
   className="flex-1 flex overflow-hidden items-center justify-center min-h-full relative overflow-hidden transition-all duration-300 "
@@ -94,7 +103,7 @@ console.log("rotatex and y at preview page",rotateX,rotateY)
   onDragLeave={handleDragLeave}
   
 >
-  
+
   <div
     className={`relative wrapper  w-[100vw]  sm:w-[40vh] md:w-[60vh] lg:w-[75vh] mt-2
       h-[100vh] mb-2 sm:h-[50vh] md:h-[60vh] lg:h-[85vh] flex items-center justify-center z-10
@@ -117,13 +126,16 @@ console.log("rotatex and y at preview page",rotateX,rotateY)
           // Add padding to the wrapper instead of the image
           
          "--bg": style.background,
-    "--bgfilter": `brightness(${canvabrightness}%) blur(${canvablur}px) contrast(${canvacontrast}%) sepia(${canvasepia}%)   opacity(${canvaopacity}%)`,
+    "--bgfilter":`brightness(${canvabrightness}%) blur(${canvablur}px) contrast(${canvacontrast}%) sepia(${canvasepia}%) opacity(${canvaopacity}%) invert(${bginvert}%) grayscale(${bggrayscale}%) saturate(${bgsaturate}%) hue-rotate(${bghuerotate}deg)`,
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
    
     }}
   > 
+  <div className={`absolute w-full h-full  z-100 pointer-events-none`}  style={{ opacity: overlayopacity / 100 }}>
+  <img  src={`${overlay}`} className='w-full h-full' alt="" />
+  
+ </div>
  
-
     {previewUrl  ? (
 <div style={{
   width: `${device.width+12}px`,
@@ -133,9 +145,9 @@ console.log("rotatex and y at preview page",rotateX,rotateY)
   borderRadius:"20%",
    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
     willChange: "transform, opacity, filter", // performance hint
-      perspective:perspective,
-      zIndex:110,
-      
+ perspective: typeof perspective === 'string' ? perspective : `${perspective}px`,
+   
+    
 }}>
 
  
@@ -146,18 +158,23 @@ console.log("rotatex and y at preview page",rotateX,rotateY)
  
   transformOrigin: "center",
   transition: "transform 0.3s ease-in-out",
- 
-transform: [
 
-` scale(${scale})`,
-  `rotate(${tilt}deg)`,
-  perspective,
-  rotateY,
-  rotateX,
-  rotateZ,
-  translateZ
-].filter(Boolean).join(" ")
-,
+
+ perspective: typeof perspective === 'string' ? perspective : `${perspective}px`,
+    transform: [
+     
+      `scale(${scale})`,
+      `rotate(${tilt}deg)`,
+ 
+    rotateX, 
+      rotateY,
+    rotateZ,
+    translateZ
+
+    ]
+      .filter(Boolean)
+      .join(" "),
+
 }}>
     
   <img
@@ -165,7 +182,7 @@ transform: [
       width: "100%",
       height: "100%",
       display: "block",
-       zIndex: "100",
+      
       objectFit: "cover ",   //change to contain 100 100 according to asif bhai
     borderTop: phoneborder    ? "17px solid #080808ff" : frame?.style?.borderTop || frame?.style?.border || layoutborder || "none",
   borderRight: phoneborder   ? "8px solid #080808ff"   : frame?.style?.borderRight || frame?.style?.border || layoutborder || "none",
@@ -175,7 +192,7 @@ transform: [
       boxShadow: phoneborder ? "0 0 10px white" : `0 10px 60px ${shadowspread}px ${shadowColor ?? frame?.style?.boxShadow ?? "none"}`,
       backdropFilter: frame?.style?.backdropFilter || "none",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing,
-    filter: `brightness(${brightness}%) sepia(${sepia}%) `,
+  filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,
                     
     opacity: picopacity/100,
 
@@ -289,20 +306,23 @@ transform: [
     borderBottom: phoneborder ? "12px solid #080808ff" : frame?.style?.borderBottom || frame?.style?.border || "none",
     borderLeft: phoneborder ? "8px solid #080808ff" : frame?.style?.borderLeft || frame?.style?.border || "none",
     boxShadow: `0 0 60px ${shadowspread}px  ${shadowColor}`,
+      perspective: typeof perspective === 'string' ? perspective : `${perspective}px`,
     transform: [
-      perspective,
+     
       `scale(${scale})`,
       `rotate(${tilt}deg)`,
+ 
+    rotateX, 
       rotateY,
-      rotateX,
-      rotateZ,
-      translateZ,
+    rotateZ,
+    translateZ
+
     ]
       .filter(Boolean)
       .join(" "),
     padding: `0 ${padding + 5}px`,
     opacity: picopacity / 100,
-    filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%)`,
+ filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     overflow: "hidden", // hide extra content if needed
   }}
@@ -318,17 +338,18 @@ transform: [
         <>
         {
   device.name? <h1>{device.name}</h1> : ""
-}
+}           
           <p className={`text-[9px] sm:text-sm md:text-base lg:text-xs ${color ? "text-white" : "text-black"} mb-1`}>
             Drop your screenshot here!
           </p>
+       
           <p className={`text-[8px] sm:text-xs md:text-sm lg:text-xs ${color ? "text-white" : "text-black"} mb-1`}>
-            Supports PNG, JPG, and WebP formats
+            Supports  <span className={`${color ? "text-white" : "text-blue-700"} mt-1 font-bold`}>PNG, JPG, and WebP</span> formats
           </p>
           <p className={`text-[8px] sm:text-xs md:text-sm lg:text-xs ${color ? "text-white" : "text-black"}`}>
-            Or use the <span className="font-bold">Upload Button</span>
+            Or use the <span className="font-bold text-blue-700">Upload Button</span>
           </p>
-          <Camera className={`${color ? "text-white" : "text-black"} mt-1`} />
+          <Camera className={`${color ? "text-white" : "text-blue-700"} mt-1`} />
         </>
       )}
     </div>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { RotateCw, Move, ZoomIn, Palette, Smartphone, Tablet, Monitor, Laptop, Share as Shadow, Paintbrush, Grid } from 'lucide-react';
 import { userContext } from '../../App';
 
-
+import {Joystick} from 'react-joystick-component';
 const EditTab = ({
 
   
@@ -13,9 +13,47 @@ const EditTab = ({
 
 
 }) => {
- 
-
+ const {   grayscale,setGrayScale,
+        bggrayscale,setBgGrayScale,
+        huerotate,setHuerotate,
+        bghuerotate,setBgHuerotate,
+        saturate,setSaturate,
+        bgsaturate,setbgSaturate,
+        invert,setInvert,
+        bginvert,setBgInvert,color, setColor,fileimg,rotateY,noisecontroller,setNoiseController,setRotateY,canvard,shadowspread,setShadowSpread, perspective, translateZ,setTranslateZ,setPresPective, rotateZ,setRotateZ,setCanvaRd,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,setFileImg,rotateX,setRotateX,picbackground,setPicBackground,previewUrl,brightness,shadowColor, setShadowColor,setBrightness,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,twok,setTwok,fourk,scale,setScale,setFourk,size,setImgsize,tilt,setTilt,frame,setFrame,padding,setPadding,radius,setRadius } = useContext(userContext);
   const [selectedFrame, setSelectedFrame] = useState('default');
+
+
+  const [values, setValues] = useState({ x: 0, y: 0 });
+
+
+const handleMove = (event) => {
+  console.log('Joystick values:', { x: event.x, y: event.y });
+  
+  // Test with simple values first
+  const rotateXValue = Math.round(event.x * 45);
+  const rotateYValue = Math.round(-event.y * 45);
+  
+  console.log('Calculated rotations:', { rotateXValue, rotateYValue });
+  
+  setRotateX(`rotateX(${rotateXValue}deg)`);
+  setRotateY(`rotateY(${rotateYValue}deg)`);  
+  setRotateZ(`rotateZ(0deg)`);
+  setTranslateZ(`translateZ(0px)`); // Disable for testing
+  setPresPective(`1000px`); // Fixed for testing
+  
+  setValues({
+    x: event.x,
+    y: event.y,
+    rotatex: rotateXValue,
+    rotatey: rotateYValue,
+  });
+};
+
+  const handleStop = () => {
+    // Optional: Reset to center when released
+  };
+
 
 
 const divrotations = [
@@ -173,7 +211,8 @@ const deviceOptions = [
 
 
 
-const { color, setColor,fileimg,rotateY,noisecontroller,setNoiseController,setRotateY,canvard,shadowspread,setShadowSpread, perspective, translateZ,setTranslateZ,setPresPective, rotateZ,setRotateZ,setCanvaRd,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,setFileImg,rotateX,setRotateX,picbackground,setPicBackground,previewUrl,brightness,shadowColor, setShadowColor,setBrightness,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,twok,setTwok,fourk,scale,setScale,setFourk,size,setImgsize,tilt,setTilt,frame,setFrame,padding,setPadding,radius,setRadius } = useContext(userContext);
+
+
 
 
   const handleReset = () => {
@@ -265,9 +304,9 @@ const changepadding=(value)=>{
 
 {/* Scale Control */}
 
-      <div className="space-y-3">
+      <div className=" flex align-center justify-around gap-2">
         
-        <div className="space-y-2">
+        <div className="space-y-2 flex-1">
            <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
             
           <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${scale*50}%` }}>
@@ -302,12 +341,15 @@ const changepadding=(value)=>{
          
         
         </div>
+        <div className='text-xs bg-gray-300 h-full p-2 rounded-lg hover:bg-gray-700 hover:cursor-pointer hover:text-white'>
+          Tilt
+        </div>
       </div>
 
 
 {/* {Radius} */}
-          
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+          <div className='flex align-center justify-around gap-2'>
+             <div className='bg-gray-300 relative rounded-[5px] flex-1' > 
             
           <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${radius}%` }}>
        <div className="p-3"></div>
@@ -338,6 +380,19 @@ const changepadding=(value)=>{
            
   
           </div>
+           
+        <div className="bg-gray-300 rounded-lg p-1">
+        <Joystick
+          size={25}
+          baseColor="gray"
+          stickColor="black"
+          move={handleMove}
+          stop={handleStop}
+        />
+      </div>
+       
+          </div>
+
 
 
 

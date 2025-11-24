@@ -41,6 +41,8 @@ const [framebordervalue,setFrameBorderValue]=useState(false);
 const [layoutborder,setLayoutBorder]=useState("");
 const [picopacity,setPicOpacity]=useState(100);
 const [canvaopacity,setCanvaOpacity]=useState(100);
+const [overlayopacity,setOverlayOpacity]=useState(100);
+const [overlay,setOverlay]=useState('');
   const [shadowColor, setShadowColor] = useState('#000000');
     const [picbackground,setPicBackground]=useState("");
       const [rotateY,setRotateY]=useState("");
@@ -49,6 +51,20 @@ const [canvaopacity,setCanvaOpacity]=useState(100);
          const [ translateZ,setTranslateZ]=useState("");
               const [rotateZ,setRotateZ]=useState("");
                const [shadowspread,setShadowSpread]=useState(0);
+
+
+               const [grayscale,setGrayScale]=useState(0);
+               const [bggrayscale,setBgGrayScale]=useState(0);  //0 to 100
+
+               const [huerotate,setHuerotate]=useState(0);  //0 to 360
+                 const [bghuerotate,setBgHuerotate]=useState(0);
+
+                     const [saturate,setSaturate]=useState(100);  //0 to 200
+                 const [bgsaturate,setbgSaturate]=useState(100);
+
+                  const [invert,setInvert]=useState(0);  //0 to 200
+                 const [bginvert,setBgInvert]=useState(0);
+
                const [ exportbg,setExportBg]=useState("");
                 const [noisecontroller,setNoiseController]=useState(0.9);
    const [canvablur,setCanvaBlur]=useState(0);
@@ -59,7 +75,15 @@ const [canvaopacity,setCanvaOpacity]=useState(100);
   <Router>
     <userContext.Provider 
       value={{
-        
+        grayscale,setGrayScale,
+        bggrayscale,setBgGrayScale,
+        huerotate,setHuerotate,
+        bghuerotate,setBgHuerotate,
+        saturate,setSaturate,
+        bgsaturate,setbgSaturate,
+        invert,setInvert,
+        bginvert,setBgInvert,
+        overlay,setOverlay,
         color, setColor, 
         framebordervalue, setFrameBorderValue,
         phoneborder, setPhoneBorder,
@@ -86,6 +110,7 @@ const [canvaopacity,setCanvaOpacity]=useState(100);
         frame, setFrame,
       canvaopacity,setCanvaOpacity,
         picopacity, setPicOpacity,
+        overlayopacity,setOverlayOpacity,
         brightness, setBrightness,
         canvabrightness,setCanvaBrightness,
         canvard,setCanvaRd,
