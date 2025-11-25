@@ -36,6 +36,11 @@ import { userContext } from '../../App';
 'radial-gradient(circle at 35% 65%, rgb(0, 200, 255) 0%, rgb(0, 5, 15) 85%)',
 
 'radial-gradient(circle at 10% 10%, rgb(189, 126, 154) 0%, transparent 15%), radial-gradient(circle at 30% 20%, rgb(189, 126, 154) 0%, transparent 10%), radial-gradient(circle, rgb(189, 126, 154) 0%, transparent 25%), radial-gradient(circle at 70% 30%, rgb(189, 126, 154) 0%, transparent 15%), radial-gradient(circle at 90% 60%, rgb(189, 126, 154) 0%, transparent 20%), radial-gradient(circle at 20% 80%, rgb(189, 126, 154) 0%, transparent 15%), radial-gradient(circle at 40% 70%, rgb(189, 126, 154) 0%, transparent 10%), radial-gradient(circle at 60% 90%, rgb(189, 126, 154) 0%, transparent 15%), linear-gradient(135deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 100%)',
+'radial-gradient(circle at 10% 10%, rgb(86, 156, 214) 0%, transparent 15%), radial-gradient(circle at 30% 20%, rgb(86, 156, 214) 0%, transparent 10%), radial-gradient(circle, rgb(86, 156, 214) 0%, transparent 25%), radial-gradient(circle at 70% 30%, rgb(86, 156, 214) 0%, transparent 15%), radial-gradient(circle at 90% 60%, rgb(86, 156, 214) 0%, transparent 20%), radial-gradient(circle at 20% 80%, rgb(86, 156, 214) 0%, transparent 15%), radial-gradient(circle at 40% 70%, rgb(86, 156, 214) 0%, transparent 10%), radial-gradient(circle at 60% 90%, rgb(86, 156, 214) 0%, transparent 15%), linear-gradient(135deg, rgb(10, 20, 40) 0%, rgb(10, 20, 40) 100%)',
+'radial-gradient(circle at 10% 10%, rgb(72, 187, 120) 0%, transparent 15%), radial-gradient(circle at 30% 20%, rgb(72, 187, 120) 0%, transparent 10%), radial-gradient(circle, rgb(72, 187, 120) 0%, transparent 25%), radial-gradient(circle at 70% 30%, rgb(72, 187, 120) 0%, transparent 15%), radial-gradient(circle at 90% 60%, rgb(72, 187, 120) 0%, transparent 20%), radial-gradient(circle at 20% 80%, rgb(72, 187, 120) 0%, transparent 15%), radial-gradient(circle at 40% 70%, rgb(72, 187, 120) 0%, transparent 10%), radial-gradient(circle at 60% 90%, rgb(72, 187, 120) 0%, transparent 15%), linear-gradient(135deg, rgb(5, 25, 15) 0%, rgb(5, 25, 15) 100%)',
+'radial-gradient(circle at 10% 10%, rgb(255, 159, 28) 0%, transparent 15%), radial-gradient(circle at 30% 20%, rgb(255, 159, 28) 0%, transparent 10%), radial-gradient(circle, rgb(255, 159, 28) 0%, transparent 25%), radial-gradient(circle at 70% 30%, rgb(255, 159, 28) 0%, transparent 15%), radial-gradient(circle at 90% 60%, rgb(255, 159, 28) 0%, transparent 20%), radial-gradient(circle at 20% 80%, rgb(255, 159, 28) 0%, transparent 15%), radial-gradient(circle at 40% 70%, rgb(255, 159, 28) 0%, transparent 10%), radial-gradient(circle at 60% 90%, rgb(255, 159, 28) 0%, transparent 15%), linear-gradient(135deg, rgb(40, 15, 5) 0%, rgb(40, 15, 5) 100%)',
+'radial-gradient(circle at 10% 10%, rgb(147, 112, 219) 0%, transparent 15%), radial-gradient(circle at 30% 20%, rgb(147, 112, 219) 0%, transparent 10%), radial-gradient(circle, rgb(147, 112, 219) 0%, transparent 25%), radial-gradient(circle at 70% 30%, rgb(147, 112, 219) 0%, transparent 15%), radial-gradient(circle at 90% 60%, rgb(147, 112, 219) 0%, transparent 20%), radial-gradient(circle at 20% 80%, rgb(147, 112, 219) 0%, transparent 15%), radial-gradient(circle at 40% 70%, rgb(147, 112, 219) 0%, transparent 10%), radial-gradient(circle at 60% 90%, rgb(147, 112, 219) 0%, transparent 15%), linear-gradient(135deg, rgb(20, 10, 30) 0%, rgb(20, 10, 30) 100%)',
+'radial-gradient(circle at 10% 10%, rgb(220, 53, 69) 0%, transparent 15%), radial-gradient(circle at 30% 20%, rgb(220, 53, 69) 0%, transparent 10%), radial-gradient(circle, rgb(220, 53, 69) 0%, transparent 25%), radial-gradient(circle at 70% 30%, rgb(220, 53, 69) 0%, transparent 15%), radial-gradient(circle at 90% 60%, rgb(220, 53, 69) 0%, transparent 20%), radial-gradient(circle at 20% 80%, rgb(220, 53, 69) 0%, transparent 15%), radial-gradient(circle at 40% 70%, rgb(220, 53, 69) 0%, transparent 10%), radial-gradient(circle at 60% 90%, rgb(220, 53, 69) 0%, transparent 15%), linear-gradient(135deg, rgb(30, 5, 10) 0%, rgb(30, 5, 10) 100%)',
 'radial-gradient(circle at 30% 70%, rgba(170, 80, 220, 0.8) 0%, transparent 50%),radial-gradient(circle at 80% 20%, rgba(220, 100, 255, 0.7) 0%, transparent 60%),radial-gradient(circle at 45% 45%, rgba(130, 60, 200, 0.6) 0%, transparent 55%),linear-gradient(45deg, rgb(15, 5, 20) 0%, rgb(20, 8, 25) 100%)',
     'linear-gradient(45deg, #434343, #000000)',
   'radial-gradient(circle at 20% 30%, rgba(255, 120, 80, 0.9) 0%, transparent 50%),radial-gradient(circle at 70% 70%, rgba(255, 80, 150, 0.7) 0%, transparent 55%),radial-gradient(circle at 40% 60%, rgba(255, 180, 60, 0.8) 0%, transparent 45%),linear-gradient(135deg, rgb(20, 5, 10) 0%, rgb(25, 8, 12) 100%)',
@@ -85,6 +90,11 @@ import { userContext } from '../../App';
 'linear-gradient(135deg, #020011 25%, #C3102E 60%, #FF8A30 100%)',
 
     'radial-gradient(at 27% 37%, hsla(215,98%,61%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(125,98%,72%,1) 0px, transparent 50%)',
+    'radial-gradient(at 27% 37%, hsla(25,98%,65%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(280,98%,72%,1) 0px, transparent 50%)',
+    'radial-gradient(at 27% 37%, hsla(195,98%,55%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(170,98%,65%,1) 0px, transparent 50%)',
+    'radial-gradient(at 27% 37%, hsla(330,98%,65%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(45,98%,65%,1) 0px, transparent 50%)',
+    'radial-gradient(at 27% 37%, hsla(270,98%,55%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(150,98%,45%,1) 0px, transparent 50%)',
+    'radial-gradient(at 27% 37%, hsla(350,98%,55%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(200,98%,65%,1) 0px, transparent 50%)',
     'radial-gradient(at 20% 30%, rgb(255, 105, 180) 0px, transparent 50%), radial-gradient(at 80% 20%, rgb(255, 215, 0) 0px, transparent 50%), radial-gradient(at 50% 80%, rgb(138, 43, 226) 0px, transparent 50%)',
 
 'radial-gradient(at 27% 37%, rgb(255, 69, 0) 0px, transparent 50%), radial-gradient(at 97% 21%, rgb(0, 191, 255) 0px, transparent 50%), radial-gradient(at 52% 99%, rgb(50, 205, 50) 0px, transparent 50%)',
@@ -117,7 +127,8 @@ import { userContext } from '../../App';
   'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
   'linear-gradient(135deg, #5ee7df 0%, #b490ca 100%)',
   'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
-  'linear-gradient(135deg, #ebc0fd 0%, #d9ded8 100%)'
+  'linear-gradient(135deg, #ebc0fd 0%, #d9ded8 100%)',
+
   ];
 
   const solidColors = [
@@ -125,72 +136,80 @@ import { userContext } from '../../App';
     '#1e293b', '#0f172a', '#020617', '#64748b',
     '#ef4444', '#f97316', '#eab308', '#22c55e',
     '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899',
+     "#B9F6CA", // Mint green
+  "#69F0AE", // Teal green
+  "#1DE9B6", // Aqua green
+  "#00BFA5", 
   ];
 
   const marbleTextures = [
-    'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/09/1-seamless-blue-marble-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/09/2-white-marble-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/09/3-seamless-tile-marble-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/09/8-cream-marble-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/09/9-free-seamless-marble.jpg',
-     'https://images.freecreatives.com/wp-content/uploads/2016/12/Brown-Marble-Texture-Background.jpg',
-     'https://images.freecreatives.com/wp-content/uploads/2016/12/Marble-Texture-For-Free.jpg',
-     'https://images.freecreatives.com/wp-content/uploads/2016/12/Marbled-Paper-Texture.jpg',
-
+    '/public/marble/m-1.jpg',
+      '/public/marble/m-2.jpg',
+        '/public/marble/m-3.jpg',
+          '/public/marble/m-4.jpg',
+            '/public/marble/m-5.jpg',
+              '/public/marble/m-6.jpg',
+                '/public/marble/m-7.jpg',
+                  '/public/marble/m-8.jpg',
+                    '/public/marble/m-9.jpeg',
+                      '/public/marble/m-10.jpeg',
   ];
 
   const paperTextures = [
-    'https://images.pexels.com/photos/1029141/pexels-photo-1029141.jpeg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/07/12-white-paper-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/07/11-brown-paper-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/07/14-brown-crumpled-seamless-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/07/5-crinkled-paper-texture.jpg',
-    'https://naldzgraphics.net/wp-content/uploads/2014/07/4-stripes-seamless-paper.jpg',
-    'http://naldzgraphics.net/wp-content/uploads/2014/07/free-seamless-paper-textures.jpg',
-   'https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?_gl=1*88ryiv*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODUzMTkkajIzJGwwJGgw',
-    
+'/public/paper/paper-1.jpeg',
+'/public/paper/paper-2.jpg',
+'/public/paper/paper-3.jpg',
+'/public/paper/paper-4.jpg',
+'/public/paper/paper-5.jpg',
+'/public/paper/paper-6.jpg',
+'/public/paper/paper-7.jpg',
+'/public/paper/paper-8.jpeg',
+'/public/paper/paper-9.jpeg',
+'/public/paper/paper-10.jpeg',
   ];
 
 
 
   const patterns = [
-   'https://images.pexels.com/photos/9974280/pexels-photo-9974280.jpeg?_gl=1*14jv6rh*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODQxNzgkajUyJGwwJGgw',
-   'https://images.pexels.com/photos/15314660/pexels-photo-15314660.jpeg?_gl=1*1g8vvno*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODQxMjgkajQkbDAkaDA.',
-   'https://images.pexels.com/photos/5514708/pexels-photo-5514708.jpeg?_gl=1*ezlbqv*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODQwNzIkajYwJGwwJGgw',
-   'https://images.pexels.com/photos/2983296/pexels-photo-2983296.jpeg?_gl=1*mvz2aw*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODQwMTMkajQ2JGwwJGgw',
-   'https://images.pexels.com/photos/11325888/pexels-photo-11325888.jpeg?_gl=1*v73ivw*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODM5NjYkajMzJGwwJGgw',
-   'https://images.pexels.com/photos/15275237/pexels-photo-15275237.jpeg?_gl=1*uqgomk*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODQyNzMkajYwJGwwJGgw',
-   'https://images.pexels.com/photos/1741198/pexels-photo-1741198.jpeg?_gl=1*uixe5p*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODUyMjMkajExJGwwJGgw',
-   'https://images.pexels.com/photos/7233189/pexels-photo-7233189.jpeg?_gl=1*k1t20n*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODUyMTEkajIzJGwwJGgw',
-   
+  '/public/patterns/p-1.jpeg',
+     '/public/patterns/p-2.jpeg',
+       '/public/patterns/p-3.jpeg',
+         '/public/patterns/p-4.jpeg',
+           '/public/patterns/p-5.jpeg',
+             '/public/patterns/p-6.jpeg',
+               '/public/patterns/p-7.jpeg',
+                 '/public/patterns/p-8.jpeg',
+                   '/public/patterns/p-9.jpeg',
+                     '/public/patterns/p-10.jpeg',
     
   ];
 
 
   const patterns2 = [
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Colorful-Geometric-Paisley-Pattern.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Vector-Seamless-Paisley-Pattern.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Colorful-Abstract-Paisley-Pattern.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Free-Paisley-Pattern-Design.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Vector-Paisley-Pattern-Designs.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Vector-Indian-Paisley-Pattern.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Free-Vector-Paisley-Pattern.jpg',
-   'https://images.freecreatives.com/wp-content/uploads/2016/12/Vector-Bandana-Paisley-Pattern.jpg',
-    
+    '/public/patterns2/p-1.jpg',
+       '/public/patterns2/p-2.jpg',
+          '/public/patterns2/p-3.jpg',
+             '/public/patterns2/p-4.jpg',
+                '/public/patterns2/p-5.jpg',
+                   '/public/patterns2/p-6.jpg',
+                      '/public/patterns2/p-7.jpg',
+                         '/public/patterns2/p-8.jpg',
+                            '/public/patterns2/p-9.jpg',
+                               '/public/patterns2/p-10.jpg',
   ];
 
 
   const backgroundImages = [
-    'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg',
-    'https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?_gl=1*29gv6f*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODA5MzEkajM4JGwwJGgw',
-
-    'https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?_gl=1*o9oq26*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODA5MTAkajU5JGwwJGgw',
-    'https://images.pexels.com/photos/33041/antelope-canyon-lower-canyon-arizona.jpg?_gl=1*sya60b*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODA4OTEkajEzJGwwJGgw',
-    'https://images.pexels.com/photos/620337/pexels-photo-620337.jpeg?_gl=1*aeih1e*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODA4ODIkajIyJGwwJGgw',
-    'https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?_gl=1*1dh0nze*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODA4NTkkajQ1JGwwJGgw',
-    'https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?_gl=1*x0gh7i*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzAkdDE3NjM5ODA4NDQkajYwJGwwJGgw',
-    'https://images.pexels.com/photos/139975/pexels-photo-139975.jpeg?_gl=1*btlgw6*_ga*MTQxNTM5Nzk1MS4xNzYyMTg3MDgz*_ga_8JE65Q40S6*czE3NjM5ODA4NDQkbzUkZzEkdDE3NjM5ODEwMjgkajU1JGwwJGgw',
+    '/public/backgroundimages/bg-1.jpeg',
+    '/public/backgroundimages/bg-2.jpeg',
+    '/public/backgroundimages/bg-3.jpeg',
+ '/public/backgroundimages/bg-4.jpeg',
+   '/public/backgroundimages/bg-5.jpeg',
+   '/public/backgroundimages/bg-6.jpg',
+  '/public/backgroundimages/bg-7.jpeg',
+ '/public/backgroundimages/bg-8.jpeg',
+'/public/backgroundimages/bg-9.jpeg',
+  '/public/backgroundimages/bg-10.jpeg',
   ];
 
   // Handle custom image upload
@@ -217,7 +236,7 @@ setPicBackground(item);
 
   // Render background grid
   const renderBackgroundGrid = (items, isImage = false) => (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-rows-2 grid-cols-6 gap-x-18 gap-y-2">
       {items.map((item, index) => (
         <button
           key={index}
@@ -236,11 +255,11 @@ setPicBackground(item);
 
   );
  const renderOverlayGrid = (items, isImage = false) => (
-     <div className="grid grid-cols-8 gap-x-9 gap-y-4">
+    <div className="grid grid-rows-2 grid-cols-13 gap-x-18 gap-y-2">
       {items.map((item, index) => (
         <button
           key={index}
-          className="h-8 w-8 rounded border hover:scale-105 transition-transform"
+          className="h-9 w-16 rounded border hover:scale-105 transition-transform"
           style={{
             background: isImage ? `url(${item}) center/cover no-repeat` : item,
           }}
@@ -256,7 +275,25 @@ setPicBackground(item);
   );
 
 
+  const renderPicturesGrid = (items, isImage = false) => (
+    <div className="grid grid-rows-2 grid-cols-5 gap-x-18 gap-y-2">
+      {items.map((item, index) => (
+        <button
+          key={index}
+          className="h-9 w-16 rounded border hover:scale-105 transition-transform"
+          style={{
+            background: isImage ? `url(${item}) center/cover no-repeat` : item,
+          }}
+          // onClick={() => onBackgroundChange(item)}
+          onClick={()=>Backgroundcolorchanger(item)}
+        />
+      ))}
+    </div>
 
+
+
+
+  );
 
 const handleFileInput = (event) => {
   const file = event.target.files?.[0];
@@ -269,7 +306,7 @@ const handleFileInput = (event) => {
 
 
  const renderGradientGrid = (items, isImage = false) => (
-    <div className="grid grid-cols-8 gap-x-9 gap-y-4">
+    <div className="grid grid-cols-10 grid-rows-2 gap-x-9 gap-y-4">
       {items.map((item, index) => (
         <button
           key={index}
@@ -307,9 +344,23 @@ const handleFileInput = (event) => {
         </>
         ))}
       </div> */}
-  {/* Overlay  */}
+  
+
+   
+      {/* Background Grid */}
+      <div className="min-h-screen  px-1 ">
+  <div className="max-w-7xl mx-auto ">
+    
+    {/* Section Header */}
+   
+
+    {/* Each Section */}
+    <section className="space-y-4">
+    
+
+ {/* Overlay  */}
       <div>
-        <div className='flex align-center justify-between gap-2 '  >
+        <div className='flex align-center justify-between gap-4 ' >
  <h2 className={`text-[11px] basis-1/2 sm:text-sm mt-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
           Overlay
         </h2>
@@ -347,7 +398,7 @@ const handleFileInput = (event) => {
         </div>
        
        
-         <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
+         <div className=" flex  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
     
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full ">
@@ -355,23 +406,47 @@ const handleFileInput = (event) => {
         </div>
       </div>
 
-   
-      {/* Background Grid */}
-      <div className="min-h-screen  px-1 ">
-  <div className="max-w-7xl mx-auto ">
-    
-    {/* Section Header */}
-   
 
-    {/* Each Section */}
-    <section className="space-y-4">
-      
+{/* {Noise} */}
+            <label   className={`text-xs ${color ? "text-gray-100" : "text-white-900"} text-[11px] sm:text-sm font-bold `} >Noise</label>
+          
+ <div className='bg-gray-300 relative space-y-4 rounded-[5px] mt-1' > 
+          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${noisecontroller*100}%` }}>
+       <div className="p-3"></div>
+ <span className='absolute left-2'>Noise Amount</span>
+                <span className='absolute right-0 p-2'>{noisecontroller*100}%</span>
+       
+ 
+        
+              
+            
+          
+          
+          </div>
+        
+ <input
+            type="range"
+            min="0"
+          step="0.1"
+            max="1"
+              
+            value={noisecontroller}
+            onChange={(e) => setNoiseController(Number(e.target.value))}
+            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+          />
+        
+           
+
+           
+  
+          </div>
+
 
 
   {/* Custom Upload*/}
   
- <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >Custom BG</h2>
-<div className='flex items-center justify-between gap-2 p-2'>
+ <h2 className={`text-[11px] sm:text-sm  font-bold ${color ? "text-white" : "text-gray-900"}`} >Custom BG</h2>
+<div className='flex items-center justify-between gap-2 '>
   <label className='bg-gray-200 flex items-center justify-center w-37 h-18 rounded-xl hover:bg-gray-300'>
   <div className='flex flex-col '>
     <input
@@ -445,13 +520,16 @@ const handleFileInput = (event) => {
           {renderGradientGrid(regularGradients)}
         </div>
       </div>
-
+ 
       {/* Mesh Gradients */}
      <div>
         <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
          Mesh Gradients
         </h2>
-        <div className="rounded-xl">
+        <div className="rounded-xl overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
           {renderBackgroundGrid(meshGradients)}
         </div>
       </div>
@@ -460,61 +538,76 @@ const handleFileInput = (event) => {
 
 
       {/* Marble Textures */}
-      {/* <div>
+      <div>
   <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Marble Textures
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800 ">
-          {renderBackgroundGrid(marbleTextures, true)}
+        <div className="rounded-xl  dark:bg-gray-800   overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+          {renderPicturesGrid(marbleTextures, true)}
         </div>
-      </div> */}
+      </div>
 
       {/* Paper Textures */}
-      {/* <div>
+      <div>
   <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Paper Textures
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800">
-          {renderBackgroundGrid(paperTextures, true)}
+        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+          {renderPicturesGrid(paperTextures, true)}
         </div>
-      </div> */}
+      </div> 
 
 
 
 
       {/* Patterns */}
-      {/* <div>
+       <div>
   <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Patterns
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800">
-          {renderBackgroundGrid(patterns, true)}
+        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+          {renderPicturesGrid(patterns, true)}
         </div>
-      </div> */}
+      </div>
 
 
 
 
       {/* Patterns */}
-      {/* <div>
+      <div>
   <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
           Patterns 2
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800">
-          {renderBackgroundGrid(patterns2, true)}
+        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+          {renderPicturesGrid(patterns2, true)}
         </div>
-      </div> */}
+      </div>
 
 
       {/* Background Images */}
-      {/* <div>
+      <div>
   <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
-          Background Images
+         Images
         </h2>
-        <div className="rounded-xl  dark:bg-gray-800">
-          {renderBackgroundGrid(backgroundImages, true)}
+        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+          {renderPicturesGrid(backgroundImages, true)}
         </div>
-      </div> */}
+      </div>
 
     
 

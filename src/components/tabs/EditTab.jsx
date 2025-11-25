@@ -156,48 +156,79 @@ const deviceOptions = [
 
 
   const frameOptions = {
-   "Default": { name: 'Default',style: { border: "none" }, preview: '⬜' },
-   "Minimal": { name: 'Minimal',style: { border: "1px solid black" }, preview: '▫️' },
-    "Rounded":{  name: 'Rounded', style:{ border: "6px solid black", borderRadius:10 }, preview: '🔲' },
-    "Shadow":{ name: 'Shadow', style: {
-      border: "2px solid #3498db",
+   "Default": { name: 'None',style: { border: "6px solid transparent" }, preview: '⬜' },
+   "Arc-ght":{ name: 'Arc-light',style: {border:"6px solid rgba(255, 255, 255, 0.5)"}, preview: '⬜' },
+    "Rounded":{  name: 'Arc-dark', style:{ border: "6px solid black", borderRadius:0 }, preview: '🔲' },
+   "Minimal": { name: 'Minimal',style: { border: "2px solid black" }, preview: '▫️' },
+   
+    "picture":{ name: 'picture', style: {
+      borderTop: "8px solid white", // or use your existing border style
+    borderRight: "8px solid white", // or use your existing border style
+    borderBottom: "24px solid white", // thick bottom only
+    borderLeft: "8px solid white", // or use your existing border styleborder: "2px solid #3498db",
       borderRadius: "8px",
       boxShadow: "0 0 10px rgba(0,0,0,0.3)"
     }, preview: '🔳' },
-    "Left":{ name: 'Left', style: {
+ 
+     "mac-os-dark":{ name: 'Mac dark', style: {
       background: "rgba(255,255,255,0.15)",
-      borderRadius: "16px",
+      borderRadius: "0px",
       boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
       backdropFilter: "blur(10px)",
-      borderLeft: "5px solid  rgba(12, 0, 0, 1)",
-      padding: "20px",
+       borderTop: "15px solid rgba(12,0,0,1)", // or use your existing border style
+    borderRight: "0px solid transparent", // or use your existing border style
+    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    borderLeft: "0px solid transparent", // or use your existing border style
+      
       textAlign: "center"
     }, preview: '💎' },
-        "Right":{ name: 'Right', style: {
+      "mac-os-light":{ name: 'Mac light', style: {
       background: "rgba(255,255,255,0.15)",
-      borderRadius: "16px",
+      borderRadius: "0px",
       boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
       backdropFilter: "blur(10px)",
-      borderRight: "5px solid  rgba(12, 0, 0, 1)",
-      padding: "20px",
+       borderTop: "15px solid white", // or use your existing border style
+    borderRight: "0px solid transparent", // or use your existing border style
+    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    borderLeft: "0px solid transparent", // or use your existing border style
+      
       textAlign: "center"
     }, preview: '💎' },
-     "Top":{ name: 'Top', style: {
+       "windows-dark":{ name: 'Windows dark', style: {
       background: "rgba(255,255,255,0.15)",
-      borderRadius: "16px",
+      borderRadius: "0px",
       boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
       backdropFilter: "blur(10px)",
-      borderTop: "5px solid rgba(12, 0, 0, 1)",
-      padding: "20px",
+       borderTop: "20px solid rgba(12, 0, 0, 1)", // or use your existing border style
+    borderRight: "0px solid transparent", // or use your existing border style
+    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    borderLeft: "0px solid transparent", // or use your existing border style
+      
+      textAlign: "center"
+    }, preview: '💎' },
+       "windows-light":{ name: 'Windows light', style: {
+      background: "rgba(255,255,255,0.15)",
+      borderRadius: "0px",
+      boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
+      backdropFilter: "blur(10px)",
+       borderTop: "20px solid white", // or use your existing border style
+    borderRight: "0px solid transparent", // or use your existing border style
+    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    borderLeft: "0px solid transparent", // or use your existing border style
+      
       textAlign: "center"
     }, preview: '💎' },
        "Bottom":{ name: 'Bottom', style: {
       background: "rgba(255,255,255,0.15)",
-      borderRadius: "16px",
+      borderRadius: "0px",
       boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
       backdropFilter: "blur(10px)",
-     borderBottom: "5px solid rgba(12, 0, 0, 1)",
-      padding: "20px",
+         borderTop: "0px solid transparent", // or use your existing border style
+    borderRight: "0px solid transparent", // or use your existing border style
+    borderBottom: "10px solid rgba(12, 0, 0, 1)", // thick bottom only
+    borderLeft: "0px solid transparent", // or use your existing border style
+     
+
       textAlign: "center"
     }, preview: '💎' },
   };
@@ -405,25 +436,43 @@ const changepadding=(value)=>{
     
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full
-    align-items-center jusitfy-content-center">
+  text-center">
          {Object.entries(frameOptions).map(([id, frame]) => (
           <>
-          <div className='border border-gray-400 p-3' onClick={() =>{ handleframe(id);setPhoneBorder(false);setFrameBorderValue(true)}}>
+          <div className='flex flex-col'>
+ <div className='basis-2/3 p-2 bg-gray-200' onClick={() =>{ handleframe(id);setPhoneBorder(false);setFrameBorderValue(true)}}>
  <button
     key={id}
-    className={`p-4 text-center   h-2 w-2 transition-all duration-200 hover:scale-105 ${
+    className={`p-4 text-center    transition-all duration-200 hover:scale-105 ${
       selectedFrame === id
         ? 'border-blue-500 bg-blue-50 text-blue-700'
         : 'border-gray-200 bg-gray-400 hover:border-gray-300'
     }`}
  style={{
-  ...(frame.style.border && { border: frame.style.border }),
-  ...(frame.style.borderTop && { borderTop: frame.style.borderTop }),
-   ...(frame.style.borderBottom && { borderBottom: frame.style.borderBottom }),
-    ...(frame.style.borderLeft && { borderLeft: frame.style.borderLeft }),
-     ...(frame.style.borderRight && { borderRight: frame.style.borderRight }),
-}}
-
+          // Apply all border properties only if they exist in frame.style
+          ...(frame.style?.border && { border: frame.style.border }),
+          ...(frame.style?.borderTop && { 
+    borderTop: frame.style.borderTop.replace(/(\d+)(px|rem|em)/, (match, p1, p2) => {
+      const width = parseInt(p1);
+      const newWidth = width > 10 ? width - 5 : width;
+      return `${newWidth}${p2}`;
+    })
+  }),
+          ...(frame.style?.borderBottom && { 
+    borderBottom: frame.style.borderBottom.replace(/(\d+)(px|rem|em)/, (match, p1, p2) => {
+      const width = parseInt(p1);
+      const newWidth = width > 10 ? width - 12 : width;
+      return `${newWidth}${p2}`;
+    })
+  }),
+          ...(frame.style?.borderLeft && { borderLeft: frame.style.borderLeft }),
+          ...(frame.style?.borderRight && { borderRight: frame.style.borderRight }),
+          // Apply other styles that might exist
+          ...(frame.style?.borderRadius && { borderRadius: frame.style.borderRadius }),
+          ...(frame.style?.background && { background: frame.style.background }),
+          ...(frame.style?.boxShadow && { boxShadow: frame.style.boxShadow }),
+          ...(frame.style?.backdropFilter && { backdropFilter: frame.style.backdropFilter }),
+        }}
 
     
     
@@ -431,11 +480,14 @@ const changepadding=(value)=>{
     
 
     
-    {/* <div className="text-[15px] sm:text-lg mb-1">{frame.preview}</div> 
-   <div>{frame.name}  </div> */}
-  </button>
-          </div>
+   
  
+  </button>
+   
+          </div>
+ <div className="text-[5px]  sm:text-[11px] font-bold mt-1">{frame.name}</div> 
+          </div>
+         
 
 
   </>

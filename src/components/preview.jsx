@@ -103,7 +103,7 @@ console.log("overlay at preview page",overlayopacity)
   onDragLeave={handleDragLeave}
   
 >
-
+ 
   <div
     className={`relative wrapper  w-[100vw]  sm:w-[40vh] md:w-[60vh] lg:w-[75vh] mt-2
       h-[100vh] mb-2 sm:h-[50vh] md:h-[60vh] lg:h-[85vh] flex items-center justify-center z-10
@@ -124,17 +124,52 @@ console.log("overlay at preview page",overlayopacity)
           // Remove transformations from this wrapper
    
           // Add padding to the wrapper instead of the image
-          
+         
          "--bg": style.background,
-    "--bgfilter":`brightness(${canvabrightness}%) blur(${canvablur}px) contrast(${canvacontrast}%) sepia(${canvasepia}%) opacity(${canvaopacity}%) invert(${bginvert}%) grayscale(${bggrayscale}%) saturate(${bgsaturate}%) hue-rotate(${bghuerotate}deg)`,
+    "--bgfilter":`brightness(${canvabrightness}%) blur(${canvablur}px) contrast(${canvacontrast}%) sepia(${canvasepia}%) opacity(${canvaopacity}%) invert(${bginvert}%) grayscale(${bggrayscale}%) saturate(${bgsaturate}%) hue-rotate(${bghuerotate}deg)  `,
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
-   
+    filter:`${noisecontroller>0}  "url("#overlay-noise-filter") : "none"}`,
+  
     }}
   > 
-  <div className={`absolute w-full h-full  z-100 pointer-events-none`}  style={{ opacity: overlayopacity / 100 }}>
-  <img  src={`${overlay}`} className='w-full h-full' alt="" />
-  
- </div>
+ {/* Update your SVG filter */}
+<svg style={{ display: 'none' }}> 
+  <filter id="overlay-noise-filter">
+    {/* Create noise */}
+    <feTurbulence 
+      type="fractalNoise"
+      baseFrequency={`${noisecontroller}`} 
+      numOctaves="2" 
+      result="noise"
+    />
+    {/* Convert noise to grayscale */}
+    <feColorMatrix 
+      in="noise" 
+      type="saturate" 
+      values="0" 
+      result="noise"
+    />
+    {/* Blend noise with original image */}
+    <feBlend 
+      in="SourceGraphic"  // This preserves your original image
+      in2="noise" 
+      mode="screen"
+      opacity="0.3"     // Or try "overlay", "screen", "soft-light"
+      result="final"
+    />
+    <feComposite in="SourceGraphic" in2="noise" operator="over" result="final"/>
+  </filter>
+</svg>
+ <div 
+  className={`absolute w-full h-full z-90 pointer-events-none`} 
+  style={{ 
+    opacity: overlayopacity / 100,
+     
+   
+  }}
+>
+  <img src={`${overlay}`} className='w-full h-full' alt="" />
+</div>
  
     {previewUrl  ? (
 <div style={{
@@ -146,7 +181,7 @@ console.log("overlay at preview page",overlayopacity)
    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
     willChange: "transform, opacity, filter", // performance hint
  perspective: typeof perspective === 'string' ? perspective : `${perspective}px`,
-   
+  
     
 }}>
 
@@ -195,6 +230,7 @@ console.log("overlay at preview page",overlayopacity)
   filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,
                     
     opacity: picopacity/100,
+
 
     }}
     src={previewUrl}
@@ -307,6 +343,7 @@ console.log("overlay at preview page",overlayopacity)
     borderLeft: phoneborder ? "8px solid #080808ff" : frame?.style?.borderLeft || frame?.style?.border || "none",
     boxShadow: `0 0 60px ${shadowspread}px  ${shadowColor}`,
       perspective: typeof perspective === 'string' ? perspective : `${perspective}px`,
+      
     transform: [
      
       `scale(${scale})`,
@@ -322,18 +359,23 @@ console.log("overlay at preview page",overlayopacity)
       .join(" "),
     padding: `0 ${padding + 5}px`,
     opacity: picopacity / 100,
+ 
  filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-    overflow: "hidden", // hide extra content if needed
+    overflow: "hidden", // hide extra content if needed,
+      filter:`${noisecontroller>0}  "url("#overlay-noise-filter") : "none"}`,
   }}
   className={`flex hover:scale-110 justify-center items-center text-center ${
     color ? "bg-[#000000]" : "bg-gray-100"
   } transition-all duration-300 ease-in-out rounded-xl p-2 flex-col`}
+ 
 >
   <label
-    className="cursor-pointer flex flex-col items-center justify-center w-full h-full overflow-hidden"
+    className="cursor-pointer flex flex-col items-center justify-center w-full h-full overflow-hidden" 
+   
   >
-    <div className="flex flex-col items-center justify-center w-full h-full text-xs sm:text-sm overflow-hidden">
+    <div className="flex flex-col items-center justify-center w-full h-full text-xs sm:text-sm overflow-hidden"
+    >
       {!(device.width && device.height < 100) && (
         <>
         {

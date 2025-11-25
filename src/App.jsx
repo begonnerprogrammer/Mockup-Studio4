@@ -66,7 +66,7 @@ const [overlay,setOverlay]=useState('');
                  const [bginvert,setBgInvert]=useState(0);
 
                const [ exportbg,setExportBg]=useState("");
-                const [noisecontroller,setNoiseController]=useState(0.9);
+                const [noisecontroller,setNoiseController]=useState(0);
    const [canvablur,setCanvaBlur]=useState(0);
   const [blur,setBlur]=useState(0);
   return (
