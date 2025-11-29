@@ -135,7 +135,7 @@ const onsepiachange=(value)=>{
 setSepia(value);
 }
 
-  const [selected, setSelected] = useState("one");
+  const [selected, setSelected] = useState("");
 
   return (
     <div className="space-y-6">
@@ -340,7 +340,7 @@ setSepia(value);
           borderTopLeftRadius:"4px",
           borderBottomLeftRadius:"4px",
           cursor: "pointer",
-          color:selected === "one" ?  (color ? "white":"black" ) : "#4b5563",
+         color:selected === "one" ?  (color ? "white":"text-gray-500" ) : "#4b5563",
         }}
         className='text-sm font-semibold '
       >
@@ -352,7 +352,7 @@ setSepia(value);
         style={{
           padding: "4px",
           border: "1px solid gray",
-          background: selected === "two" ?  (color ? "#303030":"#dedede" ) : "transparent",
+          background: selected === "two" ? (color ? "#303030":"#dedede" ) : "transparent",
           cursor: "pointer",
           color:selected === "two" ?  (color ? "white":"text-gray-500" ) : "#4b5563",
           borderTopRightRadius:"4px",

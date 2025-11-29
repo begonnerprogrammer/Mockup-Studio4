@@ -127,7 +127,7 @@ const [overlay,setOverlay]=useState('');
     >
       <div className={`min-h-screen ${color ? "bg-[#1a1a1a]" : "bg-[#f5f5f5]"} transition-colors duration-200`}>
         <Header/>
-        <main className="flex flex-col  sm:flex-col    md:flex-col  lg:flex-row  mt-0 sm:mt-5 h-[calc(100vh-100px)]">
+        <main className="flex flex-col  sm:flex-col    md:flex-col  lg:flex-row  mt-0  h-[calc(100vh-128x)]">
           <Routes>
           
             <Route path="/" element={

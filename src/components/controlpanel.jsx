@@ -813,7 +813,7 @@ console.log("color on control panel",color)
   };
 console.log("preview url at control page",previewUrl)
   return (
-    <div className={`lg:w-80 md:w-full sm:w-full h-[100vh]  sm:h-[85vh]    ${color ? "bg-[rgba(0, 0, 0, 1)]" : "bg-white"} border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200`}
+    <div className={`lg:w-80 md:w-full sm:w-full h-[100vh]   sm:h-[85vh]    ${color ? "bg-[rgba(0, 0, 0, 1)]" : "bg-white"} border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200`}
 >
       {/* Header */}
      
@@ -854,7 +854,7 @@ console.log("preview url at control page",previewUrl)
       </div>
 
       {/* Export Button */}
-      <div className={`p-6 pt-4 border-t  transition-all duration-300 ease-in-out  ${color ? "bg-[#1a1a1a]" : "bg-white"}   `}>
+      <div className={`p-6 pt-4 border-t  border-gray-300   transition-all duration-300 ease-in-out  ${color ? "bg-[#1a1a1a]" : "bg-white"}   `}>
       
                 
    <button
