@@ -143,73 +143,73 @@ import { userContext } from '../../App';
   ];
 
   const marbleTextures = [
-    '/public/marble/m-1.jpg',
-      '/public/marble/m-2.jpg',
-        '/public/marble/m-3.jpg',
-          '/public/marble/m-4.jpg',
-            '/public/marble/m-5.jpg',
-              '/public/marble/m-6.jpg',
-                '/public/marble/m-7.jpg',
-                  '/public/marble/m-8.jpg',
-                    '/public/marble/m-9.jpeg',
-                      '/public/marble/m-10.jpeg',
+    '/marble/m-1.jpg',
+      '/marble/m-2.jpg',
+        '/marble/m-3.jpg',
+          '/marble/m-4.jpg',
+            '/marble/m-5.jpg',
+              '/marble/m-6.jpg',
+                '/marble/m-7.jpg',
+                  '/marble/m-8.jpg',
+                    '/marble/m-9.jpeg',
+                      '/marble/m-10.jpeg',
   ];
 
   const paperTextures = [
-'/public/paper/paper-1.jpeg',
-'/public/paper/paper-2.jpg',
-'/public/paper/paper-3.jpg',
-'/public/paper/paper-4.jpg',
-'/public/paper/paper-5.jpg',
-'/public/paper/paper-6.jpg',
-'/public/paper/paper-7.jpg',
-'/public/paper/paper-8.jpeg',
-'/public/paper/paper-9.jpeg',
-'/public/paper/paper-10.jpeg',
+'/paper/paper-1.jpeg',
+'/paper/paper-2.jpg',
+'/paper/paper-3.jpg',
+'/paper/paper-4.jpg',
+'/paper/paper-5.jpg',
+'/paper/paper-6.jpg',
+'/paper/paper-7.jpg',
+'/paper/paper-8.jpeg',
+'/paper/paper-9.jpeg',
+'/paper/paper-10.jpeg',
   ];
 
 
 
   const patterns = [
-  '/public/patterns/p-1.jpeg',
-     '/public/patterns/p-2.jpeg',
-       '/public/patterns/p-3.jpeg',
-         '/public/patterns/p-4.jpeg',
-           '/public/patterns/p-5.jpeg',
-             '/public/patterns/p-6.jpeg',
-               '/public/patterns/p-7.jpeg',
-                 '/public/patterns/p-8.jpeg',
-                   '/public/patterns/p-9.jpeg',
-                     '/public/patterns/p-10.jpeg',
+  '/patterns/p-1.jpeg',
+     '/patterns/p-2.jpeg',
+       '/patterns/p-3.jpeg',
+         '/patterns/p-4.jpeg',
+           '/patterns/p-5.jpeg',
+             '/patterns/p-6.jpeg',
+               '/patterns/p-7.jpeg',
+                 '/patterns/p-8.jpeg',
+                   '/patterns/p-9.jpeg',
+                     '/patterns/p-10.jpeg',
     
   ];
 
 
   const patterns2 = [
-    '/public/patterns2/p-1.jpg',
-       '/public/patterns2/p-2.jpg',
-          '/public/patterns2/p-3.jpg',
-             '/public/patterns2/p-4.jpg',
-                '/public/patterns2/p-5.jpg',
-                   '/public/patterns2/p-6.jpg',
-                      '/public/patterns2/p-7.jpg',
-                         '/public/patterns2/p-8.jpg',
-                            '/public/patterns2/p-9.jpg',
-                               '/public/patterns2/p-10.jpg',
+    '/patterns2/p-1.jpg',
+       '/patterns2/p-2.jpg',
+          '/patterns2/p-3.jpg',
+             '/patterns2/p-4.jpg',
+                '/patterns2/p-5.jpg',
+                   '/patterns2/p-6.jpg',
+                      '/patterns2/p-7.jpg',
+                         '/patterns2/p-8.jpg',
+                            '/patterns2/p-9.jpg',
+                               '/patterns2/p-10.jpg',
   ];
 
 
   const backgroundImages = [
-    '/public/backgroundimages/bg-1.jpeg',
-    '/public/backgroundimages/bg-2.jpeg',
-    '/public/backgroundimages/bg-3.jpeg',
- '/public/backgroundimages/bg-4.jpeg',
-   '/public/backgroundimages/bg-5.jpeg',
-   '/public/backgroundimages/bg-6.jpg',
-  '/public/backgroundimages/bg-7.jpeg',
- '/public/backgroundimages/bg-8.jpeg',
-'/public/backgroundimages/bg-9.jpeg',
-  '/public/backgroundimages/bg-10.jpeg',
+    '/backgroundimages/bg-1.jpeg',
+    '/backgroundimages/bg-2.jpeg',
+    '/backgroundimages/bg-3.jpeg',
+ '/backgroundimages/bg-4.jpeg',
+   '/backgroundimages/bg-5.jpeg',
+   '/backgroundimages/bg-6.jpg',
+  '/backgroundimages/bg-7.jpeg',
+ '/backgroundimages/bg-8.jpeg',
+'/backgroundimages/bg-9.jpeg',
+  '/backgroundimages/bg-10.jpeg',
   ];
 
   // Handle custom image upload
@@ -255,11 +255,11 @@ setPicBackground(item);
 
   );
  const renderOverlayGrid = (items, isImage = false) => (
-    <div className="grid grid-rows-2 grid-cols-13 gap-x-18 gap-y-2">
+    <div className="grid grid-rows-2 grid-cols-13 gap-x-18 gap-y-2 ">
       {items.map((item, index) => (
         <button
           key={index}
-          className="h-9 w-16 rounded border hover:scale-105 transition-transform"
+          className={`h-9 w-16 rounded border   border-1  ${color ? "border-gray-400" : " border-#00000-400 "} hover:scale-105 transition-transform`}
           style={{
             background: isImage ? `url(${item}) center/cover no-repeat` : item,
           }}
@@ -299,7 +299,7 @@ const handleFileInput = (event) => {
   const file = event.target.files?.[0];
   if (file) {
     setFileImg(file);
-    setPreviewUrl(URL.createObjectURL(file));
+    setPicBackground(URL.createObjectURL(file));
     
   }
 };
@@ -361,15 +361,16 @@ const handleFileInput = (event) => {
  {/* Overlay  */}
       <div>
         <div className='flex align-center justify-between gap-4 ' >
- <h2 className={`text-[11px] basis-1/2 sm:text-sm mt-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
+ <h2 className={`text-[11px] basis-1/2 sm:text-sm mt-1 font-bold 
+  text-gray-500`} >
           Overlay
         </h2>
-        <div className=' mb-1 mr-4 basis-1/2  bg-gray-300 relative  rounded-[5px]' > 
+        <div className={`mb-1 mr-4 basis-1/2  ${(color ? "bg-[black]":"bg-gray-100" )}    bg-gray-300 relative  rounded-[5px]`}> 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${overlayopacity/1}%` }}>
+          <div  className={`${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs  p-1 rounded-[5px] flex items-center justify-between`}  style={{ width: `${overlayopacity/1}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>opacity</span>
-                <span className='absolute right-0 p-2'>{overlayopacity}%</span>
+ <span className='absolute left-2 text-gray-500'>opacity</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{overlayopacity}%</span>
        
  
         
@@ -407,14 +408,57 @@ const handleFileInput = (event) => {
       </div>
 
 
+
+
+
+
+  {/* Custom Upload*/}
+  
+ <h2 className={`text-[11px] sm:text-sm  font-bold text-gray-500`} >Custom BG</h2>
+<div className='flex items-center justify-between gap-2 '>
+  <label className={` ${color ? "bg-gray-500" : "bg-gray-200"}  flex items-center justify-center w-37 h-18 rounded-xl hover:bg-gray-300`}>
+  <div className='flex flex-col '>
+    <input
+      type="color"
+      value={picbackground}
+      onChange={(e) => setPicBackground(e.target.value)}
+      className="w-6 sm:w-8 h-6 sm:h-8  border border-gray-300 cursor-pointer"
+    />
+    <span className='text-xs mt-1'>Color</span>
+  </div>
+  </label>
+  <label className={` w-37 h-18 ${color ? "bg-gray-400" : "bg-gray-200"}  flex items-center justify-center flex-col rounded-xl hover:bg-gray-300`}>
+  <div className=''>
+    
+     <input
+      type="file"
+      className="hidden"
+      accept="image/*"
+      onChange={handleFileInput}
+    />
+    <Camera className={`${color ? "text-white" : "text-blue-700"} ml-1`} />
+    <span className='text-xs mt-1'>Image</span>
+ 
+    
+  </div>
+   </label>
+  <div className={`${color ? "bg-gray-400" : "bg-gray-200"}  flex items-center justify-center flex-col w-37 h-18 rounded-xl hover:bg-gray-300`}  onClick={()=>{setPicBackground("transparent")}}>
+    <div className='bg-[repeating-conic-gradient(#bbb_0_90deg,#ddd_90deg_180deg)] w-5 h-5 rounded-xl'>
+    </div>
+    <span className='text-xs mt-1'>Transparent</span>
+  </div>
+</div>
+
+
+
 {/* {Noise} */}
-            <label   className={`text-xs ${color ? "text-gray-100" : "text-white-900"} text-[11px] sm:text-sm font-bold `} >Noise</label>
+            <label   className={`text-xs text-gray-500 text-[11px] sm:text-sm font-bold `} >Noise</label>
           
- <div className='bg-gray-300 relative space-y-4 rounded-[5px] mt-1' > 
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${noisecontroller*100}%` }}>
+ <div className={`${(color ? "bg-[black]":"bg-gray-100" )} relative space-y-4 rounded-[5px] mt-1`} > 
+          <div  className={`${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs  p-1 rounded-[5px] flex items-center justify-between`}  style={{ width: `${noisecontroller*100}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Noise Amount</span>
-                <span className='absolute right-0 p-2'>{noisecontroller*100}%</span>
+ <span className='absolute left-2 text-gray-500'>Noise Amount</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{noisecontroller*100}%</span>
        
  
         
@@ -443,46 +487,11 @@ const handleFileInput = (event) => {
 
 
 
-  {/* Custom Upload*/}
-  
- <h2 className={`text-[11px] sm:text-sm  font-bold ${color ? "text-white" : "text-gray-900"}`} >Custom BG</h2>
-<div className='flex items-center justify-between gap-2 '>
-  <label className='bg-gray-200 flex items-center justify-center w-37 h-18 rounded-xl hover:bg-gray-300'>
-  <div className='flex flex-col '>
-    <input
-      type="color"
-      value={picbackground}
-      onChange={(e) => setPicBackground(e.target.value)}
-      className="w-6 sm:w-8 h-6 sm:h-8  border border-gray-300 cursor-pointer"
-    />
-    <span className='text-xs mt-1'>Color</span>
-  </div>
-  </label>
-  <label className=' w-37 h-18 bg-gray-200 flex items-center justify-center flex-col rounded-xl hover:bg-gray-300'>
-  <div className=''>
-    
-     <input
-      type="file"
-      className="hidden"
-      accept="image/*"
-      onChange={handleFileInput}
-    />
-    <Camera className={`${color ? "text-white" : "text-blue-700"} ml-1`} />
-    <span className='text-xs mt-1'>Image</span>
- 
-    
-  </div>
-   </label>
-  <div className='bg-gray-200 flex items-center justify-center flex-col w-37 h-18 rounded-xl hover:bg-gray-300'  onClick={()=>{setPicBackground("transparent")}}>
-    <div className='bg-[repeating-conic-gradient(#bbb_0_90deg,#ddd_90deg_180deg)] w-5 h-5 rounded-xl'>
-    </div>
-    <span className='text-xs mt-1'>Transparent</span>
-  </div>
-</div>
+
 
       {/* Magic Gradients */}
       <div className='flex flex-col'>
-        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`} >
           Magic Gradients
         </h2>
         <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -493,24 +502,9 @@ const handleFileInput = (event) => {
         </div>
       </div>
 
-    
-
-      {/* Solid Colors */}
-      <div className='flex flex-col'>
-        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
-          Solid Colors
-        </h2>
-        <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
-    [&::-webkit-scrollbar-thumb]:bg-gray-600
-    [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderGradientGrid(solidColors)}
-        </div>
-      </div>
-
-      {/* Regular Gradients */}
+       {/* Regular Gradients */}
     <div className='flex flex-col'>
-        <h2 className={`text-[11px] sm:text-sm   font-bold ${color ? "text-white" : "text-gray-900"}`} >
+        <h2 className={`text-[11px] sm:text-sm   font-bold text-gray-500`} >
          Regular Gradients
         </h2>
         <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -520,10 +514,12 @@ const handleFileInput = (event) => {
           {renderGradientGrid(regularGradients)}
         </div>
       </div>
- 
-      {/* Mesh Gradients */}
+
+
+
+ {/* Mesh Gradients */}
      <div>
-        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`} >
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`} >
          Mesh Gradients
         </h2>
         <div className="rounded-xl overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -537,9 +533,29 @@ const handleFileInput = (event) => {
 
 
 
+      {/* Solid Colors */}
+      <div className='flex flex-col'>
+        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`} >
+          Solid Colors
+        </h2>
+        <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
+    
+    [&::-webkit-scrollbar-thumb]:bg-gray-600
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+          {renderGradientGrid(solidColors)}
+        </div>
+      </div>
+
+   
+ 
+     
+
+
+
+
       {/* Marble Textures */}
       <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
           Marble Textures
         </h2>
         <div className="rounded-xl  dark:bg-gray-800   overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -552,7 +568,7 @@ const handleFileInput = (event) => {
 
       {/* Paper Textures */}
       <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
           Paper Textures
         </h2>
         <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -568,7 +584,7 @@ const handleFileInput = (event) => {
 
       {/* Patterns */}
        <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
           Patterns
         </h2>
         <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -584,7 +600,7 @@ const handleFileInput = (event) => {
 
       {/* Patterns */}
       <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
           Patterns 2
         </h2>
         <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
@@ -598,7 +614,7 @@ const handleFileInput = (event) => {
 
       {/* Background Images */}
       <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>
+  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
          Images
         </h2>
         <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1

@@ -20,7 +20,7 @@ const EditTab = ({
         saturate,setSaturate,
         bgsaturate,setbgSaturate,
         invert,setInvert,
-        bginvert,setBgInvert,color, setColor,fileimg,rotateY,noisecontroller,setNoiseController,setRotateY,canvard,shadowspread,setShadowSpread, perspective, translateZ,setTranslateZ,setPresPective, rotateZ,setRotateZ,setCanvaRd,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,setFileImg,rotateX,setRotateX,picbackground,setPicBackground,previewUrl,brightness,shadowColor, setShadowColor,setBrightness,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,twok,setTwok,fourk,scale,setScale,setFourk,size,setImgsize,tilt,setTilt,frame,setFrame,padding,setPadding,radius,setRadius } = useContext(userContext);
+        bginvert,setBgInvert,color, setColor,fileimg,newdev,setNewDev,rotateY,noisecontroller,setNoiseController,setRotateY,canvard,shadowspread,setShadowSpread, perspective, translateZ,setTranslateZ,setPresPective, rotateZ,setRotateZ,setCanvaRd,framebordervalue,setFrameBorderValue,phoneborder,setPhoneBorder,setFileImg,rotateX,setRotateX,picbackground,setPicBackground,previewUrl,brightness,shadowColor, setShadowColor,setBrightness,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,twok,setTwok,fourk,scale,setScale,setFourk,size,setImgsize,tilt,setTilt,frame,setFrame,padding,setPadding,radius,setRadius } = useContext(userContext);
   const [selectedFrame, setSelectedFrame] = useState('default');
 
 
@@ -63,7 +63,8 @@ const divrotations = [
         name: "1st-rotation",
         rotationY: "rotateY(-5deg)",
         rotationX: "rotateX(3deg)",
-        perspective: "perspective(1000px)",
+    
+        perspective: "perspective(1000px)", 
         translateZ: "translateZ(20px)"
       },
 
@@ -85,10 +86,10 @@ const divrotations = [
 
       "4th-rotation": {
         name: "4th-rotation",
-        rotationY: "rotateY(25deg)",
-        rotationX: "rotateX(-10deg)",
-        perspective: "perspective(800px)",
-        translateZ: "translateZ(40px)"
+        rotationY: "rotateY(30deg)",
+        rotationX: "rotateX(20deg)",
+        perspective: "perspective(600px)",
+        translateZ: "translateZ(30px)"
       },
 
       "5th-rotation": {
@@ -102,7 +103,83 @@ const divrotations = [
   }
 ];
 
-
+const newdevices = [
+    {  // ← Second array item  
+        "name": "iphone", 
+        "top": "1/2",   
+        "left": "1/2",
+        "w": "95%",
+        "h": "96%",
+        "-translate-x-": "1/2",
+        "-translate-y-": "1/2", 
+        "src":"/public/iphone-16.webp", 
+    },
+       {  // ← Second array item  
+        "name": "iphone15", 
+        "top": "1/2",   
+        "left": "1/2",
+        "w": "95%",
+        "h": "96%",
+        "-translate-x-": "1/2",
+        "-translate-y-": "1/2", 
+        "src":"/public/iphone-15-pro-max.webp", 
+    },
+    {  // ← First array item
+        "name": "tv",
+        "top": "48",
+        "left": "23.5",
+        "w": "68.5%",
+        "h": "19%",
+        "-translate-x-": "16",
+        "-translate-y-": "9", 
+        "src":"/public/tv.png" 
+    },
+     
+    {  // ← Second array item
+        "name": "ipadsilver", 
+        "top": "1/2",    
+        "left": "25",
+        "w": "89%",
+        "h": "67%",
+        "-translate-x-": "1/2",
+        "-translate-y-": "1/2", 
+        "src":"/public/ipad-air.webp", 
+    },
+     {  // ← Second array item
+        "name": "ipadpro11", 
+        "top": "1/2",   
+        "left": "25",
+        "w": "89%",
+        "h": "67%",
+        "-translate-x-": "1/2",
+        "-translate-y-": "1/2", 
+        "src":"/public/ipad-mini.webp", 
+    }
+    ,
+   
+    {  // ← Second array item
+        "name": "mackbook16", 
+        "top": "1/2",   
+        "left": "25",
+        "w": "77%",
+        "h": "25%",
+        "-translate-x-": "1/2",
+        "-translate-y-": "1/2", 
+        "src":"/public/macbook-pro-13.webp", 
+    },
+     {  // ← Second array item  
+        "name": "mackbook13", 
+        "top": "1/2",   
+        "left": "25",
+        "w": "82%",
+        "h": "27%",
+        "-translate-x-": "1/2",
+        "-translate-y-": "1/2", 
+        "src":"/public/macbook-pro-16.webp", 
+    },
+    
+   
+]
 
 
 const deviceOptions = [
@@ -171,66 +248,54 @@ const deviceOptions = [
     }, preview: '🔳' },
  
      "mac-os-dark":{ name: 'Mac dark', style: {
-      background: "rgba(255,255,255,0.15)",
-      borderRadius: "0px",
-      boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
-      backdropFilter: "blur(10px)",
-       borderTop: "15px solid rgba(12,0,0,1)", // or use your existing border style
-    borderRight: "0px solid transparent", // or use your existing border style
-    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
-    borderLeft: "0px solid transparent", // or use your existing border style
+    //   background: "rgba(255,255,255,0.15)",
+    //   borderRadius: "0px",
+    //   boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
+    //   backdropFilter: "blur(10px)",
+       borderTopo: "15px solid rgba(12,0,0,1)", // or use your existing border style
+    // borderRight: "0px solid transparent", // or use your existing border style
+    // borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    // borderLeft: "0px solid transparent", // or use your existing border style
       
       textAlign: "center"
     }, preview: '💎' },
       "mac-os-light":{ name: 'Mac light', style: {
-      background: "rgba(255,255,255,0.15)",
-      borderRadius: "0px",
-      boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
-      backdropFilter: "blur(10px)",
-       borderTop: "15px solid white", // or use your existing border style
-    borderRight: "0px solid transparent", // or use your existing border style
-    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
-    borderLeft: "0px solid transparent", // or use your existing border style
+    //   background: "rgba(255,255,255,0.15)",
+    //   borderRadius: "0px",
+    //   boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
+    //   backdropFilter: "blur(10px)",
+       borderTopo: "15px solid white", // or use your existing border style
+    // borderRight: "0px solid transparent", // or use your existing border style
+    // borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    // borderLeft: "0px solid transparent", // or use your existing border style
       
       textAlign: "center"
     }, preview: '💎' },
        "windows-dark":{ name: 'Windows dark', style: {
-      background: "rgba(255,255,255,0.15)",
-      borderRadius: "0px",
-      boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
-      backdropFilter: "blur(10px)",
-       borderTop: "20px solid rgba(12, 0, 0, 1)", // or use your existing border style
-    borderRight: "0px solid transparent", // or use your existing border style
-    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
-    borderLeft: "0px solid transparent", // or use your existing border style
+    //   background: "rgba(255,255,255,0.15)",
+    //   borderRadius: "0px",
+    //   boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
+    //   backdropFilter: "blur(10px)",
+       borderTopo: "20px solid rgba(12, 0, 0, 1)", // or use your existing border style
+    // borderRight: "0px solid transparent", // or use your existing border style
+    // borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    // borderLeft: "0px solid transparent", // or use your existing border style
       
       textAlign: "center"
     }, preview: '💎' },
        "windows-light":{ name: 'Windows light', style: {
-      background: "rgba(255,255,255,0.15)",
-      borderRadius: "0px",
-      boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
-      backdropFilter: "blur(10px)",
-       borderTop: "20px solid white", // or use your existing border style
-    borderRight: "0px solid transparent", // or use your existing border style
-    borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
-    borderLeft: "0px solid transparent", // or use your existing border style
+    //   background: "rgba(255,255,255,0.15)",
+    //   borderRadius: "0px",
+    //   boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
+    //   backdropFilter: "blur(10px)",
+       borderTopo: "20px solid white", // or use your existing border style
+    // borderRight: "0px solid transparent", // or use your existing border style
+    // borderBottom: "0px solid rgba(12, 0, 0, 1)", // thick bottom only
+    // borderLeft: "0px solid transparent", // or use your existing border style
       
       textAlign: "center"
     }, preview: '💎' },
-       "Bottom":{ name: 'Bottom', style: {
-      background: "rgba(255,255,255,0.15)",
-      borderRadius: "0px",
-      boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
-      backdropFilter: "blur(10px)",
-         borderTop: "0px solid transparent", // or use your existing border style
-    borderRight: "0px solid transparent", // or use your existing border style
-    borderBottom: "10px solid rgba(12, 0, 0, 1)", // thick bottom only
-    borderLeft: "0px solid transparent", // or use your existing border style
-     
-
-      textAlign: "center"
-    }, preview: '💎' },
+    
   };
 
 
@@ -338,12 +403,12 @@ const changepadding=(value)=>{
       <div className=" flex align-center justify-around gap-2">
         
         <div className="space-y-2 flex-1">
-           <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+           <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${scale*50}%` }}>
-       <div className="p-3"></div>
- <span className='absolute left-2'>Scale</span>
-                <span className='absolute right-0 p-2'>{scale*100}%</span>
+          <div  className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${scale*50}%` }}>
+       <div className="p-3 "></div>
+ <span className='absolute left-2 text-gray-500'>Scale</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{Math.round(scale*100)}%</span>
        
  
         
@@ -380,12 +445,12 @@ const changepadding=(value)=>{
 
 {/* {Radius} */}
           <div className='flex align-center justify-around gap-2'>
-             <div className='bg-gray-300 relative rounded-[5px] flex-1' > 
+             <div className={`${(color ? "bg-[black]":"bg-gray-100" )} relative rounded-[5px] flex-1`} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${radius}%` }}>
+          <div  className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${radius}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Round</span>
-                <span className='absolute right-0 p-2'>{radius}%</span>
+ <span className='absolute left-2 text-gray-500'>Round</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{radius}%</span>
        
  
         
@@ -415,7 +480,7 @@ const changepadding=(value)=>{
         <div className="bg-gray-300 rounded-lg p-1">
         <Joystick
           size={25}
-          baseColor="gray"
+          baseColor="#6b7280"
           stickColor="black"
           move={handleMove}
           stop={handleStop}
@@ -430,8 +495,8 @@ const changepadding=(value)=>{
    {/* Frame Style */}
       <div className="space-y-3 mt-10">
       
-        <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>FRAMES</h3>
-        <div className=" flex pb-4 gap-5  overflow-y-scroll 
+        <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>FRAMES</h3>
+        <div className=" flex  gap-5  overflow-y-scroll 
       [&::-webkit-scrollbar]:h-2 w-[100]
     
     [&::-webkit-scrollbar-thumb]:bg-gray-600
@@ -439,16 +504,54 @@ const changepadding=(value)=>{
   text-center">
          {Object.entries(frameOptions).map(([id, frame]) => (
           <>
-          <div className='flex flex-col'>
- <div className='basis-2/3 p-2 bg-gray-200' onClick={() =>{ handleframe(id);setPhoneBorder(false);setFrameBorderValue(true)}}>
- <button
-    key={id}
-    className={`p-4 text-center    transition-all duration-200 hover:scale-105 ${
+          <div className='flex flex-col '>
+            <div className='bg-gray-500 p-2 relative w-[60px] h-[60px] overflow-hidden'>
+              {
+  frame.name==="Mac dark" ?<>
+
+  <div className='absolute bg-gray-900 w-15 h-2' style={{top:14,zIndex:20,left:10}}>
+  <div className='absolute bg-red-900 w-1 h-1' style={{top:3,zIndex:30,left:2}}></div>
+  <div className='absolute bg-blue-900 w-1 h-1' style={{top:3,zIndex:30,left:7}}></div>
+  <div className='absolute bg-green-900 w-1 h-1' style={{zIndex:30,top:3,left:4}}></div>
+  <span className='text-[7px] absolute text-white ' style={{top:-1 ,left:20}}>File</span>
+  </div>
+   </>  : ""
+}
+{
+  frame.name==="Mac light"  ? <>
+  <div className='absolute bg-white w-15 h-2' style={{top:14,zIndex:20,left:10}}>
+  <div className='absolute bg-red-900 w-1 h-1' style={{top:3,zIndex:30,left:1}}></div>
+  <div className='absolute bg-blue-900 w-1 h-1' style={{top:3,zIndex:30,left:7}}></div>
+  <div className='absolute bg-green-900 w-1 h-1' style={{zIndex:30,top:3,left:4}}></div>
+  <span className='text-[7px] absolute ' style={{top:-1 ,left:20}}>File</span>
+  </div>
+  </> : ""
+}
+{
+  frame.name==="Windows light"  ? <>
+  <div className='absolute bg-white w-15 h-2' style={{top:14,zIndex:20,left:10}}>
+ <span className='text-[7px] absolute ' style={{top:-1 ,left:1}}>File</span>
+  </div>
+  </> : ""
+}
+{
+  frame.name==="Windows dark"  ? <>
+  <div className='absolute bg-gray-900 w-15 h-2' style={{top:14,zIndex:20,left:10}}>
+ <span className='text-[7px] text-white absolute ' style={{top:-1 ,left:1}}>File</span>
+  </div>
+  </> : ""
+}
+ <div               key={id} onClick={() =>{ handleframe(id);setPhoneBorder(false);setFrameBorderValue(true),setNewDev("")}}
+
+    
+    className={` overflow-hidden absolute    w-14 h-13   text-center p-2 transition-all duration-200 hover:scale-105 ${
       selectedFrame === id
         ? 'border-blue-500 bg-blue-50 text-blue-700'
-        : 'border-gray-200 bg-gray-400 hover:border-gray-300'
+        : 'border-gray-200 bg-gray-100 hover:border-gray-300'
     }`}
  style={{
+         right:-5,
+         bottom:-6,
           // Apply all border properties only if they exist in frame.style
           ...(frame.style?.border && { border: frame.style.border }),
           ...(frame.style?.borderTop && { 
@@ -474,18 +577,12 @@ const changepadding=(value)=>{
           ...(frame.style?.backdropFilter && { backdropFilter: frame.style.backdropFilter }),
         }}
 
-    
-    
-  >
-    
-
-    
-   
- 
-  </button>
+>
    
           </div>
- <div className="text-[5px]  sm:text-[11px] font-bold mt-1">{frame.name}</div> 
+            </div>
+
+ <div className="text-[5px]  sm:text-[11px] text-gray-500 font-bold mt-1">{frame.name}</div> 
           </div>
          
 
@@ -665,46 +762,30 @@ const changepadding=(value)=>{
 
 
 
-      {/* Device Frame Selection */}
+   
+ {/* Device Frame Selection */}
       <div className="space-y-3 mt-2">
       
-        <h3   className={`text-[11px] sm:text-sm font-bold ${color ? "text-white" : "text-gray-900"}`}>Device Frame</h3>
-        <div className="space-y-3 ">
-        {deviceOptions.map((category) => (
-  <div key={category.category} className="space-y-2">
-    {/* <label className="text-[9px] sm:text-xs font-medium text-gray-900  tracking-wide">
-      {category.category}
-    </label> */}
-   <div className="flex gap-4 items-center justify-start overflow-x-auto overflow-y-hidden  [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-full">
-  {Object.entries(category.devices).map(([id, device]) => (
-    <button
-      key={id}
-      className="h-20 w-24 flex-shrink-0 flex flex-col rounded-md text-left transition-transform duration-200 hover:scale-105 origin-center"
-      onClick={() => {onDeviceChange(id);setPhoneBorder(true);setRadius(10);setFrameBorderValue(false)}}
-    >
-      <div className="flex-1 overflow-hidden">
-        <img src={device.src} alt={device.name} className="h-full w-full object-contain" />
+        <h3   className={`text-[11px] sm:text-sm font-bold text-gray-500`}>Device Frame</h3>
+<div className='flex gap-4 items-center justify-start overflow-x-auto overflow-y-hidden  [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-full'>
+  {
+   newdevices?.map((item,index)=>(
+    <>
+ <button className='h-20 w-24 flex-shrink-0 flex flex-col rounded-md text-left transition-transform duration-200 hover:scale-105 origin-center' onClick={()=>{setNewDev(item),setFrame("")}}>
+    <div className="flex-1 overflow-hidden p-1">
+        <img src={item.src} alt={item.name} className={`h-full ${item.name==="tv" ? 'bg-gray-300' : ""} w-full object-contain`} />
       </div>
       <span className="text-xs font-bold text-gray-500 mb-3 text-center truncate">
-        {device.name}
+        {item.name}
       </span>
-      <div>
-        
-      </div>
-    </button>
-    
-  ))}
+  </button>
+   
+   
+    </>
+   ))
+  }
 </div>
-
-    
-  </div>
-))}
-
-        </div>
-      </div>
-
-
-
+</div>
 
 
 
@@ -733,7 +814,7 @@ const changepadding=(value)=>{
     {/* Rotations */}
       <div className="space-y-3 mt-4">
       
-        <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold ${color ? "text-white" : "text-gray-900"}`}>TRANSFORMS</h3>
+        <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>TRANSFORMS</h3>
         <div className=" flex pb-4 gap-5  overflow-y-scroll 
       [&::-webkit-scrollbar]:h-2 w-[100]
     
@@ -753,9 +834,9 @@ const changepadding=(value)=>{
     .join(" ");
 
   return (
-    <div key={key} className="border border-gray-400 p-3"  onClick={() =>{setRotateZ( rotationObj.rotationZ),setRotateX(rotationObj.rotationX),setRotateY(rotationObj.rotationY),setPresPective(rotationObj.perspective),setTranslateZ(rotationObj.translateZ)}}> 
+    <div key={key} className="border bg-gray-300 border-gray-400 p-3"  onClick={() =>{setRotateZ( rotationObj.rotationZ),setRotateX(rotationObj.rotationX),setRotateY(rotationObj.rotationY),setPresPective(rotationObj.perspective),setTranslateZ(rotationObj.translateZ)}}> 
       <button
-        className={`p-4 text-center h-1 w-1 transition-all duration-200 hover:scale-105 ${
+        className={`p-4 text-center h-1 w-1 bg-white transition-all duration-200 hover:scale-105 ${
           selectedFrame === key
             ? "border-blue-500 bg-blue-50 text-blue-700"
             : "border-gray-200 bg-gray-400 hover:border-gray-300"
@@ -795,15 +876,15 @@ const changepadding=(value)=>{
 
 
 
- <h3   className={`text-[11px] sm:text-sm  mb-1 mt-10 font-bold ${color ? "text-white" : "text-gray-900"}`}>SHADOW</h3>
+ <h3   className={`text-[11px] sm:text-sm  mb-1 mt-10 font-bold text-gray-500`}>SHADOW</h3>
 {/* {Padding} */}
           
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${shadowspread*2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${shadowspread*2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Shadow Spread</span>
-                <span className='absolute right-0 p-2'>{shadowspread}%</span>
+ <span className='absolute left-2 text-gray-500'>Shadow Spread</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{shadowspread}%</span>
        
  
         
@@ -881,15 +962,15 @@ const changepadding=(value)=>{
 
 
 
- <h3   className={`text-[11px] sm:text-sm  mb-1 mt-10 font-bold ${color ? "text-white" : "text-gray-900"}`}>POSITIONS</h3>
+ <h3   className={`text-[11px] sm:text-sm  mb-1 mt-10 font-bold text-gray-500`}>POSITIONS</h3>
 {/* {Padding} */}
           
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${padding}%` }}>
+          <div className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}    style={{ width: `${padding}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Padding</span>
-                <span className='absolute right-0 p-2'>{padding}%</span>
+ <span className='absolute left- text-gray-500'>Padding</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{padding}%</span>
        
  
         
@@ -918,12 +999,12 @@ const changepadding=(value)=>{
 
 {/* {Rotation} */}
           
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `}> 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${((tilt + 180) / 360) * 100}%` }}>
+          <div  className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}    style={{ width: `${((tilt + 180) / 360) * 100}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Rotate</span>
-                <span className='absolute right-0 p-2'>{tilt}%</span>
+ <span className='absolute left-2 text-gray-500'>Rotate</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{tilt}%</span>
        
  
         
@@ -1021,7 +1102,7 @@ const changepadding=(value)=>{
       </div> */}
 
        
-<hr className='bg-gray-200 h-[1px] mt-6'  />
+<hr  className='text-gray-200'/>
 
 
 
@@ -1062,7 +1143,7 @@ const changepadding=(value)=>{
       <button 
         onClick={handleReset}
  
-        className={`w-full py-1 mt-8 px-2 border border-gray-300 rounded-lg text-[11px] sm:text-md font-medium ${color ? "text-white" : "text-gray-700"}   hover:bg-gray-600 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out transition-colors`}
+        className={`w-full py-1 mt-8 px-2 border border-gray-300 rounded-lg text-[11px] sm:text-md font-medium  ${(color ? "text-white":"text-gray-500" )} ${(color ? "bg-gray-600":"bg-gray-100" )}  hover:text-white hover:bg-gray-700 hover:cursor-pointer  transition-all duration-300 ease-in-out transition-colors`}
       >
         Reset All Changes
       </button>

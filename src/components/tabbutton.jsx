@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { userContext } from '../App';
 
 const TabButton = ({ id, label, icon, isActive, onClick }) => {
+  const {color}=useContext(userContext);
   return (
     <button
       onClick={() => onClick(id)}
       className={`flex-1 flex flex-col items-center justify-center py-3 px-2 rounded-lg transition-all duration-200 ${
         isActive
-          ? 'bg-blue-500 text-white shadow-lg'
-          : 'bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-500'
+          ? `  ${color ? "bg-gray-600"  : "bg-white"} ${color ? "text-white"  : "text-[#1a1a1a]"} shadow-lg`
+          : `${color ? "bg-gray-900"  : "bg-gray-500"}  ${color ? "text-gray-600"  : "text-gray-300"}    dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-500`
       }`}
     >
-      <div className="mb-1">{icon}</div>
-      <span className="text-xs font-medium">{label}</span>
+      <div className={` ${color ? "text-white"  : "text-[#1a1a1a]"}  mb-1`}>{icon}</div>
+      <span className= {` ${color ? "text-white"  : "text-[#1a1a1a]"} text-xs font-medium`}>{label}</span>
     </button>
   );
 };

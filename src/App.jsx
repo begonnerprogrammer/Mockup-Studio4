@@ -30,18 +30,19 @@ const [canvard,setCanvaRd]=useState(0);
     const [radius,setRadius]=useState(10);
       const [sepia,setSepia]=useState(0);
      const [canvasepia,setCanvaSepia]=useState(0);
+     const [newdev,setNewDev]=useState("");
     const [frame,setFrame]=useState({
       name: 'Default',style:'border:none', preview: '⬜'
     });
 
-const [padding,setPadding]=useState(10);
+const [padding,setPadding]=useState(0);
 const [contrast,setContrast]=useState(100);
 const [canvacontrast,setCanvaContrast]=useState(100);
 const [framebordervalue,setFrameBorderValue]=useState(false);
 const [layoutborder,setLayoutBorder]=useState("");
 const [picopacity,setPicOpacity]=useState(100);
 const [canvaopacity,setCanvaOpacity]=useState(100);
-const [overlayopacity,setOverlayOpacity]=useState(100);
+const [overlayopacity,setOverlayOpacity]=useState(30);
 const [overlay,setOverlay]=useState('');
   const [shadowColor, setShadowColor] = useState('#000000');
     const [picbackground,setPicBackground]=useState("");
@@ -84,6 +85,7 @@ const [overlay,setOverlay]=useState('');
         invert,setInvert,
         bginvert,setBgInvert,
         overlay,setOverlay,
+        newdev,setNewDev,
         color, setColor, 
         framebordervalue, setFrameBorderValue,
         phoneborder, setPhoneBorder,
@@ -123,9 +125,9 @@ const [overlay,setOverlay]=useState('');
        exportbg,setExportBg,
       }}
     >
-      <div className={`min-h-screen ${color ? "bg-gray-500" : "bg-gray-200"} transition-colors duration-200`}>
+      <div className={`min-h-screen ${color ? "bg-[#1a1a1a]" : "bg-[#f5f5f5]"} transition-colors duration-200`}>
         <Header/>
-        <main className="flex flex-col sm:flex-col   md:flex-col  lg:flex-row  mt-0 sm:mt-5 h-[calc(100vh-100px)]">
+        <main className="flex flex-col  sm:flex-col    md:flex-col  lg:flex-row  mt-0 sm:mt-5 h-[calc(100vh-100px)]">
           <Routes>
           
             <Route path="/" element={

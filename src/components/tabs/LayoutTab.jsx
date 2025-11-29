@@ -3,79 +3,242 @@ import { Layers, Share as Shadow, Maximize, Grid } from 'lucide-react';
 import { userContext } from '../../App';
  
 const LayoutTab = () => {
-  const { color, setColor,radius,phoneborder,layoutborder,setLayoutBorder,exportbg,setExportBg,rotateX,setRotateX,rotateY,setRotateY,rotateZ,setRotateZ,translateZ,setTranslateZ,setPhoneBorder,setRadius,padding,setPadding,picbackground,tilt, setTilt,setPicBackground,scale,setScale,size,setImgsize,shadowColor,previewUrl,setPreviewUrl, perspective,setPresPective, setShadowColor } = useContext(userContext);
+ const {  grayscale,setGrayScale,
+        bggrayscale,setBgGrayScale,
+        huerotate,setHuerotate,
+        bghuerotate,setBgHuerotate,
+        saturate,setSaturate,
+        bgsaturate,setbgSaturate,
+        invert,setInvert,
+        bginvert,setBgInvert, color,overlay,setOverlay, setColor,padding,exportbg,setExportBg,layoutborder,overlayopacity,setOverlayOpacity,setLayoutBorder,noisecontroller,setNoiseController,picbackground,canvard,shadowspread,setShadowSpread,canvasepia,perspective,setPresPective, translateZ,setTranslateZ,  rotateZ,setRotateZ,setCanvaSepia,canvabrightness,setCanvaBrightness,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur, canvaopacity,setCanvaOpacity, sepia,setSepia,  contrast,setContrast, blur,setBlur,setCanvaRd,framebordervalue,setFrameBorderValue,rotateX,phoneborder,setPhoneBorder,setRotateX,rotateY,setRotateY,setPicBackground,radius,setRadius,setPadding,fileimg,shadowColor, setShadowColor,setFileImg,brightness,setBrightness,previewUrl,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,size,setImgsize,scale,setScale,tilt,setTilt,frame,setFrame } = useContext(userContext);
   const layoutPresets = [
-   
+    
      {
-      id: '1',
-      name: 'layout1',
-      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-      bg:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      id: '6',
+      name: 'layout6',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/layout-imgs/178.webp',
       settings: {
         rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
         rotateZ:"rotateZ(0deg)",
       },
+       border: "none",
+        borderRadius: "8",
+    },
+ {
+      id: '11',
+      name: 'layout11',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/layout-imgs/406.webp',
+      settings: {
+        rotateX:"rotateX(14deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(0deg)",
+      },
+       border: "none",
+        borderRadius: "8",
+    },
+     {
+      id: '8',
+      name: 'layout8',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/layout-imgs/Dusk.webp',
+      settings: {
+         rotateY:"rotateY(0deg)",
+        rotateX:"rotateX(14deg)",
+        rotateZ:"rotateZ(0deg)",
+      },
+        borderTop: "8px solid white",
+    borderRight: "8px solid white", 
+    borderBottom: "24px solid white",
+    borderLeft: "8px solid white", 
+      borderRadius: "8",
       
     },
+    
+    
     {
-      id: '2',
-      name: 'layout2',
-      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-      bg: 'linear-gradient(135deg, rgba(0,0,0,0.7), rgba(22, 22, 26, 1), rgba(18, 19, 18, 0.77))',
+      id: '9',
+      name: 'layout9',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/overlay1.webp',
       settings: {
-       rotateX:"rotateX(45deg)",
-        rotateY:"rotateY(0deg)",
-        rotateZ:"rotateZ(-45deg)",
-       perspective: "perspective(1200px)",
-        translateZ: "translateZ(40px)"
+          perspective: "perspective(1200px)",
+         rotateY:"rotateY(0deg)",
+        rotateX:"rotateX(-10deg)",
+        rotateZ:"rotateZ(45deg)",
+        translateZ: "translateZ(-40px)"
       },
-
-
-
-
-
-
+         borderTop: "8px solid white",
+    borderRight: "8px solid white", 
+    borderBottom: "24px solid white",
+    borderLeft: "8px solid white",
+     borderRadius: "8",
+      overlay:"https://www.picbolt.co/api/proxy/asset?path=overlay-shadows%2F088.webp",
+      
+    },
+   {
+      id: '10',
+      name: 'layout10',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+           bg:'/public/overlay2.webp',
+      settings: {
+          perspective: "perspective(1200px)",
+         rotateY:"rotateY(0deg)",
+        rotateX:"rotateX(-10deg)",
+        rotateZ:"rotateZ(45deg)",
+        translateZ: "translateZ(-40px)"
+        
+      },
+        
+     borderRadius: "8",
+     overlay:'https://www.picbolt.co/api/proxy/asset?path=overlay-shadows%2F002.webp',
       
     },
      {
-      id: '3',
-      name: 'layout2',
+      id: '5',
+      name: 'layout5',
       src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-      bg:"radial-gradient(at 27% 37%, hsla(215,98%,61%,1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(125,98%,72%,1) 0px, transparent 50%)",
+      bg: '/public/patterns/p-9c.jpeg',
       settings: {
         rotateX:"rotateX(0deg)",
-        rotateY:"rotateY(40deg)",
-        rotateZ:"rotateZ(18deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(0deg)",
       },
-      
+      border:"6px solid black", borderRadius: "8",
     },
-     {
+    {
       id: '4',
-      name: 'layout2',
-      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-      bg:"https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg",
+      name: 'layout4',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:"/public/patterns/p-1.jpeg",
       settings: {
          rotateX:"rotateX(0deg)",
         rotateY:"rotateY(0deg)",
         rotateZ:"rotateZ(0deg)",
       },
         border: "2px solid #3498db",
-      
+       borderRadius: "8",
     },
-     {
-      id: '5',
-      name: 'layout2',
-      src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-      bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    {
+      id: '1',
+      name: 'layout1',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/layout-imgs/411.webp',
       settings: {
-        rotateX:"rotateX(0deg)",
+        rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
         rotateZ:"rotateZ(0deg)",
       },
-      border:"6px solid black"
+       border: "none",
+        borderRadius: "8",
     },
-   
+     
+    {
+      id: '7',
+      name: 'layout7',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/layout-imgs/02.webp',
+      settings: {
+        rotateX:"rotateX(14deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(0deg)",
+      },
+       border: "none",
+        borderRadius: "8",
+    },
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+      id: '2',
+      name: 'layout2',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg: '/public/layout-imgs/test12.webp',
+      settings: {
+         perspective: "perspective(1200px)",
+         rotateY:"rotateY(0deg)",
+       rotateX:"rotateX(0deg)",
+       
+        rotateZ:"rotateZ(0deg)",
+      
+        translateZ: "translateZ(40px)"
+      },
+ 
+
+borderTop: "8px solid rgba(255, 255, 255, 0.2)",
+    borderRight: "8px solid rgba(255, 255, 255, 0.2)", 
+    borderBottom: "8px solid rgba(255, 255, 255, 0.2)",
+    borderLeft: "8px solid rgba(255, 255, 255, 0.2)",
+ borderRadius: "8",
+
+
+      
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     {
+      id: '3',
+      name: 'layout3',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:"/public/layout-imgs/test30.webp",
+      settings: {
+        rotateX:"rotateX(0deg)",
+        rotateY:"rotateY(10deg)",
+        rotateZ:"rotateZ(-18deg)",
+      },
+       border: "none",
+        borderRadius: "8",
+    },
+     
+    
+    {
+      id: '12',
+      name: 'layout12',
+      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
+      bg:'/public/layout-imgs/test62.webp',
+      settings: {
+        rotateX:"rotateX(14deg)",
+        rotateY:"rotateY(0deg)",
+        rotateZ:"rotateZ(10deg)",
+      },
+       border: "none",
+        borderRadius: "8",
+    },
     
     // Add other presets here if needed
   ];
@@ -83,14 +246,60 @@ const LayoutTab = () => {
 const onchangeradius=(value)=>{
 setRadius(value);
 }
+
+  const handleReset = (preset) => {
+    setPreviewUrl(preset.src),
+    setPicBackground(preset.bg),
+     setPresPective(preset.settings.perspective),
+         setRotateY(preset.settings.rotateY),
+    setRotateX(preset.settings.rotateX),
+    setRotateZ(preset.settings.rotateZ),
+    setTranslateZ(preset.settings.translateZ),
+    setLayoutBorder(preset),
+    setNoiseController(0);
+    setPresPective(preset.settings.perspective),
+   setBrightness(100);
+    setShadowColor('#000000');
+   setPadding(20);
+   setOverlay('');
+   setFrame( {name: 'Default',style:'border:none', preview: '⬜'});
+  setTilt(0);
+  setScale(1);
+setOverlay(preset.overlay);
+
+  setFileImg(null);
+  setColor(false);
+  
+  setDevice("");
+  
+ 
+ 
+setRadius(0);
+setTilt(0);
+setPhoneBorder(false);
+  };
+
 console.log("export bg ",exportbg)
   return (
     <div className="space-y-6">
       {/* Layout Presets */}
-      <div className="space-y-8 mt-10">
-          
-        <div className="flex flex-col gap-9 max-h-100" >
+    
+  
+       
           {layoutPresets.map((preset) => (
+           
+            
+              <div className="relative space-y-8 mt-10">
+                       {preset.overlay && (
+  <img
+    src={preset.overlay}
+    className="absolute w-full h-full  z-100 pointer-events-none"
+    style={{opacity: overlayopacity / 100,}}
+    alt=""
+    crossOrigin="anonymous"
+  />
+)}
+             <div className="z-100 flex flex-col gap-9 max-h-100" onClick={()=>{handleReset(preset)}} >
             <button
               key={preset.id}
               
@@ -101,29 +310,47 @@ console.log("export bg ",exportbg)
                 preset.bg : 
                 `url('${preset.bg}')`, backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',}} className=" p-12 border border-gray-200 dark:border-gray-600 rounded-lg text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 group"
+    backgroundRepeat: 'no-repeat',
+    
+  
+    }}
+    
+     className=" p-12  rounded-lg text-left transition-all duration-200  group"
     >   
-      <div className="flex items-center"  onClick={() =>{setPreviewUrl(preset.src),setPicBackground(preset.bg),setRotateX(preset.settings.rotateX),setRotateY(preset.settings.rotateZ),(preset.settings.translateZ),setLayoutBorder(preset.border),setPresPective(preset.settings.perspective)}}>
+      <div className="flex items-center"  style={{
+    ...(preset.boxShadow && { boxShadow: preset.boxShadow }),   // ✅ correct place
+  }}>
  
-             <img src={`${preset.src}`} alt="" className='w-50 h-50' style={{
-                ...(preset.border && { border: preset.border.border || preset.border }),
-              
+             <img src={`${preset.src}`} alt=""   className="w-[100%] h-[60%] rounded-sm" 
+style={{
+  ...(preset.borderTop && { borderTop: preset.borderTop }),
+  ...(preset.borderRight && { borderRight: preset.borderRight }),
+  ...(preset.borderBottom && { borderBottom: preset.borderBottom }),
+  ...(preset.borderLeft && { borderLeft: preset.borderLeft }),
+
+  
+
+  ...(preset.border && { border: preset.border.border || preset.border }),
+ perspective: preset.settings?.perspective || 'none', // if available
   transform: [
-   preset.settings.rotateX,
-     preset.settings.rotateY,
-      preset.settings.rotateZ,
-      preset.settings.perspective,
-      preset.settings.translateZ,
-      preset.settings.perspective,
-  ].filter(Boolean).join(" ")
+    preset.settings?.rotateX,
+    preset.settings?.rotateY,
+    preset.settings?.rotateZ,
+    preset.settings?.translateZ,
+  ].filter(Boolean).join(' '),
+  
 }}
+
+
  />
               
               </div>
             </button>
+              </div>
+            </div>
           ))}
-        </div>
-      </div>
+        
+    
 
       {/* Manual Controls
       <div className="space-y-8 mt-22">

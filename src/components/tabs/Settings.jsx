@@ -141,8 +141,8 @@ setSepia(value);
     <div className="space-y-6">
       {/* Upload Section */}
       <div className="space-y-3 ">
-        <h3 className={`text-[8px] sm:text-sm  font-bold ${color ? "text-white" : "text-gray-900"}`}>Upload Screenshot</h3>
-        <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+        <h3 className={`text-[8px] sm:text-sm  font-bold text-gray-500`}>Upload Screenshot</h3>
+        <label className={` ${color ? "  bg-[#303030]" : " bg-[#dedede]"} flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer hover:bg-gray-100  transition-colors duration-200`}>
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <Upload className="w-6 sm:w-8 h-6 sm:h-8  mb-2 text-gray-400 dark:text-gray-500" />
             <p className="text-[11px] sm:text-sm text-gray-500 dark:text-gray-400">Click to upload</p>
@@ -328,7 +328,7 @@ setSepia(value);
 
              {/* Transformations */}
       <div className="space-y-2 ">
-       <h3   className={`text-[11px] sm:text-sm  mb-2 font-bold ${color ? "text-gray-100" : "text-gray-900"}`}>FILTERS</h3>
+       <h3   className={`text-[11px] sm:text-sm  mb-2 font-bold text-gray-500`}>FILTERS</h3>
       <div style={{ display: "flex" }}>
       
       <div
@@ -336,13 +336,13 @@ setSepia(value);
         style={{
           padding: "4px",
           border: "1px solid gray",
-          background: selected === "one" ? "#9ca3af" : "#d1d5db",
+          background: selected === "one" ? (color ? "#303030":"#dedede" )  : "transparent",
           borderTopLeftRadius:"4px",
           borderBottomLeftRadius:"4px",
           cursor: "pointer",
           color:selected === "one" ?  (color ? "white":"black" ) : "#4b5563",
         }}
-        className='text-sm'
+        className='text-sm font-semibold '
       >
        FORGROUND
       </div>
@@ -352,13 +352,13 @@ setSepia(value);
         style={{
           padding: "4px",
           border: "1px solid gray",
-          background: selected === "two" ?  "#9ca3af" : "#d1d5db",
+          background: selected === "two" ?  (color ? "#303030":"#dedede" ) : "transparent",
           cursor: "pointer",
-          color:selected === "two" ?  (color ? "white":"black" ) : "#4b5563",
+          color:selected === "two" ?  (color ? "white":"text-gray-500" ) : "#4b5563",
           borderTopRightRadius:"4px",
           borderBottomRightRadius:"4px",
         }}
-         className='text-sm'
+         className='text-sm font-semibold'
       >
       BACKGROUND
       </div>
@@ -383,12 +383,13 @@ setSepia(value);
           </div>
 
 {/* {opacity} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs p-1  rounded-[5px] flex items-center justify-between'  style={{ width: `${picopacity/1}%` }}>
-       <div className="p-3"></div>
- <span className='absolute left-2'>Opacity</span>
-    <span className='absolute right-0 p-2'>{picopacity}%</span>
+          <div  className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${picopacity/1}%` }}>
+       <div className="p-3 "></div>
+       
+ <span className='absolute left-2 text-gray-500'>Opacity</span>
+    <span className='absolute right-0 p-2 text-gray-500'>{picopacity}%</span>
        
  
         
@@ -407,7 +408,7 @@ setSepia(value);
             value={picopacity}
             onChange={(e) => opacitychange(Number(e.target.value))}
           
-            className="w-full opacity-1 absolute bottom-2 h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+            className="w-full opacity-1 absolute bottom-2 h-3  rounded-lg appearance-none cursor-pointer slider"
           />
         
            
@@ -424,12 +425,12 @@ setSepia(value);
 
 
 
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${brightness/1}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${brightness/1}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Brightness</span>
-                <span className='absolute right-0 p-2'>{brightness}%</span>
+ <span className='absolute left-2 text-gray-500'>Brightness</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{brightness}%</span>
        
  
         
@@ -469,12 +470,12 @@ setSepia(value);
         {/*Blur */}
  <div className="space-y-4 ">
           
-          <div className='bg-gray-300 relative rounded-[5px]' > 
+          <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${blur*10}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${blur*10}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Blur</span>
-                <span className='absolute right-0 p-2'>{blur}%</span>
+ <span className='absolute left-2 text-gray-500'>Blur</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{blur}%</span>
        
  
         
@@ -506,12 +507,12 @@ setSepia(value);
  <div className="space-y-4 ">
           
         
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(contrast/1)/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${(contrast/1)/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Contrast</span>
-                <span className='absolute right-0 p-2'>{contrast}%</span>
+ <span className='absolute left-2 text-gray-500'>Contrast</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{contrast}%</span>
        
  
         
@@ -543,12 +544,12 @@ setSepia(value);
  <div className="space-y-4 ">
           
         
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(sepia/1)/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${(sepia/1)/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Sepia</span>
-                <span className='absolute right-0 p-2'>{sepia}%</span>
+ <span className='absolute left-2 text-gray-500'>Sepia</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{sepia}%</span>
        
  
         
@@ -577,12 +578,12 @@ setSepia(value);
 
 
 {/* {grayscale} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${grayscale/1/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${grayscale/1/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Gray Scale</span>
-                <span className='absolute right-0 p-2'>{grayscale}%</span>
+ <span className='absolute left-2 text-gray-500'>Gray Scale</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{grayscale}%</span>
        
  
         
@@ -610,12 +611,12 @@ setSepia(value);
           </div>
 
 {/* {saturate} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${saturate/1/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${saturate/1/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Saturated</span>
-                <span className='absolute right-0 p-2'>{saturate}%</span>
+ <span className='absolute left-2 text-gray-500'>Saturated</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{saturate}%</span>
        
  
         
@@ -642,12 +643,12 @@ setSepia(value);
   
           </div>
 {/* {invert} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `}> 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${invert/1/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${invert/1/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Invert</span>
-                <span className='absolute right-0 p-2'>{invert}%</span>
+ <span className='absolute left-2 text-gray-500'>Invert</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{invert}%</span>
        
  
         
@@ -674,12 +675,12 @@ setSepia(value);
   
           </div>
 {/* {huerotate} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `}> 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${huerotate / 360 * 100}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${huerotate / 360 * 100}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>HueRotate</span>
-                <span className='absolute right-0 p-2'>{huerotate}%</span>
+ <span className='absolute left-2 text-gray-500'>HueRotate</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{huerotate}%</span>
        
  
         
@@ -719,12 +720,12 @@ setSepia(value);
 
 
  {/* {Canva Radius} */}
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvard/1}%` }}>
+          <div  className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${canvard/1}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Radius</span>
-                <span className='absolute right-0 p-2'>{canvard}%</span>
+ <span className='absolute left-2 text-gray-500'>Radius</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvard}%</span>
        
  
         
@@ -751,12 +752,12 @@ setSepia(value);
   
           </div>
  {/* {Canva Opacity} */}
-<div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+<div  className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvaopacity}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`} style={{ width: `${canvaopacity}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Opacity</span>
-                <span className='absolute right-0 p-2'>{canvaopacity}%</span>
+ <span className='absolute left-2 text-gray-500'>Opacity</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvaopacity}%</span>
        
  
         
@@ -783,12 +784,12 @@ setSepia(value);
   
           </div>
  {/* {Canva Blur} */}
-<div className='bg-gray-300 relative space-y-4  rounded-[5px]' > 
+<div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvablur}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${canvablur}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Blur</span>
-                <span className='absolute right-0 p-2'>{canvablur}%</span>
+ <span className='absolute left-2 text-gray-500'>Blur</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvablur}%</span>
        
  
         
@@ -815,12 +816,12 @@ setSepia(value);
   
           </div>
  {/* {Canva Contrast} */}
-<div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+<div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(canvacontrast/1)/2}%`}}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${(canvacontrast/1)/2}%`}}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Contrast</span>
-                <span className='absolute right-0 p-2'>{canvacontrast}%</span>
+ <span className='absolute left-2 text-gray-500'>Contrast</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvacontrast}%</span>
        
  
         
@@ -848,12 +849,12 @@ setSepia(value);
           </div>
 
  {/* {Canva Brightness} */}
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvabrightness/1}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${canvabrightness/1}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Brightness</span>
-                <span className='absolute right-0 p-2'>{canvabrightness}%</span>
+ <span className='absolute left-2 text-gray-500'>Brightness</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvabrightness}%</span>
        
  
         
@@ -892,12 +893,12 @@ setSepia(value);
         </div>
 
  {/* {Canva Sepia} */}
- <div className='bg-gray-300 relative space-y-4 rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${(canvasepia/1)/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${(canvasepia/1)/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Sepia</span>
-                <span className='absolute right-0 p-2'>{canvasepia}%</span>
+ <span className='absolute left-2 text-gray-500'>Sepia</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvasepia}%</span>
        
  
         
@@ -925,12 +926,12 @@ setSepia(value);
           </div>
 
 {/* {grayscale} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bggrayscale/1/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${bggrayscale/1/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Gray Scale</span>
-                <span className='absolute right-0 p-2'>{bggrayscale}%</span>
+ <span className='absolute left-2 text-gray-500'>Gray Scale</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{bggrayscale}%</span>
        
  
         
@@ -958,12 +959,12 @@ setSepia(value);
           </div>
 
 {/* {saturate} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bgsaturate/1/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${bgsaturate/1/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Saturated</span>
-                <span className='absolute right-0 p-2'>{bgsaturate}%</span>
+ <span className='absolute left-2 text-gray-500'>Saturated</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{bgsaturate}%</span>
        
  
         
@@ -990,12 +991,12 @@ setSepia(value);
   
           </div>
 {/* {invert} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bginvert/1/2}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${bginvert/1/2}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Invert</span>
-                <span className='absolute right-0 p-2'>{bginvert}%</span>
+ <span className='absolute left-2 text-gray-500'>Invert</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{bginvert}%</span>
        
  
         
@@ -1022,12 +1023,12 @@ setSepia(value);
   
           </div>
 {/* {huerotate} */}
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${bghuerotate / 360 * 100}%` }}>
+          <div   className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`} style={{ width: `${bghuerotate / 360 * 100}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>HueRotate</span>
-                <span className='absolute right-0 p-2'>{bghuerotate}%</span>
+ <span className='absolute left-2 text-gray-500'>HueRotate</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{bghuerotate}%</span>
        
  
         
@@ -1121,25 +1122,25 @@ setSepia(value);
 
 
 
-<hr className='text-gray-200' />
+<hr  className='text-gray-200'/>
 
  <div className="space-y-2 p-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
          
-              <label   className={`text-xs ${color ? "text-gray-100" : "text-white-900"} text-[11px] sm:text-sm font-bold `} >CANVAS</label>
+              <label    className={`text-[11px] sm:text-sm  mb-2 font-bold text-gray-500`} >CANVAS</label>
             </div>
            
           </div>
     
        
 
- <div className='bg-gray-300 relative rounded-[5px]' > 
+ <div className={`  ${(color ? "bg-[black]":"bg-gray-100" )}   relative rounded-[5px] `} > 
             
-          <div  className='bg-gray-400 text-xs  p-1 rounded-[5px] flex items-center justify-between'  style={{ width: `${canvard}%` }}>
+          <div  className={`  ${(color ? "bg-[#303030]":"bg-[#dedede]" )}  text-xs p-1   rounded-[5px] flex items-center justify-between`}  style={{ width: `${canvard}%` }}>
        <div className="p-3"></div>
- <span className='absolute left-2'>Canva Radius</span>
-                <span className='absolute right-0 p-2'>{canvard}%</span>
+ <span className='absolute left-2 text-gray-500'>Canva Radius</span>
+                <span className='absolute right-0 p-2 text-gray-500'>{canvard}%</span>
        
  
         

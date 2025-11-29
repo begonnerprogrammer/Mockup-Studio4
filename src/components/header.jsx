@@ -36,7 +36,7 @@ console.log(color);
 
 
           
-   <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4" >
+   <div className="flex  items-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4" >
        <NavLink to={"/"}>
             <div className="w-8 sm:w-9 md:w-10 lg:w-11 h-8 sm:h-9 md:h-10 lg:h-11 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
            
@@ -46,8 +46,8 @@ console.log(color);
             </NavLink>
              <NavLink to={"/"}>
           <div >
-  <h1 className={`${color ? 'text-white' : 'text-gray-900'} hidden sm:block sm:text-xs md:text-sm lg:text-base font-bold `}>Mockup Studio</h1>
-  <p className={`${color ? 'text-white' : 'text-gray-900'} hidden sm:block sm:text-[9px] md:text-sm lg:text-lg opacity-80 `}>Professional Screenshot Mockups</p>
+  {/* <h1 className={`${color ? 'text-white' : 'text-gray-900'} hidden sm:block sm:text-xs md:text-sm lg:text-base font-bold `}>Mockup Studio</h1> */}
+  {/* <p className={`${color ? 'text-white' : 'text-gray-900'} hidden sm:block sm:text-[9px] md:text-xs lg:text-xs opacity-80 `}>Professional Screenshot Mockups</p> */}
 </div>
 </NavLink>
 

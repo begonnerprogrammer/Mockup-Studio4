@@ -10,6 +10,6 @@
   background: var(--bg); /* your background here */
   background-size: cover;
   background-position: center;
-  filter: var(--bgfilter); /* filters ONLY background */
+  filter: var(--bgfilter) url(#overlay-noise-filter); /* filters ONLY background */
   z-index: -1;
 }
