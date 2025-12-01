@@ -231,25 +231,21 @@ setPicBackground(item);
 }
 
   // Render background grid
-  const renderBackgroundGrid = (items, isImage = false) => (
-    <div className="grid grid-rows-2 grid-cols-6 gap-x-18 gap-y-2">
-      {items.map((item, index) => (
+ const renderBackgroundGrid = (items, isImage = false) => (
+  <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min">
+    {items.map((item, index) => (
+      <div key={index} className="w-8 h-12 sm:w-20 sm:h-12  flex-shrink-0">
         <button
-          key={index}
-          className="h-9 w-16 rounded border hover:scale-105 transition-transform"
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
           style={{
             background: isImage ? `url(${item}) center/cover no-repeat` : item,
           }}
-          // onClick={() => onBackgroundChange(item)}
-          onClick={()=>Backgroundcolorchanger(item)}
+          onClick={() => Backgroundcolorchanger(item)}
         />
-      ))}
-    </div>
-
-
-
-
-  );
+      </div>
+    ))}
+  </div>
+);
 // const renderOverlayGrid = (items, isImage = false) => (
 //   <div className="grid grid-cols-6 gap-2">
 //     {items.map((item, index) => (
@@ -279,25 +275,21 @@ setPicBackground(item);
 // );
 
 
-  const renderPicturesGrid = (items, isImage = false) => (
-    <div className="grid grid-rows-2 grid-cols-5 gap-x-18 gap-y-2">
-      {items.map((item, index) => (
+ const renderPicturesGrid = (items, isImage = false) => (
+  <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min overflow-y-hidden">
+    {items.map((item, index) => (
+      <div key={index} className="w-8 h-12 sm:w-20 sm:h-12  flex-shrink-0">
         <button
-          key={index}
-          className="h-9 w-16 rounded border hover:scale-105 transition-transform"
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
           style={{
             background: isImage ? `url(${item}) center/cover no-repeat` : item,
           }}
-          // onClick={() => onBackgroundChange(item)}
-          onClick={()=>Backgroundcolorchanger(item)}
+          onClick={() => Backgroundcolorchanger(item)}
         />
-      ))}
-    </div>
-
-
-
-
-  );
+      </div>
+    ))}
+  </div>
+);
 
 const handleFileInput = (event) => {
   const file = event.target.files?.[0];
@@ -532,17 +524,17 @@ const renderGradientGrid = (items, isImage = false) => (
 
 
  {/* Mesh Gradients */}
-     <div>
-        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`} >
-         Mesh Gradients
-        </h2>
-        <div className="rounded-xl overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+   <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Mesh Gradients
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderBackgroundGrid(meshGradients)}
-        </div>
-      </div>
+    {renderBackgroundGrid(meshGradients)}
+  </div>
+</div>
 
 
 
@@ -568,17 +560,17 @@ const renderGradientGrid = (items, isImage = false) => (
 
 
       {/* Marble Textures */}
-      <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
-          Marble Textures
-        </h2>
-        <div className="rounded-xl  dark:bg-gray-800   overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+    <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Marble Textures
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderPicturesGrid(marbleTextures, true)}
-        </div>
-      </div>
+    {renderPicturesGrid(marbleTextures, true)}
+  </div>
+</div>
 
       {/* Paper Textures */}
       <div>
