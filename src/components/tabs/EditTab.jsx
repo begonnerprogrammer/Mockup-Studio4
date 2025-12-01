@@ -70,10 +70,10 @@ const divrotations = [
 
       "2nd-rotation": {
         name: "2nd-rotation",
-        rotationY: "rotateY(5deg)",
+        rotationY: "rotateY(18deg)",
         rotationX: "rotateX(-3deg)",
         perspective: "perspective(1000px)",
-        translateZ: "translateZ(30px)"
+        translateZ: "translateZ(50px)"
       },
 
       "3rd-rotation": {
@@ -233,7 +233,8 @@ const deviceOptions = [
 
 
   const frameOptions = {
-   "Default": { name: 'None',style: { border: "6px solid transparent" }, preview: '⬜' },
+    "None": { name: 'None',style: { border: "none" }, preview: '⬜' },
+   "Default": { name: 'Transparent',style: { border: "6px solid transparent" }, preview: '⬜' },
    "Arc-ght":{ name: 'Arc-light',style: {border:"6px solid rgba(255, 255, 255, 0.5)"}, preview: '⬜' },
     "Rounded":{  name: 'Arc-dark', style:{ border: "6px solid black", borderRadius:0 }, preview: '🔲' },
    "Minimal": { name: 'Minimal',style: { border: "2px solid black" }, preview: '▫️' },
@@ -809,48 +810,58 @@ const changepadding=(value)=>{
 
 
    
-    {/* Rotations */}
-      <div className="space-y-3 mt-4">
-      
-        <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>TRANSFORMS</h3>
-        <div className=" flex pb-4 gap-5  overflow-y-scroll 
-      [&::-webkit-scrollbar]:h-2 w-[100]
-    
+ {/* Rotations */}
+<div className="space-y-3 mt-4">
+  <h3 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>TRANSFORMS</h3>
+  <div className="flex pb-4 gap-3 sm:gap-4 overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full
-    align-items-center jusitfy-content-center">
-{Object.entries(divrotations[0].rotations).map(([key, rotationObj]) => {
-  
-  const transformValue = [
-    rotationObj.perspective,
-    rotationObj.rotationY,
-    rotationObj.rotationX,
-    rotationObj.rotationZ,
-    rotationObj.translateZ
-  ]
-    .filter(Boolean)
-    .join(" ");
+    items-center">
+    {Object.entries(divrotations[0].rotations).map(([key, rotationObj]) => {
+      const transformValue = [
+        rotationObj.perspective,
+        rotationObj.rotationY,
+        rotationObj.rotationX,
+        rotationObj.rotationZ,
+        rotationObj.translateZ
+      ]
+        .filter(Boolean)
+        .join(" ");
 
-  return (
-    <div key={key} className="border bg-gray-300 border-gray-400 p-3"  onClick={() =>{setRotateZ( rotationObj.rotationZ),setRotateX(rotationObj.rotationX),setRotateY(rotationObj.rotationY),setPresPective(rotationObj.perspective),setTranslateZ(rotationObj.translateZ)}}> 
-      <button
-        className={`p-4 text-center h-1 w-1 bg-white transition-all duration-200 hover:scale-105 ${
-          selectedFrame === key
-            ? "border-blue-500 bg-blue-50 text-blue-700"
-            : "border-gray-200 bg-gray-400 hover:border-gray-300"
-        }`}
-        style={{
-          transform: transformValue
-        }}
-        
-      />
-    </div>
-  );
-})}
-
-
+      return (
+        <div 
+          key={key} 
+          className="flex-shrink-0 flex flex-col items-center"
+          onClick={() => {
+            
+            setPresPective(rotationObj.perspective);
+             setRotateY(rotationObj.rotationY);
+            setRotateX(rotationObj.rotationX);
+             setTranslateZ(rotationObj.translateZ);
+            setRotateZ(rotationObj.rotationZ);
+           
+          }}
+        > 
+          <div className="p-3 bg-gray-300 border border-gray-400 rounded-lg w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+            <button
+              className={`text-center bg-white transition-all duration-200 hover:scale-105 rounded ${
+                selectedFrame === key
+                  ? "border-2 border-blue-500 bg-blue-50"
+                  : "border border-gray-200 hover:border-gray-300"
+              }`}
+              style={{
+                transform: transformValue,
+                width: '80%',
+                height: '80%'
+              }}
+            />
+          </div>
         </div>
-      </div>
+      );
+    })}
+  </div>
+</div>
 
 
 
