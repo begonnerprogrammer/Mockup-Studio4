@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Upload, Image as ImageIcon, Palette, Layers, Sparkles, Grid, Mountain, FileImage, Droplets, Eye, Camera, Diamond, GlassWater, Glasses, Diameter, FormInput } from 'lucide-react';
 import { userContext } from '../../App';
-
+import { memo } from 'react';
 
  const Background = () => {
   const [activeCategory, setActiveCategory] = useState('magic-gradient');
@@ -231,43 +231,44 @@ setPicBackground(item);
 }
 
   // Render background grid
+
+
+const BackgroundGridItem = memo(({ item, index, isImage, onClick }) => {
+  return (
+    <div className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
+      <button
+        className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden"
+        onClick={() => onClick(item)}
+      >
+        {isImage ? (
+          <img
+            src={item}
+            alt={`bg-${index}`}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div 
+            className="w-full h-full"
+            style={{ background: item }}
+          />
+        )}
+      </button>
+    </div>
+  );
+});
+
 const renderBackgroundGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min">
     {items.map((item, index) => (
-      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
-        <button
-          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden"
-          onClick={() => Backgroundcolorchanger(item)}
-        >
-          {isImage ? (
-            <img
-              src={item}
-              alt={`background-${index}`}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-              width="80"
-              height="48"
-              style={{
-                // Simple placeholder background
-                backgroundColor: '#f3f4f6',
-                backgroundImage: 'linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 37%, #f3f4f6 63%)',
-                backgroundSize: '400% 100%',
-              }}
-              onLoad={(e) => {
-                // Remove placeholder style when loaded
-                e.target.style.backgroundImage = 'none';
-                e.target.style.backgroundColor = 'transparent';
-              }}
-            />
-          ) : (
-            <div 
-              className="w-full h-full"
-              style={{ background: item }}
-            />
-          )}
-        </button>
-      </div>
+      <BackgroundGridItem
+        key={`${item}-${index}`}
+        item={item}
+        index={index}
+        isImage={isImage}
+        onClick={Backgroundcolorchanger}
+      />
     ))}
   </div>
 );
