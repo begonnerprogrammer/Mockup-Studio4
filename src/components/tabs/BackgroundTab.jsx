@@ -231,17 +231,42 @@ setPicBackground(item);
 }
 
   // Render background grid
- const renderBackgroundGrid = (items, isImage = false) => (
+const renderBackgroundGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min">
     {items.map((item, index) => (
-      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12  flex-shrink-0">
+      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
         <button
-          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
-          style={{
-            background: isImage ? `url(${item}) center/cover no-repeat` : item,
-          }}
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden"
           onClick={() => Backgroundcolorchanger(item)}
-        />
+        >
+          {isImage ? (
+            <img
+              src={item}
+              alt={`background-${index}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width="80"
+              height="48"
+              style={{
+                // Simple placeholder background
+                backgroundColor: '#f3f4f6',
+                backgroundImage: 'linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 37%, #f3f4f6 63%)',
+                backgroundSize: '400% 100%',
+              }}
+              onLoad={(e) => {
+                // Remove placeholder style when loaded
+                e.target.style.backgroundImage = 'none';
+                e.target.style.backgroundColor = 'transparent';
+              }}
+            />
+          ) : (
+            <div 
+              className="w-full h-full"
+              style={{ background: item }}
+            />
+          )}
+        </button>
       </div>
     ))}
   </div>
@@ -275,17 +300,58 @@ setPicBackground(item);
 // );
 
 
- const renderPicturesGrid = (items, isImage = false) => (
+const renderPicturesGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min overflow-y-hidden">
     {items.map((item, index) => (
-      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12  flex-shrink-0">
+      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
         <button
-          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
-          style={{
-            background: isImage ? `url(${item}) center/cover no-repeat` : item,
-          }}
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden relative"
           onClick={() => Backgroundcolorchanger(item)}
-        />
+        >
+          {isImage ? (
+            <>
+              {/* Loading placeholder */}
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse"></div>
+              
+              {/* Optimized image */}
+              <img
+                src={item}
+                alt={`texture-${index}`}
+                className="w-full h-full object-cover relative z-10"
+                loading={index < 8 ? "eager" : "lazy"} // Eager load first 8, lazy load rest
+                decoding="async"
+                width={index < 8 ? "80" : undefined} // Provide dimensions for first few
+                height={index < 8 ? "48" : undefined}
+                onLoad={(e) => {
+                  // Smoothly hide placeholder when image loads
+                  const placeholder = e.target.previousSibling;
+                  if (placeholder) {
+                    placeholder.style.opacity = '0';
+                    placeholder.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                      placeholder.style.display = 'none';
+                    }, 300);
+                  }
+                }}
+                onError={(e) => {
+                  // Handle broken images gracefully
+                  e.target.style.display = 'none';
+                  const placeholder = e.target.previousSibling;
+                  if (placeholder) {
+                    placeholder.className = "absolute inset-0 bg-gradient-to-r from-red-50 to-red-100";
+                    placeholder.innerHTML = '<span class="text-xs text-red-400">⚠️</span>';
+                    placeholder.classList.add("flex", "items-center", "justify-center");
+                  }
+                }}
+              />
+            </>
+          ) : (
+            <div 
+              className="w-full h-full"
+              style={{ background: item }}
+            />
+          )}
+        </button>
       </div>
     ))}
   </div>
@@ -306,17 +372,28 @@ const renderGradientGrid = (items, isImage = false) => (
     {items.map((item, index) => (
       <div key={index} className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
         <button
-          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
-          style={{
-            background: isImage ? `url(${item}) center/cover no-repeat` : item,
-          }}
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden"
           onClick={() => Backgroundcolorchanger(item)}
-        />
+        >
+          {isImage ? (
+            <img
+              src={item}
+              alt={`gradient-${index}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div 
+              className="w-full h-full"
+              style={{ background: item }}
+            />
+          )}
+        </button>
       </div>
     ))}
   </div>
 );
-
   return (
     <div className="space-y-2">
       {/* Category Tabs
