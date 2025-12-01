@@ -352,6 +352,8 @@ console.log(" new dev and frame at preview page","newdev=",newdev,"framename=",f
   frame.name==="Windows light" ? <div className='absolute   z-100  bg-white h-8 w-full flex align-start justify-start' style={{left:0,top:-1,borderTopLeftRadius:5,borderTopRightRadius:5,}} >
 
   <span className='m-2  text-[10px]  text-black'>File</span>
+    <span className='text-[10px] absolute text-black' style={{ top: 8, right:5 }}>x</span>
+               <span className='text-[10px] absolute text-black' style={{ top: 8, right:12 }}>-</span>
 </div>  : ""
  }
 
@@ -360,6 +362,8 @@ console.log(" new dev and frame at preview page","newdev=",newdev,"framename=",f
   frame.name==="Windows dark" ? <div className=' absolute z-100  bg-gray-800 h-8 w-full flex align-start justify-start' style={{left:0,top:-1,borderTopLeftRadius:5,borderTopRightRadius:5,}}>
 
   <span className='m-2  text-[10px]  text-white'>File</span>
+      <span className='text-[10px] absolute text-white' style={{ top: 8, right:5 }}>x</span>
+               <span className='text-[10px] absolute text-white' style={{ top: 8, right:12 }}>-</span>
 </div> : ""
 }
 
@@ -917,6 +921,8 @@ transformStyle: 'preserve-3d', // Add this for proper 3D
   frame.name==="Windows light" ? <div className='absolute top-0 bg-white h-8 w-full flex align-start justify-start' >
 
   <span className='m-2  text-[10px]  text-black'>File</span>
+  <span className='text-[10px] absolute text-black' style={{ top: 8, right:5 }}>x</span>
+               <span className='text-[10px] absolute text-black' style={{ top: 8, right:12 }}>-</span>
 </div>  : ""
  }
 
@@ -925,6 +931,8 @@ transformStyle: 'preserve-3d', // Add this for proper 3D
   frame.name==="Windows dark" ? <div className='absolute top-0 bg-gray-800 h-8 w-full flex align-start justify-start' >
 
   <span className='m-2  text-[10px]  text-white'>File</span>
+   <span className='text-[10px] absolute text-white' style={{ top: 8, right:5 }}>x</span>
+               <span className='text-[10px] absolute text-white' style={{ top: 8, right:12 }}>-</span>
 </div> : ""
 }
 

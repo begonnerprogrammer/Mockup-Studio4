@@ -514,44 +514,48 @@ const changepadding=(value)=>{
         >
           {/* Frame preview indicator decorations */}
           {frame.name === "Mac dark" && (
-            <div className='absolute bg-gray-900 w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+            <div className='absolute bg-gray-900 w-15 h-3 ' style={{ top: 21, zIndex: 20, left: 22 }}>
               <div className='absolute bg-red-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 2 }}></div>
               <div className='absolute bg-blue-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 7 }}></div>
               <div className='absolute bg-green-900 w-1 h-1 rounded-full' style={{ zIndex: 30, top: 4, left: 4.5 }}></div>
-              <span className='text-[6px] absolute text-white' style={{ top: 1, left: 14 }}>File</span>
+              <span className='text-[6px] absolute text-white' style={{ top: 1, left: 28 }}>File</span>
+              
             </div>
           )}
           {frame.name === "Mac light" && (
-            <div className='absolute bg-white w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+             <div className='absolute bg-white w-15 h-3 ' style={{ top: 21, zIndex: 20, left: 23 }}>
               <div className='absolute bg-red-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 2 }}></div>
               <div className='absolute bg-blue-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 7 }}></div>
               <div className='absolute bg-green-900 w-1 h-1 rounded-full' style={{ zIndex: 30, top: 4, left: 4.5 }}></div>
-              <span className='text-[6px] absolute' style={{ top: 1, left: 14 }}>File</span>
+              <span className='text-[6px] absolute' style={{ top: 1, left:28 }}>File</span>
             </div>
           )}
           {frame.name === "Windows light" && (
-            <div className='absolute bg-white w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
-              <span className='text-[6px] absolute' style={{ top: 1, left: 2 }}>File</span>
+            <div className='absolute bg-white w-15 h-3 ' style={{ top: 21, zIndex: 20, left: 23 }}>
+              <span className='text-[6px] absolute ' style={{ top: 1, left: 2 }}>File</span>
+             <span className='text-[6px] absolute ' style={{ top: 1, right:5 }}>x</span>
+               <span className='text-[6px] absolute ' style={{ top: 1, right:8 }}>-</span>
             </div>
           )}
           {frame.name === "Windows dark" && (
-            <div className='absolute bg-gray-900 w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+             <div className='absolute bg-gray-900 w-15 h-3 ' style={{ top: 21, zIndex: 20, left: 22 }}>
               <span className='text-[6px] text-white absolute' style={{ top: 1, left: 2 }}>File</span>
+                    <span className='text-[6px] absolute text-white' style={{ top: 1, right:5 }}>x</span>
+                         <span className='text-[6px] absolute text-white' style={{ top: 1, right:8 }}>-</span>
             </div>
           )}
           
-          {/* Frame preview */}
+          {/* Frame preview - 80% width/height with translate */}
           <div
-            className={`overflow-hidden absolute w-full h-full text-center transition-all duration-200 hover:scale-105 ${
+            className={`overflow-hidden absolute text-center transition-all duration-200 hover:scale-105 ${
               selectedFrame === id
                 ? 'border-2 border-blue-500 bg-blue-50'
                 : 'border border-gray-200 bg-gray-100 hover:border-gray-300'
             }`}
             style={{
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              width: '80%',
+              height: '80%',
+              transform: 'translateX(30%) translateY(30%)',
               // Apply all border properties only if they exist in frame.style
               ...(frame.style?.border && { border: frame.style.border }),
               ...(frame.style?.borderTop && { 
