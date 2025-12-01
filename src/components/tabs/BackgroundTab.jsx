@@ -573,63 +573,63 @@ const renderGradientGrid = (items, isImage = false) => (
 </div>
 
       {/* Paper Textures */}
-      <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
-          Paper Textures
-        </h2>
-        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+     <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Paper Textures
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderPicturesGrid(paperTextures, true)}
-        </div>
-      </div> 
+    {renderPicturesGrid(paperTextures, true)}
+  </div>
+</div> 
 
 
 
 
       {/* Patterns */}
-       <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
-          Patterns
-        </h2>
-        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+      <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+   Patterns
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderPicturesGrid(patterns, true)}
-        </div>
-      </div>
+    {renderPicturesGrid(patterns, true)}
+  </div>
+</div>
 
 
 
 
-      {/* Patterns */}
-      <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
-          Patterns 2
-        </h2>
-        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+      {/* Patterns2 */}
+      <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Patterns 2
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderPicturesGrid(patterns2, true)}
-        </div>
-      </div>
+    {renderPicturesGrid(patterns2, true)}
+  </div>
+</div>
 
 
       {/* Background Images */}
-      <div>
-  <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>
-         Images
-        </h2>
-        <div className="rounded-xl  dark:bg-gray-800  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+      <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Background Images
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderPicturesGrid(backgroundImages, true)}
-        </div>
-      </div>
+    {renderPicturesGrid(backgroundImages, true)}
+  </div>
+</div>
 
     
 
