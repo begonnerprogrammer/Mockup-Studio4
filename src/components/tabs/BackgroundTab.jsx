@@ -234,7 +234,7 @@ setPicBackground(item);
  const renderBackgroundGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min">
     {items.map((item, index) => (
-      <div key={index} className="w-8 h-12 sm:w-20 sm:h-12  flex-shrink-0">
+      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12  flex-shrink-0">
         <button
           className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
           style={{
@@ -278,7 +278,7 @@ setPicBackground(item);
  const renderPicturesGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min overflow-y-hidden">
     {items.map((item, index) => (
-      <div key={index} className="w-8 h-12 sm:w-20 sm:h-12  flex-shrink-0">
+      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12  flex-shrink-0">
         <button
           className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
           style={{
@@ -304,7 +304,7 @@ const handleFileInput = (event) => {
 const renderGradientGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-3 min-w-min">
     {items.map((item, index) => (
-      <div key={index} className="w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
+      <div key={index} className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
         <button
           className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
           style={{
