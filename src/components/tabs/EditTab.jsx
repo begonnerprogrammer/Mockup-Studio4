@@ -493,106 +493,99 @@ const changepadding=(value)=>{
 
 
 
-   {/* Frame Style */}
-      <div className="space-y-3 mt-10">
-      
-        <h3   className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`}>FRAMES</h3>
-        <div className=" flex  gap-5  overflow-y-scroll 
-      [&::-webkit-scrollbar]:h-2 w-[100]
-    
+  {/* Frame Style */}
+<div className="space-y-3 mt-10">
+  <h3 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>FRAMES</h3>
+  <div className="flex gap-4 sm:gap-5 overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full
-  text-center">
-         {Object.entries(frameOptions).map(([id, frame]) => (
-          <>
-          <div className='flex flex-col '>
-            <div className='bg-gray-500 p-2 relative w-[60px] h-[60px] overflow-hidden'>
-              {
-  frame.name==="Mac dark" ?<>
-
-  <div className='absolute bg-gray-900 w-15 h-2' style={{top:14,zIndex:20,left:10}}>
-  <div className='absolute bg-red-900 w-1 h-1' style={{top:3,zIndex:30,left:2}}></div>
-  <div className='absolute bg-blue-900 w-1 h-1' style={{top:3,zIndex:30,left:7}}></div>
-  <div className='absolute bg-green-900 w-1 h-1' style={{zIndex:30,top:3,left:4}}></div>
-  <span className='text-[7px] absolute text-white ' style={{top:-1 ,left:20}}>File</span>
-  </div>
-   </>  : ""
-}
-{
-  frame.name==="Mac light"  ? <>
-  <div className='absolute bg-white w-15 h-2' style={{top:14,zIndex:20,left:10}}>
-  <div className='absolute bg-red-900 w-1 h-1' style={{top:3,zIndex:30,left:1}}></div>
-  <div className='absolute bg-blue-900 w-1 h-1' style={{top:3,zIndex:30,left:7}}></div>
-  <div className='absolute bg-green-900 w-1 h-1' style={{zIndex:30,top:3,left:4}}></div>
-  <span className='text-[7px] absolute ' style={{top:-1 ,left:20}}>File</span>
-  </div>
-  </> : ""
-}
-{
-  frame.name==="Windows light"  ? <>
-  <div className='absolute bg-white w-15 h-2' style={{top:14,zIndex:20,left:10}}>
- <span className='text-[7px] absolute ' style={{top:-1 ,left:1}}>File</span>
-  </div>
-  </> : ""
-}
-{
-  frame.name==="Windows dark"  ? <>
-  <div className='absolute bg-gray-900 w-15 h-2' style={{top:14,zIndex:20,left:10}}>
- <span className='text-[7px] text-white absolute ' style={{top:-1 ,left:1}}>File</span>
-  </div>
-  </> : ""
-}
- <div               key={id} onClick={() =>{ handleframe(id);setPhoneBorder(false);setFrameBorderValue(true),setNewDev("")}}
-
-    
-    className={` overflow-hidden absolute    w-14 h-13   text-center p-2 transition-all duration-200 hover:scale-105 ${
-      selectedFrame === id
-        ? 'border-blue-500 bg-blue-50 text-blue-700'
-        : 'border-gray-200 bg-gray-100 hover:border-gray-300'
-    }`}
- style={{
-         right:-5,
-         bottom:-6,
-          // Apply all border properties only if they exist in frame.style
-          ...(frame.style?.border && { border: frame.style.border }),
-          ...(frame.style?.borderTop && { 
-    borderTop: frame.style.borderTop.replace(/(\d+)(px|rem|em)/, (match, p1, p2) => {
-      const width = parseInt(p1);
-      const newWidth = width > 10 ? width - 5 : width;
-      return `${newWidth}${p2}`;
-    })
-  }),
-          ...(frame.style?.borderBottom && { 
-    borderBottom: frame.style.borderBottom.replace(/(\d+)(px|rem|em)/, (match, p1, p2) => {
-      const width = parseInt(p1);
-      const newWidth = width > 10 ? width - 12 : width;
-      return `${newWidth}${p2}`;
-    })
-  }),
-          ...(frame.style?.borderLeft && { borderLeft: frame.style.borderLeft }),
-          ...(frame.style?.borderRight && { borderRight: frame.style.borderRight }),
-          // Apply other styles that might exist
-          ...(frame.style?.borderRadius && { borderRadius: frame.style.borderRadius }),
-          ...(frame.style?.background && { background: frame.style.background }),
-          ...(frame.style?.boxShadow && { boxShadow: frame.style.boxShadow }),
-          ...(frame.style?.backdropFilter && { backdropFilter: frame.style.backdropFilter }),
-        }}
-
->
-   
-          </div>
+    text-center">
+    {Object.entries(frameOptions).map(([id, frame]) => (
+      <div key={id} className='flex flex-col flex-shrink-0 items-center'>
+        <div 
+          className='relative w-16 h-16 sm:w-20 sm:h-20 overflow-hidden rounded-lg bg-gray-500 p-1'
+          onClick={() => {
+            handleframe(id);
+            setPhoneBorder(false);
+            setFrameBorderValue(true);
+            setNewDev("");
+          }}
+        >
+          {/* Frame preview indicator decorations */}
+          {frame.name === "Mac dark" && (
+            <div className='absolute bg-gray-900 w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+              <div className='absolute bg-red-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 2 }}></div>
+              <div className='absolute bg-blue-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 7 }}></div>
+              <div className='absolute bg-green-900 w-1 h-1 rounded-full' style={{ zIndex: 30, top: 4, left: 4.5 }}></div>
+              <span className='text-[6px] absolute text-white' style={{ top: 1, left: 14 }}>File</span>
             </div>
-
- <div className="text-[5px]  sm:text-[11px] text-gray-500 font-bold mt-1">{frame.name}</div> 
+          )}
+          {frame.name === "Mac light" && (
+            <div className='absolute bg-white w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+              <div className='absolute bg-red-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 2 }}></div>
+              <div className='absolute bg-blue-900 w-1 h-1 rounded-full' style={{ top: 4, zIndex: 30, left: 7 }}></div>
+              <div className='absolute bg-green-900 w-1 h-1 rounded-full' style={{ zIndex: 30, top: 4, left: 4.5 }}></div>
+              <span className='text-[6px] absolute' style={{ top: 1, left: 14 }}>File</span>
+            </div>
+          )}
+          {frame.name === "Windows light" && (
+            <div className='absolute bg-white w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+              <span className='text-[6px] absolute' style={{ top: 1, left: 2 }}>File</span>
+            </div>
+          )}
+          {frame.name === "Windows dark" && (
+            <div className='absolute bg-gray-900 w-12 h-3 rounded-sm' style={{ top: 10, zIndex: 20, left: 8 }}>
+              <span className='text-[6px] text-white absolute' style={{ top: 1, left: 2 }}>File</span>
+            </div>
+          )}
+          
+          {/* Frame preview */}
+          <div
+            className={`overflow-hidden absolute w-full h-full text-center transition-all duration-200 hover:scale-105 ${
+              selectedFrame === id
+                ? 'border-2 border-blue-500 bg-blue-50'
+                : 'border border-gray-200 bg-gray-100 hover:border-gray-300'
+            }`}
+            style={{
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              // Apply all border properties only if they exist in frame.style
+              ...(frame.style?.border && { border: frame.style.border }),
+              ...(frame.style?.borderTop && { 
+                borderTop: frame.style.borderTop.replace(/(\d+)(px|rem|em)/, (match, p1, p2) => {
+                  const width = parseInt(p1);
+                  const newWidth = width > 10 ? Math.max(5, width - 5) : width;
+                  return `${newWidth}${p2}`;
+                })
+              }),
+              ...(frame.style?.borderBottom && { 
+                borderBottom: frame.style.borderBottom.replace(/(\d+)(px|rem|em)/, (match, p1, p2) => {
+                  const width = parseInt(p1);
+                  const newWidth = width > 10 ? Math.max(5, width - 12) : width;
+                  return `${newWidth}${p2}`;
+                })
+              }),
+              ...(frame.style?.borderLeft && { borderLeft: frame.style.borderLeft }),
+              ...(frame.style?.borderRight && { borderRight: frame.style.borderRight }),
+              // Apply other styles that might exist
+              ...(frame.style?.borderRadius && { borderRadius: frame.style.borderRadius }),
+              ...(frame.style?.background && { background: frame.style.background }),
+              ...(frame.style?.boxShadow && { boxShadow: frame.style.boxShadow }),
+              ...(frame.style?.backdropFilter && { backdropFilter: frame.style.backdropFilter }),
+            }}
+          >
           </div>
-         
-
-
-  </>
-))}
-
         </div>
+        <div className="text-[9px] sm:text-[11px] text-gray-500 font-bold mt-2 truncate max-w-[80px]">
+          {frame.name}
+        </div> 
       </div>
+    ))}
+  </div>
+</div>
 
    {/* Mobile devices
       <div className="space-y-3 mt-1">
