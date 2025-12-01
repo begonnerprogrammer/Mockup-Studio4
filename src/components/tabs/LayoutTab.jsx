@@ -259,11 +259,11 @@ setRadius(value);
     setNoiseController(0);
     setPresPective(preset.settings.perspective),
    setBrightness(100);
-    setShadowColor('#000000');
+    setShadowColor('#000000');`${newdev.name !== undefined || frame.name!==undefined ? 0 : padding}px`
 
-    
+setFrame("");
    setOverlay('');
-   setFrame( {name: 'Default',style:'border:none', preview: '⬜'});
+ 
   setTilt(0);
   setScale(1);
 setOverlay(preset.overlay);

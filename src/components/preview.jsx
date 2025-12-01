@@ -206,7 +206,7 @@ const getBgCssValue = (bgSrc) => {
   // Otherwise assume it's a color or gradient
   return bgSrc;
 };
-
+console.log(" new dev and frame at preview page","newdev=",newdev,"framename=",frame.name)
   return <>
 <div
   className="flex-1 flex overflow-hidden items-center justify-center min-h-full relative overflow-hidden transition-all duration-300 "
@@ -296,7 +296,7 @@ const getBgCssValue = (bgSrc) => {
 <div style={{
   width: '70%',
   height: `78%`,
-  padding: `${padding ?? frame?.style?.padding ?? 0}px`,
+
   position: 'relative',
   borderRadius:"20%",
    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", // smoother easing
@@ -371,22 +371,23 @@ const getBgCssValue = (bgSrc) => {
    justifyContent:"center",
   transformOrigin: "center",
   transition: "transform 0.3s ease-in-out",
-
+  padding: `${newdev.name !== undefined || frame.name!==undefined ? 0 : padding}px`
 
  
+
 
 }}>
     
 {
-  newdev ? <div className='w-100 h-100 flex align-center justify-center'>
+  newdev ? <div className='w-100 h-100 flex align-center justify-center ' >
   {/* iphone */}
   {
-    newdev.name==="iphone" ? <label>
+    newdev.name==="iphone" ? <label  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='rounded-4xl'>
     <div className=' w-50  h-100 relative' style={{  transition: "transform 0.3s ease-in-out"}}>
      <img src="/phone.png"  className='w-[100%]  h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}
   className='absolute top-1/2 left-1/2 w-[95%] h-[97%] rounded-[28px] z-10 transform -translate-x-1/2 -translate-y-49'  
   alt="" 
 /> : ""
@@ -406,12 +407,12 @@ const getBgCssValue = (bgSrc) => {
   
 {/* {iphone15} */}
    {
-    newdev.name==="iphone15" ? <label>
+    newdev.name==="iphone15" ? <label  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='rounded-[35px]'>
     <div className=' w-55  h-100 relative'>
      <img src="/15.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}
   className='absolute top-1/2 left-1/2 w-[95%] h-[96%] rounded-[28px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -455,10 +456,10 @@ const getBgCssValue = (bgSrc) => {
 {
   newdev.name==="mackbook13" ? <label>
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
-     <img src="/13.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/13.png"  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[82%] h-[27%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -481,10 +482,10 @@ const getBgCssValue = (bgSrc) => {
 {
    newdev.name==="mackbook16" ?  <label>
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)` }}>
-     <img src="/14.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/14.png"  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[77%] h-[25%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -504,12 +505,12 @@ const getBgCssValue = (bgSrc) => {
   
   {/* {ipadpro11} */}
   {
-     newdev.name==="ipadpro11" ?  <label>
+     newdev.name==="ipadpro11" ?  <label   >
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)` }}>
-     <img src="/11.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/11.png" style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}} className='contain rounded-2xl bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img  
-  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[89%] h-[67%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -527,12 +528,12 @@ const getBgCssValue = (bgSrc) => {
   
   {/* {ipadsilver} */}
   {
-      newdev.name==="ipadsilver" ?  <label>
+      newdev.name==="ipadsilver" ?  <label  >
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
-     <img src="/silver.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/silver.png"  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='contain rounded-2xl bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[89%] h-[67%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -553,10 +554,10 @@ const getBgCssValue = (bgSrc) => {
    newdev.name==="tv" ?  <label>
     <div className={` w-50  h-100 relative flex items-center justify-center`}
      style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
-     <img src="/tv.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/tv.png"  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}`,opacity:picopacity/100,}}
+  src={`${imageSrc}`}  style={{opacity:picopacity/100,}}
   className='absolute  top-48 left-23.5 mr-1 w-[68.5%] h-[19%] rounded-[1px] z-10 transform -translate-x-16 -translate-y-9'  
   alt="" 
 /> : ""
@@ -594,7 +595,7 @@ const getBgCssValue = (bgSrc) => {
   filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,
                     
     opacity: picopacity/100,
-
+    
 
     }}
     src={imageSrc}
@@ -651,8 +652,8 @@ const getBgCssValue = (bgSrc) => {
     
   {/* iphone */}
   {
-    newdev.name==="iphone" ? <label>
-    <div className=' w-50  h-100 relative   transition: "transform 0.3s ease-in-out",' style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
+    newdev.name==="iphone" ? <label style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}} className='rounded-4xl'>
+    <div className=' w-50  h-100 relative   transition: "transform 0.3s ease-in-out",' style={{filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
      <img src="/phone.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt=""  />
      {
       imageSrc ?<img 
@@ -675,7 +676,7 @@ const getBgCssValue = (bgSrc) => {
   
 {/* {iphone15} */}
    {
-    newdev.name==="iphone15" ? <label>
+    newdev.name==="iphone15" ? <label  style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}} className='rounded-[37px]'>
     <div className=' w-55  h-100 relative' style={{filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
      <img src="/15.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
      {
@@ -722,9 +723,9 @@ const getBgCssValue = (bgSrc) => {
 {/* macbook13 */}
 
 {
-  newdev.name==="mackbook13" ? <label>
+  newdev.name==="mackbook13" ? <label  >
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
-     <img src="/13.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/13.png" style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className={`contain bg-gray-300 bg-transparent rounded-xl z-100 `}  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -750,7 +751,7 @@ const getBgCssValue = (bgSrc) => {
 {
    newdev.name==="mackbook16" ?  <label>
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,}}>
-     <img src="/14.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/14.png" style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}} className='contain rounded-4xl bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -773,9 +774,9 @@ const getBgCssValue = (bgSrc) => {
   
   {/* {ipadpro11} */}
   {
-     newdev.name==="ipadpro11" ?  <label>
+     newdev.name==="ipadpro11" ?  <label >
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
-     <img src="/11.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/11.png" style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='rounded-2xl contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -798,7 +799,7 @@ const getBgCssValue = (bgSrc) => {
   {
       newdev.name==="ipadsilver" ?  <label>
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
-     <img src="/silver.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/silver.png" style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,}}  className='contain rounded-2xl bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -822,7 +823,7 @@ const getBgCssValue = (bgSrc) => {
    newdev.name==="tv" ?  <label>
     <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
       <div style={{boxShadow: `0 0 60px ${shadowspread}px  ${shadowColor}`}} className='w-50 h-50'>
-<img src="/tv.png"  className='contain bg-gray-300 z-100  bg-transparent w-full h-full'   alt="" />
+<img src="/tv.png"   className='contain bg-gray-300 z-100  bg-transparent w-full h-full'   alt="" />
      {
      imageSrc ?<img 
   src={`${imageSrc}`}  

@@ -31,9 +31,7 @@ const [canvard,setCanvaRd]=useState(0);
       const [sepia,setSepia]=useState(0);
      const [canvasepia,setCanvaSepia]=useState(0);
      const [newdev,setNewDev]=useState("");
-    const [frame,setFrame]=useState({
-      name: 'Default',style:'border:none', preview: '⬜'
-    });
+    const [frame,setFrame]=useState("");
 
 const [padding,setPadding]=useState(0);
 const [contrast,setContrast]=useState(100);
