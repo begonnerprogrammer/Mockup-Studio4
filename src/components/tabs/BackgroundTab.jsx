@@ -250,25 +250,33 @@ setPicBackground(item);
 
 
   );
- const renderOverlayGrid = (items, isImage = false) => (
-    <div className="grid grid-rows-2 grid-cols-13 gap-x-18 gap-y-2 ">
-      {items.map((item, index) => (
-        <button
-          key={index}
-          className={`h-9 w-16 rounded border   border-1  ${color ? "border-gray-400" : " border-#00000-400 "} hover:scale-105 transition-transform`}
-          style={{
-            background: isImage ? `url(${item}) center/cover no-repeat` : item,
-          }}
-          // onClick={() => onBackgroundChange(item)}
-          onClick={()=>setOverlay(item)}
-        />
-      ))}
-    </div>
-
-
-
-
-  );
+// const renderOverlayGrid = (items, isImage = false) => (
+//   <div className="grid grid-cols-6 gap-2">
+//     {items.map((item, index) => (
+//       <div 
+//         key={index}
+//         className="aspect-square flex items-center justify-center"
+//       >
+//         <button
+//           className={`rounded border hover:scale-105 transition-transform ${
+//             color ? "border-gray-400" : "border-gray-300"
+//           }`}
+//           style={{
+//             background: isImage ? `url(${item}) center/cover no-repeat` : item,
+//             width: '100%',
+//             height: '80%',
+//           }}
+//           onClick={() => setOverlay(item)}
+//         />
+//       </div>
+//     ))}
+    
+//     {/* Add empty divs to make exactly 2 rows (12 items total) */}
+//     {items.length < 12 && Array.from({ length: 12 - items.length }).map((_, index) => (
+//       <div key={`empty-${index}`} className="aspect-square" />
+//     ))}
+//   </div>
+// );
 
 
   const renderPicturesGrid = (items, isImage = false) => (
@@ -395,12 +403,26 @@ const handleFileInput = (event) => {
         </div>
        
        
-         <div className=" flex  overflow-y-auto [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
-    [&::-webkit-scrollbar-thumb]:bg-gray-600
-    [&::-webkit-scrollbar-thumb]:rounded-full ">
-          {renderOverlayGrid(overlayGradients,true)}
-        </div>
+      <div className="overflow-x-auto py-2
+  [&::-webkit-scrollbar]:h-2
+  [&::-webkit-scrollbar-thumb]:bg-gray-600
+  [&::-webkit-scrollbar-thumb]:rounded-full">
+  <div className="grid grid-rows-2 grid-flow-col gap-3 min-w-min">
+    {overlayGradients.map((item, index) => (
+      <div key={index} className="w-8 h-8 sm:w-12 sm:h-12 flex-shrink-0">
+        <button
+          className={`w-full h-full rounded border hover:scale-105 transition-transform ${
+            color ? "border-gray-400" : "border-gray-300"
+          }`}
+          style={{
+            background: `url(${item}) center/cover no-repeat`,
+          }}
+          onClick={() => setOverlay(item)}
+        />
+      </div>
+    ))}
+  </div>
+</div>
       </div>
 
 
