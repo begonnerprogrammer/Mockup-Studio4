@@ -309,25 +309,21 @@ const handleFileInput = (event) => {
 };
 
 
- const renderGradientGrid = (items, isImage = false) => (
-    <div className="grid grid-cols-10 grid-rows-2 gap-x-9 gap-y-4">
-      {items.map((item, index) => (
+const renderGradientGrid = (items, isImage = false) => (
+  <div className="grid grid-rows-2 grid-flow-col gap-3 min-w-min">
+    {items.map((item, index) => (
+      <div key={index} className="w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
         <button
-          key={index}
-          className="h-8 w-8 rounded border hover:scale-105 transition-transform"
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform"
           style={{
             background: isImage ? `url(${item}) center/cover no-repeat` : item,
           }}
-          // onClick={() => onBackgroundChange(item)}
-          onClick={()=>Backgroundcolorchanger(item)}
+          onClick={() => Backgroundcolorchanger(item)}
         />
-      ))}
-    </div>
-
-
-
-
-  );
+      </div>
+    ))}
+  </div>
+);
 
   return (
     <div className="space-y-2">
@@ -409,7 +405,7 @@ const handleFileInput = (event) => {
   [&::-webkit-scrollbar-thumb]:rounded-full">
   <div className="grid grid-rows-2 grid-flow-col gap-3 min-w-min">
     {overlayGradients.map((item, index) => (
-      <div key={index} className="w-8 h-8 sm:w-12 sm:h-12 flex-shrink-0">
+      <div key={index} className="w-6 h-6 sm:w-10 sm:h-10 flex-shrink-0">
         <button
           className={`w-full h-full rounded border hover:scale-105 transition-transform ${
             color ? "border-gray-400" : "border-gray-300"
@@ -508,30 +504,30 @@ const handleFileInput = (event) => {
 
 
       {/* Magic Gradients */}
-      <div className='flex flex-col'>
-        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`} >
-          Magic Gradients
-        </h2>
-        <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+   <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Magic Gradients
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
-    [&::-webkit-scrollbar-thumb]:rounded-full ">
-          {renderGradientGrid(magicGradients)}
-        </div>
-      </div>
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+    {renderGradientGrid(magicGradients)}
+  </div>
+</div>
 
        {/* Regular Gradients */}
     <div className='flex flex-col'>
-        <h2 className={`text-[11px] sm:text-sm   font-bold text-gray-500`} >
-         Regular Gradients
-        </h2>
-        <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+    Rgular Gradients
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
-    [&::-webkit-scrollbar-thumb]:rounded-full ">
-          {renderGradientGrid(regularGradients)}
-        </div>
-      </div>
+    [&::-webkit-scrollbar-thumb]:rounded-full">
+    {renderGradientGrid(regularGradients)}
+  </div>
+</div>
 
 
 
@@ -552,17 +548,17 @@ const handleFileInput = (event) => {
 
 
       {/* Solid Colors */}
-      <div className='flex flex-col'>
-        <h2 className={`text-[11px] sm:text-sm  mb-1 font-bold text-gray-500`} >
-          Solid Colors
-        </h2>
-        <div className=" flex overflow-scroll [&::-webkit-scrollbar]:h-2 w-[100] p-1
-    
+     <div className='flex flex-col'>
+  <h2 className={`text-[11px] sm:text-sm mb-1 font-bold text-gray-500`}>
+  Solid Colors
+  </h2>
+  <div className="overflow-x-auto py-2
+    [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-          {renderGradientGrid(solidColors)}
-        </div>
-      </div>
+    {renderGradientGrid(solidColors)}
+  </div>
+</div>
 
    
  
