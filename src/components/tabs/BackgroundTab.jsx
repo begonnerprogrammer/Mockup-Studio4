@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { Upload, Image as ImageIcon, Palette, Layers, Sparkles, Grid, Mountain, FileImage, Droplets, Eye, Camera, Diamond, GlassWater, Glasses, Diameter, FormInput } from 'lucide-react';
 import { userContext } from '../../App';
 import { memo } from 'react';
@@ -233,42 +233,31 @@ setPicBackground(item);
   // Render background grid
 
 
-const BackgroundGridItem = memo(({ item, index, isImage, onClick }) => {
-  return (
-    <div className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
-      <button
-        className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden"
-        onClick={() => onClick(item)}
-      >
-        {isImage ? (
-          <img
-            src={item}
-            alt={`bg-${index}`}
-            className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        ) : (
-          <div 
-            className="w-full h-full"
-            style={{ background: item }}
-          />
-        )}
-      </button>
-    </div>
-  );
-});
-
 const renderBackgroundGrid = (items, isImage = false) => (
   <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min">
     {items.map((item, index) => (
-      <BackgroundGridItem
-        key={`${item}-${index}`}
-        item={item}
-        index={index}
-        isImage={isImage}
-        onClick={Backgroundcolorchanger}
-      />
+      <div key={`${item}-${index}`} className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
+        <button
+          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden"
+          onClick={() => Backgroundcolorchanger(item)}
+        >
+          {isImage ? (
+            <img
+              src={item}
+              alt=""
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              crossOrigin="anonymous" // Allows caching
+            />
+          ) : (
+            <div 
+              className="w-full h-full"
+              style={{ background: item }}
+            />
+          )}
+        </button>
+      </div>
     ))}
   </div>
 );
@@ -301,62 +290,48 @@ const renderBackgroundGrid = (items, isImage = false) => (
 // );
 
 
-const renderPicturesGrid = (items, isImage = false) => (
-  <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min overflow-y-hidden">
-    {items.map((item, index) => (
-      <div key={index} className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
-        <button
-          className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden relative"
-          onClick={() => Backgroundcolorchanger(item)}
-        >
-          {isImage ? (
-            <>
-              {/* Loading placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse"></div>
-              
-              {/* Optimized image */}
-              <img
-                src={item}
-                alt={`texture-${index}`}
-                className="w-full h-full object-cover relative z-10"
-                loading={index < 8 ? "eager" : "lazy"} // Eager load first 8, lazy load rest
-                decoding="async"
-                width={index < 8 ? "80" : undefined} // Provide dimensions for first few
-                height={index < 8 ? "48" : undefined}
-                onLoad={(e) => {
-                  // Smoothly hide placeholder when image loads
-                  const placeholder = e.target.previousSibling;
-                  if (placeholder) {
-                    placeholder.style.opacity = '0';
-                    placeholder.style.transition = 'opacity 0.3s ease';
-                    setTimeout(() => {
-                      placeholder.style.display = 'none';
-                    }, 300);
-                  }
-                }}
-                onError={(e) => {
-                  // Handle broken images gracefully
-                  e.target.style.display = 'none';
-                  const placeholder = e.target.previousSibling;
-                  if (placeholder) {
-                    placeholder.className = "absolute inset-0 bg-gradient-to-r from-red-50 to-red-100";
-                    placeholder.innerHTML = '<span class="text-xs text-red-400">⚠️</span>';
-                    placeholder.classList.add("flex", "items-center", "justify-center");
-                  }
-                }}
-              />
-            </>
-          ) : (
-            <div 
-              className="w-full h-full"
-              style={{ background: item }}
-            />
-          )}
-        </button>
-      </div>
-    ))}
-  </div>
-);
+const PicturesGrid = React.memo(function PicturesGrid({ items, isImage, onSelect }) {
+  return (
+    <div className="grid grid-rows-2 grid-flow-col gap-4 min-w-min overflow-y-hidden">
+      {items.map((item, index) => (
+        <div key={item} className="w-10 h-12 sm:w-20 sm:h-12 flex-shrink-0">
+          <button
+            className="w-full h-full rounded border border-gray-300 hover:scale-105 transition-transform overflow-hidden relative"
+            onClick={() => onSelect(item)}
+          >
+            {isImage ? (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse"></div>
+
+                <img
+                  src={item}
+                  alt={`texture-${index}`}
+                  className="w-full h-full object-cover relative z-10"
+                  loading={index < 8 ? "eager" : "lazy"}
+                  decoding="async"
+                  crossOrigin="anonymous"
+                  onLoad={(e) => {
+                    const ph = e.target.previousSibling;
+                    if (!ph) return;
+                    ph.style.opacity = "0";
+                    ph.style.transition = "opacity .3s ease";
+                    setTimeout(() => (ph.style.display = "none"), 300);
+                  }}
+                />
+              </>
+            ) : (
+              <div className="w-full h-full" style={{ background: item }} />
+            )}
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+});
+const handleSelectTexture = useCallback((item) => {
+  Backgroundcolorchanger(item);  
+}, []);
+
 
 const handleFileInput = (event) => {
   const file = event.target.files?.[0];
@@ -646,7 +621,11 @@ const renderGradientGrid = (items, isImage = false) => (
     [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-    {renderPicturesGrid(marbleTextures, true)}
+   <PicturesGrid
+  items={marbleTextures}
+  isImage={true}
+  onSelect={handleSelectTexture}
+/>
   </div>
 </div>
 
@@ -659,7 +638,11 @@ const renderGradientGrid = (items, isImage = false) => (
     [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-    {renderPicturesGrid(paperTextures, true)}
+  <PicturesGrid
+  items={paperTextures}
+  isImage={true}
+  onSelect={handleSelectTexture}
+/>
   </div>
 </div> 
 
@@ -675,7 +658,11 @@ const renderGradientGrid = (items, isImage = false) => (
     [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-    {renderPicturesGrid(patterns, true)}
+  <PicturesGrid
+  items={patterns}
+  isImage={true}
+  onSelect={handleSelectTexture}
+/>
   </div>
 </div>
 
@@ -691,7 +678,11 @@ const renderGradientGrid = (items, isImage = false) => (
     [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-    {renderPicturesGrid(patterns2, true)}
+    <PicturesGrid
+  items={patterns2}
+  isImage={true}
+  onSelect={handleSelectTexture}
+/>
   </div>
 </div>
 
@@ -705,7 +696,11 @@ const renderGradientGrid = (items, isImage = false) => (
     [&::-webkit-scrollbar]:h-2
     [&::-webkit-scrollbar-thumb]:bg-gray-600
     [&::-webkit-scrollbar-thumb]:rounded-full">
-    {renderPicturesGrid(backgroundImages, true)}
+   <PicturesGrid
+  items={backgroundImages}
+  isImage={true}
+  onSelect={handleSelectTexture}
+/>
   </div>
 </div>
 
