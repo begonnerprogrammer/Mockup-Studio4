@@ -10,14 +10,14 @@ const LayoutTab = () => {
         saturate,setSaturate,
         bgsaturate,setbgSaturate,
         invert,setInvert,
-        bginvert,setBgInvert, color,overlay,setOverlay, setColor,padding,exportbg,setExportBg,layoutborder,overlayopacity,setOverlayOpacity,setLayoutBorder,noisecontroller,setNoiseController,picbackground,canvard,shadowspread,setShadowSpread,canvasepia,perspective,setPresPective, translateZ,setTranslateZ,  rotateZ,setRotateZ,setCanvaSepia,canvabrightness,setCanvaBrightness,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur, canvaopacity,setCanvaOpacity, sepia,setSepia,  contrast,setContrast, blur,setBlur,setCanvaRd,framebordervalue,setFrameBorderValue,rotateX,phoneborder,setPhoneBorder,setRotateX,rotateY,setRotateY,setPicBackground,radius,setRadius,setPadding,fileimg,shadowColor, setShadowColor,setFileImg,brightness,setBrightness,previewUrl,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,size,setImgsize,scale,setScale,tilt,setTilt,frame,setFrame } = useContext(userContext);
+        bginvert,setBgInvert, color,overlay,setOverlay,newdev,setNewDev, setColor,padding,exportbg,setExportBg,layoutborder,overlayopacity,setOverlayOpacity,setLayoutBorder,noisecontroller,setNoiseController,picbackground,canvard,shadowspread,setShadowSpread,canvasepia,perspective,setPresPective, translateZ,setTranslateZ,  rotateZ,setRotateZ,setCanvaSepia,canvabrightness,setCanvaBrightness,canvacontrast,setCanvaContrast, canvablur,setCanvaBlur, canvaopacity,setCanvaOpacity, sepia,setSepia,  contrast,setContrast, blur,setBlur,setCanvaRd,framebordervalue,setFrameBorderValue,rotateX,phoneborder,setPhoneBorder,setRotateX,rotateY,setRotateY,setPicBackground,radius,setRadius,setPadding,fileimg,shadowColor, setShadowColor,setFileImg,brightness,setBrightness,previewUrl,picopacity,setPicOpacity, setPreviewUrl,device,setDevice,size,setImgsize,scale,setScale,tilt,setTilt,frame,setFrame } = useContext(userContext);
   const layoutPresets = [
     
      {
       id: '6',
       name: 'layout6',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/layout-imgs/178.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/layout-imgs/178.webp',
       settings: {
         rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
@@ -29,8 +29,8 @@ const LayoutTab = () => {
  {
       id: '11',
       name: 'layout11',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/layout-imgs/406.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/layout-imgs/406.webp',
       settings: {
         rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
@@ -42,8 +42,8 @@ const LayoutTab = () => {
      {
       id: '8',
       name: 'layout8',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/layout-imgs/Dusk.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/layout-imgs/Dusk.webp',
       settings: {
          rotateY:"rotateY(0deg)",
         rotateX:"rotateX(14deg)",
@@ -61,8 +61,8 @@ const LayoutTab = () => {
     {
       id: '9',
       name: 'layout9',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/overlay1.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/overlay1.webp',
       settings: {
           perspective: "perspective(1200px)",
          rotateY:"rotateY(0deg)",
@@ -75,14 +75,14 @@ const LayoutTab = () => {
     borderBottom: "24px solid white",
     borderLeft: "8px solid white",
      borderRadius: "8",
-      overlay:"https://www.picbolt.co/api/proxy/asset?path=overlay-shadows%2F088.webp",
+      overlay:"/overlay/overlay-3.webp",
       
     },
    {
       id: '10',
       name: 'layout10',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-           bg:'/public/overlay2.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+           bg:'/overlay2.webp',
       settings: {
           perspective: "perspective(1200px)",
          rotateY:"rotateY(0deg)",
@@ -93,14 +93,14 @@ const LayoutTab = () => {
       },
         
      borderRadius: "8",
-     overlay:'https://www.picbolt.co/api/proxy/asset?path=overlay-shadows%2F002.webp',
+     overlay:"/overlay/overlay-18.webp",
       
     },
      {
       id: '5',
       name: 'layout5',
       src: previewUrl ? previewUrl : 'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg',
-      bg: '/public/patterns/p-9c.jpeg',
+      bg: '/patterns/p-9.jpeg',
       settings: {
         rotateX:"rotateX(0deg)",
         rotateY:"rotateY(0deg)",
@@ -111,8 +111,8 @@ const LayoutTab = () => {
     {
       id: '4',
       name: 'layout4',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:"/public/patterns/p-1.jpeg",
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:"/patterns/p-1.jpeg",
       settings: {
          rotateX:"rotateX(0deg)",
         rotateY:"rotateY(0deg)",
@@ -124,8 +124,8 @@ const LayoutTab = () => {
     {
       id: '1',
       name: 'layout1',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/layout-imgs/411.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/layout-imgs/411.webp',
       settings: {
         rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
@@ -138,8 +138,8 @@ const LayoutTab = () => {
     {
       id: '7',
       name: 'layout7',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/layout-imgs/02.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/layout-imgs/02.webp',
       settings: {
         rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
@@ -168,8 +168,8 @@ const LayoutTab = () => {
     {
       id: '2',
       name: 'layout2',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg: '/public/layout-imgs/test12.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg: '/layout-imgs/test12.webp',
       settings: {
          perspective: "perspective(1200px)",
          rotateY:"rotateY(0deg)",
@@ -214,8 +214,8 @@ borderTop: "8px solid rgba(255, 255, 255, 0.2)",
      {
       id: '3',
       name: 'layout3',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:"/public/layout-imgs/test30.webp",
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:"/layout-imgs/test30.webp",
       settings: {
         rotateX:"rotateX(0deg)",
         rotateY:"rotateY(10deg)",
@@ -229,8 +229,8 @@ borderTop: "8px solid rgba(255, 255, 255, 0.2)",
     {
       id: '12',
       name: 'layout12',
-      src: previewUrl ? previewUrl : '/public/marble/m-9.jpeg',
-      bg:'/public/layout-imgs/test62.webp',
+      src: previewUrl ? previewUrl : '/marble/m-9.jpeg',
+      bg:'/layout-imgs/test62.webp',
       settings: {
         rotateX:"rotateX(14deg)",
         rotateY:"rotateY(0deg)",
@@ -260,7 +260,8 @@ setRadius(value);
     setPresPective(preset.settings.perspective),
    setBrightness(100);
     setShadowColor('#000000');
-   setPadding(20);
+
+    
    setOverlay('');
    setFrame( {name: 'Default',style:'border:none', preview: '⬜'});
   setTilt(0);
@@ -272,7 +273,7 @@ setOverlay(preset.overlay);
   
   setDevice("");
   
- 
+ setNewDev("");
  
 setRadius(0);
 setTilt(0);

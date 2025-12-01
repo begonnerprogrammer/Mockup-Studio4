@@ -135,7 +135,7 @@ const onsepiachange=(value)=>{
 setSepia(value);
 }
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("one");
 
   return (
     <div className="space-y-6">
@@ -331,37 +331,33 @@ setSepia(value);
        <h3   className={`text-[11px] sm:text-sm  mb-2 font-bold text-gray-500`}>FILTERS</h3>
       <div style={{ display: "flex" }}>
       
-      <div
-        onClick={() => setSelected("one")}
-        style={{
-          padding: "4px",
-          border: "1px solid gray",
-          background: selected === "one" ? (color ? "#303030":"#dedede" )  : "transparent",
-          borderTopLeftRadius:"4px",
-          borderBottomLeftRadius:"4px",
-          cursor: "pointer",
-         color:selected === "one" ?  (color ? "white":"text-gray-500" ) : "#4b5563",
-        }}
-        className='text-sm font-semibold '
-      >
-       FORGROUND
-      </div>
+     <div
+  onClick={() => setSelected("one")}
+  className={`
+    text-sm font-semibold px-1 py-1 border border-gray-400 cursor-pointer
+    rounded-l-md transition-colors duration-200
+    ${selected === "one" 
+      ? (color ? "bg-gray-800 text-white" : "bg-gray-200 text-gray-500") 
+      : "bg-transparent text-gray-600"
+    }
+  `}
+>
+  FOREGROUND
+</div>
 
-      <div
-        onClick={() => setSelected("two")}
-        style={{
-          padding: "4px",
-          border: "1px solid gray",
-          background: selected === "two" ? (color ? "#303030":"#dedede" ) : "transparent",
-          cursor: "pointer",
-          color:selected === "two" ?  (color ? "white":"text-gray-500" ) : "#4b5563",
-          borderTopRightRadius:"4px",
-          borderBottomRightRadius:"4px",
-        }}
-         className='text-sm font-semibold'
-      >
-      BACKGROUND
-      </div>
+<div
+  onClick={() => setSelected("two")}
+  className={`
+    text-sm font-semibold px-1 py-1 border border-gray-400 cursor-pointer
+    rounded-r-md transition-colors duration-200
+    ${selected === "two" 
+      ? (color ? "bg-gray-800 text-white" : "bg-gray-200 text-gray-500") 
+      : "bg-transparent text-gray-600"
+    }
+  `}
+>
+  BACKGROUND
+</div>
 
     </div>
 

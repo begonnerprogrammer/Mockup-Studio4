@@ -130,34 +130,41 @@ useEffect(() => {
     return;
   }
 
-  // Extract blob URL if it exists
+  // ---- 1️⃣ Detect blob URL ----
   const blobMatch = bg.match(/blob:[^)"]+/);
   const blobUrl = blobMatch ? blobMatch[0] : null;
 
-  if (blobUrl) {
-    // Convert ONLY the blob URL to base64
-    fetch(blobUrl)
+  // ---- 2️⃣ Detect normal image URL (relative or absolute) ----
+  // Matches: url(/path/image.webp), /path/image.webp, https://abc.com/img.png
+  const urlMatch =
+    bg.match(/url\(["']?(.*?)["']?\)/)?.[1] ||
+    (bg.match(/\.(png|jpe?g|webp|gif|svg)(\?.*)?$/i) ? bg : null);
+
+  const finalUrl = blobUrl || urlMatch;
+
+  if (finalUrl) {
+    fetch(finalUrl)
       .then((res) => res.blob())
       .then((blob) => {
         const reader = new FileReader();
         reader.onloadend = () => {
-          // Put the base64 back into a full CSS background
-          setBgSrc(reader.result);
-
+          setBgSrc(reader.result); // base64 data URL
         };
         reader.readAsDataURL(blob);
       })
-      .catch((err) =>
-        console.error("Failed to convert blob to base64:", err)
-      );
+      .catch((err) => {
+        console.error("Failed to convert image to base64:", err);
+        setBgSrc(bg); // fallback to original
+      });
 
     return;
   }
 
-  // 🎨 Not a blob → keep as-is (colors, gradients, URLs)
+  // ---- 3️⃣ Colors, gradients, etc. → leave untouched ----
   setBgSrc(bg);
 
 }, [style.background]);
+
 
 useEffect(() => {
   if (!previewUrl) {
@@ -199,8 +206,7 @@ const getBgCssValue = (bgSrc) => {
   // Otherwise assume it's a color or gradient
   return bgSrc;
 };
-console.log("borderradius at preview page ===",layoutborder.borderRadius);
-console.log("frame.style.border===",frame?.style?.borderRadius)
+
   return <>
 <div
   className="flex-1 flex overflow-hidden items-center justify-center min-h-full relative overflow-hidden transition-all duration-300 "
@@ -377,11 +383,11 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
   {
     newdev.name==="iphone" ? <label>
     <div className=' w-50  h-100 relative' style={{  transition: "transform 0.3s ease-in-out"}}>
-     <img src="/public/phone.png"  className='w-[100%]  h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/phone.png"  className='w-[100%]  h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`}}
-  className='absolute top-1/2 left-1/2 w-[95%] h-[96%] rounded-[28px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
+  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}
+  className='absolute top-1/2 left-1/2 w-[95%] h-[97%] rounded-[28px] z-10 transform -translate-x-1/2 -translate-y-49'  
   alt="" 
 /> : ""
      }
@@ -402,10 +408,10 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
    {
     newdev.name==="iphone15" ? <label>
     <div className=' w-55  h-100 relative'>
-     <img src="/public/15.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
+     <img src="/15.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`}}
+  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}
   className='absolute top-1/2 left-1/2 w-[95%] h-[96%] rounded-[28px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -448,11 +454,11 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
 
 {
   newdev.name==="mackbook13" ? <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/13.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
+     <img src="/13.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`}}
+  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[82%] h-[27%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -474,11 +480,11 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
 
 {
    newdev.name==="mackbook16" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/14.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)` }}>
+     <img src="/14.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`}}
+  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[77%] h-[25%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -499,11 +505,11 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
   {/* {ipadpro11} */}
   {
      newdev.name==="ipadpro11" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/11.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)` }}>
+     <img src="/11.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img  
-  src={`${imageSrc}`}  style={{padding:`${padding}px`}}
+  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[89%] h-[67%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -522,11 +528,11 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
   {/* {ipadsilver} */}
   {
       newdev.name==="ipadsilver" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/silver.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
+     <img src="/silver.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}px`}}
+  src={`${imageSrc}`}  style={{padding:`${padding}px`,opacity:picopacity/100,}}
   className='absolute  top-1/2 left-25 w-[89%] h-[67%] rounded-[1px] z-10 transform -translate-x-1/2 -translate-y-1/2'  
   alt="" 
 /> : ""
@@ -545,11 +551,12 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
 {/* {led} */}
 {
    newdev.name==="tv" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/tv.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`}
+     style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
+     <img src="/tv.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
-  src={`${imageSrc}`}  style={{padding:`${padding}`}}
+  src={`${imageSrc}`}  style={{padding:`${padding}`,opacity:picopacity/100,}}
   className='absolute  top-48 left-23.5 mr-1 w-[68.5%] h-[19%] rounded-[1px] z-10 transform -translate-x-16 -translate-y-9'  
   alt="" 
 /> : ""
@@ -641,11 +648,12 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
     overflow: "hidden", // hide extra content if needed,
     }
   }>
+    
   {/* iphone */}
   {
     newdev.name==="iphone" ? <label>
-    <div className=' w-50  h-100 relative   transition: "transform 0.3s ease-in-out",'>
-     <img src="/public/phone.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className=' w-50  h-100 relative   transition: "transform 0.3s ease-in-out",' style={{boxShadow:`0 0 60px ${shadowspread}px  ${shadowColor}`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
+     <img src="/phone.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt=""  />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -668,8 +676,8 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
 {/* {iphone15} */}
    {
     newdev.name==="iphone15" ? <label>
-    <div className=' w-55  h-100 relative'>
-     <img src="/public/15.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className=' w-55  h-100 relative' style={{filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`}}>
+     <img src="/15.png" className='w-[100%] h-99 bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -715,8 +723,8 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
 
 {
   newdev.name==="mackbook13" ? <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/13.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
+     <img src="/13.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -741,8 +749,8 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
 
 {
    newdev.name==="mackbook16" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/14.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` ,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`,}}>
+     <img src="/14.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -766,8 +774,8 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
   {/* {ipadpro11} */}
   {
      newdev.name==="ipadpro11" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/11.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
+     <img src="/11.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -789,8 +797,8 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
   {/* {ipadsilver} */}
   {
       newdev.name==="ipadsilver" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/silver.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
+     <img src="/silver.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
      {
       imageSrc ?<img 
   src={`${imageSrc}`} 
@@ -808,19 +816,22 @@ console.log("frame.style.border===",frame?.style?.borderRadius)
     />
   </label> : ""
   }
-   
+    
 {/* {led} */}
 {
    newdev.name==="tv" ?  <label>
-    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})` }}>
-     <img src="/public/tv.png" className='contain bg-gray-300 z-100 bg-transparent'  alt="" />
+    <div className={` w-50  h-100 relative flex items-center justify-center`} style={{ transform: `scale(${scale})`,filter: `brightness(${brightness}%) blur(${blur}px) sepia(${sepia}%) contrast(${contrast}%) invert(${invert}%) grayscale(${grayscale}%) saturate(${saturate}%) hue-rotate(${huerotate}deg)`, }}>
+      <div style={{boxShadow: `0 0 60px ${shadowspread}px  ${shadowColor}`}} className='w-50 h-50'>
+<img src="/tv.png"  className='contain bg-gray-300 z-100  bg-transparent w-full h-full'   alt="" />
      {
      imageSrc ?<img 
-  src={`${imageSrc}`} 
+  src={`${imageSrc}`}  
   className='absolute  top-48 left-23.5 mr-1 w-[68.5%] h-[19%] rounded-[1px] z-10 transform -translate-x-16 -translate-y-9'  
   alt="" 
 /> : ""
      }
+      </div>
+     
       
      </div>
      <input

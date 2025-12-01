@@ -818,7 +818,7 @@ console.log("preview url at control page",previewUrl)
       {/* Header */}
      
     
-      
+{/*       
   <div className={` hidden sm:flex sm:text-xs md:text-sm lg:text-base  transition-all duration-300 ease-in-out  ${color ? "bg-[#1a1a1a]" : "bg-white"} items-center space-x-2 p-6 pb-4 border-b border-gray-100 dark:border-gray-700`}>
      <NavLink to={'/'}>
         <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
@@ -829,7 +829,7 @@ console.log("preview url at control page",previewUrl)
         <h1 className={`text-sm  transition-all duration-300 ease-in-out  font-bold ${color ? "text-white" : "text-gray-900"} ">Mockup Studio</h1`}>Mockup Studio</h1>
         </NavLink>
       </div>
-    
+     */}
    
 
       {/* Tab Navigation */}

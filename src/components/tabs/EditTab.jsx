@@ -112,7 +112,7 @@ const newdevices = [
         "h": "96%",
         "-translate-x-": "1/2",
         "-translate-y-": "1/2", 
-        "src":"/public/iphone-16.webp", 
+        "src":"/iphone-16.webp", 
     },
        {  // ← Second array item  
         "name": "iphone15", 
@@ -122,7 +122,7 @@ const newdevices = [
         "h": "96%",
         "-translate-x-": "1/2",
         "-translate-y-": "1/2", 
-        "src":"/public/iphone-15-pro-max.webp", 
+        "src":"/iphone-15-pro-max.webp", 
     },
     {  // ← First array item
         "name": "tv",
@@ -132,7 +132,7 @@ const newdevices = [
         "h": "19%",
         "-translate-x-": "16",
         "-translate-y-": "9", 
-        "src":"/public/tv.png" 
+        "src":"/tv.png" 
     },
      
     {  // ← Second array item
@@ -143,7 +143,7 @@ const newdevices = [
         "h": "67%",
         "-translate-x-": "1/2",
         "-translate-y-": "1/2", 
-        "src":"/public/ipad-air.webp", 
+        "src":"/ipad-air.webp", 
     },
      {  // ← Second array item
         "name": "ipadpro11", 
@@ -153,7 +153,7 @@ const newdevices = [
         "h": "67%",
         "-translate-x-": "1/2",
         "-translate-y-": "1/2", 
-        "src":"/public/ipad-mini.webp", 
+        "src":"/ipad-mini.webp", 
     }
     ,
    
@@ -165,7 +165,7 @@ const newdevices = [
         "h": "25%",
         "-translate-x-": "1/2",
         "-translate-y-": "1/2", 
-        "src":"/public/macbook-pro-13.webp", 
+        "src":"/macbook-pro-13.webp", 
     },
      {  // ← Second array item  
         "name": "mackbook13", 
@@ -175,7 +175,7 @@ const newdevices = [
         "h": "27%",
         "-translate-x-": "1/2",
         "-translate-y-": "1/2", 
-        "src":"/public/macbook-pro-16.webp", 
+        "src":"/macbook-pro-16.webp", 
     },
     
    
@@ -331,6 +331,7 @@ const deviceOptions = [
 setRadius(0);
 setTilt(0);
 setPhoneBorder(false);
+
   };
 
 
